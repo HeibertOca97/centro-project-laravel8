@@ -1,0 +1,220 @@
+/**CONTENEDOR DEL FORMULARIO**/
+.box-login {
+    background: #159957; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #155799,
+        #159957
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #155799,
+        #159957
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    overflow: auto;
+}
+
+/**FORMULARIO**/
+.box-fr {
+    box-shadow: 0 2px 25px 3px rgba(0, 52, 149, 0.657);
+    max-width: calc(var(--max-width-form) - 50px);
+    position: relative;
+    width: calc(var(--width-element-default) - 5%);
+    background-color: hsl(0, 0%, 99%);
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+/**iCONO**/
+.box-fr > picture {
+    z-index: 10;
+    position: absolute;
+    top: -65px;
+    width: var(--width-element-default);
+    display: flex;
+    justify-content: center;
+}
+.box-fr > picture .box-logo {
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50px;
+    content: "";
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box-fr > div:nth-of-type(1) > h3 {
+    text-align: center;
+    margin: 65px auto 25px auto;
+    color: var(--cl-fr-login);
+    font-family: var(--font-f1);
+    font-size: var(--text-1);
+}
+.box-fr > .box-ac {
+    margin: 30px auto;
+    position: relative;
+}
+
+.style-icon {
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    box-sizing: border-box;
+}
+.cl-icon-default {
+    color: var(--cl-fr-login);
+}
+.cl-icon-invalid {
+    color: red;
+}
+
+.box-fr > div input {
+    display: block;
+    width: var(--width-element-default);
+    border: 0;
+    padding: 12px 5px 12px 35px;
+    outline: none;
+    box-sizing: border-box;
+}
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.cl-barra-default {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.cl-barra-invalid {
+    border-bottom: 1px solid rgb(253, 0, 0);
+}
+
+.barra::before {
+    content: "";
+    display: block;
+    width: calc(var(--width-element-default) - 100%);
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, #155799, #159957);
+    transition: all 300ms ease-in-out;
+}
+
+.box-fr > div > input:focus ~ .barra::before {
+    width: 100%;
+}
+.box-fr > div > label {
+    display: block;
+    position: absolute;
+    left: 35px;
+    top: 12px;
+    transition: all 300ms ease-in-out;
+    font-family: var(--font-f1);
+}
+.cl-label-default {
+    color: var(--cl-fr-login);
+}
+.cl-label-invalid {
+    color: red;
+}
+.box-fr > div > input:focus ~ label,
+.box-fr > div > input:valid ~ label {
+    top: -14px;
+    font-size: calc(var(--text-default) - 2px);
+    transition: all 200ms ease-in-out;
+}
+.box-fr > .box-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/****CAJA DE MENSAJE****/
+.msg-fr-login {
+    position: absolute;
+    bottom: -20px;
+    left: 25px;
+    font-size: 12px;
+    font-family: var(--font-f1);
+    color: rgba(255, 0, 0, 0.897);
+}
+.msg-valid {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    font-size: 12px;
+    font-family: var(--font-f1);
+    color: rgba(255, 0, 0, 0.897);
+}
+
+/****BOTON****/
+.box-fr > .box-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+.box-fr > .box-btn > button {
+    border: 0;
+    outline: 0;
+    background: #159957; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #155799,
+        #159957
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #155799, #159957);
+    font-family: var(--font-f1);
+    color: var(--cl-fr-login);
+    color: #fff;
+    line-height: 2.8em;
+    width: 100%;
+    max-width: 200px;
+    cursor: pointer;
+    border-radius: 25px 5px 35px 0px;
+    transition: all 200ms ease-in;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.box-fr > div > button:hover {
+    border-radius: 5px 5px 5px 5px;
+}
+.box-fr > .box-redirect {
+    margin-bottom: 25px;
+    text-align: center;
+}
+.box-fr > .box-redirect p {
+    font-size: 13px;
+    color: #155799;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/***MEDIA QUERYS****/
+@media screen and (min-width: 400px) {
+    .box-fr > picture {
+        top: -60px;
+    }
+    .box-fr > picture div {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (min-width: 500px) {
+    .box-fr > .box-redirect p {
+        font-size: 14px;
+    }
+}
