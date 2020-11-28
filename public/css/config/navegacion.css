@@ -1,0 +1,99 @@
+/***********
+ESTILOS GENERAL DEL CONTENEDOR DEL MENU
+**********/
+.section #box-nav {
+    width: 100%;
+    max-width: 0px;
+    min-width: 0px;
+    overflow: auto;
+    transition: all 150ms ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    font-size: 15px;
+    box-shadow: 3px 0px 5px #ccc;
+}
+/*** ESTILO DE ENLACES PRINCIPALES LINK ***/
+#box-nav nav {
+    margin-bottom: 150px;
+}
+#box-nav nav hr {
+    margin-top: 5px;
+}
+#box-nav nav .txt-clasificador {
+    padding: 10px;
+    margin: 10px 0px 0px 10px;
+}
+#box-nav nav .opt-link {
+    text-decoration: none;
+    position: relative;
+}
+#box-nav nav .opt-link > div {
+    display: flex;
+}
+#box-nav nav .opt-list > .list-link {
+    overflow: hidden;
+    height: 0px;
+    transition: all 150ms ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+}
+
+/***LISTAS***/
+#box-nav nav .opt-list div {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+}
+#box-nav nav .opt-list div > i,
+#box-nav nav .opt-link > div > i {
+    display: block;
+    padding: 10px;
+    margin-top: 2px;
+    box-sizing: border-box;
+    text-align: center;
+}
+#box-nav nav .opt-list div > p,
+#box-nav nav .opt-link > div > p {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#box-nav nav .opt-list > .list-link > a {
+    display: block;
+    text-decoration: none;
+}
+#box-nav nav .opt-list > .list-link > a > div {
+    display: flex;
+}
+#box-nav nav .opt-list > .list-link > a > div > i,
+#box-nav nav .opt-list > .list-link > a > div > p {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/***Hover elemento***/
+#box-nav nav > a.opt-link div:hover,
+#box-nav nav div.opt-list > div:hover,
+#box-nav nav .opt-list > .list-link > a > div:hover {
+    background-color: var(--bg-section-primary);
+    color: rgb(3, 66, 214);
+}
+
+#box-nav nav a.opt-link:hover::after,
+#box-nav nav div.opt-list:hover div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 40px;
+    left: 0;
+    top: 0;
+    background-color: rgb(3, 66, 214);
+}
+.activeRoute {
+    background-color: var(--bg-section-primary);
+    color: rgb(3, 66, 214);
+}

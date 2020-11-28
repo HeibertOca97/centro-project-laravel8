@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Spatie
         Spatie\Permission\PermissionServiceProvider::class,
+        //Laravel Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -227,6 +229,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        
+        //Laravel Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
