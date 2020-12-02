@@ -36,8 +36,7 @@
 <body>  
   <div class="box-loaded"><img src="{{asset('image/logo/logo.png')}}" alt="Logo"><p>Cargando....</p></div>
 
-  {{-- @yield('content') --}}
-  @extends('components.section')
+  @extends('layouts.partials.section')
 
   <script src="{{asset('js/glob.js')}}"></script>
   @yield('js')

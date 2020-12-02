@@ -24,11 +24,15 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
 
 Route::get('/informacion-confidencial', function () {
   dd(session('auth'));
     return "informacion confidencial";
 })->middleware('password.confirm');
 
-Route::get('users/list', [UserController::class,'index'])->name('user.list');
+Route::group(['middleware' => 'role:super admin'], function () {
+  Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');    
+});
+
+Route::resource('users', App\Http\Controllers\UserController::class);

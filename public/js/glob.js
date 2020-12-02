@@ -6,10 +6,14 @@
 
 //FUNCION QUE CARGA EL MODAL LOADER
 window.addEventListener("load", loadedDOM);
+
 function loadedDOM() {
   let boxLoaded = document.querySelector(".box-loaded ");
   boxLoaded.style.visibility = "hidden";
   boxLoaded.style.opacity = "0";
+  setTimeout(() => {
+    boxLoaded.style.display = "none";
+  }, 1200);
 }
 
 //FUNCION QUE MUESTRA EL MENSAJE DE ALERTA

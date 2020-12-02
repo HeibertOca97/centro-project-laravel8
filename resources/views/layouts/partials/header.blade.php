@@ -16,9 +16,9 @@
       <img src="" alt="Mi foto de Perfil" class="data-foto-perfil">
     </div>
     <div>
-      <h3 class="data-user-names">Heibert</h3>
+      <h3 class="data-user-names">{{Auth::user()->name}}</h3>
       {{-- <p>Configuraci&oacute;n</p> --}}
-      <p>Perfil (Admin)</p>
+    <p>Perfil @if (Auth::user()->getRoleNames()) (@foreach (Auth::user()->getRoleNames() as $key => $role) {{$role}} @endforeach) @else {{'(ningun rol asignado)'}}@endif </p>
     </div>
   </a>
   <hr>

@@ -178,6 +178,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         //Laravel Excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        //Datatable
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -232,6 +234,8 @@ return [
         
         //Laravel Excel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        //Datatable
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

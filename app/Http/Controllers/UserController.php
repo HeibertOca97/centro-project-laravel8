@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json($users);
+        return view('user.index',compact('users'));
     }
 
     /**
@@ -25,7 +25,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::select('id','name','username','email','created_at')->get();
+        // return $users;
+        // return datatables()->eloquent(User::query())->toJson();
+        return datatables()->of($users)->toJson();
     }
 
     /**

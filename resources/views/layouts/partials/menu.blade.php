@@ -1,17 +1,29 @@
 <nav id="bar-menu">
-  <p class="txt-clasificador">Principal</p>
-  <a href="" class="opt-link">
-    <div>
+  <br>
+  <a href="{{route('dashboard')}}" class="opt-link"  title="Dashboard">
+    <div class="{{request()->routeIs('dashboard') ? 'activeRoute' : ' '}}">
       <i class="fas fa-tachometer-alt"></i>
-      <p>Tablero</p>
+    <p>Tablero</p>
     </div>
   </a>
   <hr>
   <p class="txt-clasificador">Gestiones</p>
-  <a href="" class="opt-link">
-    <div>
-      <i class="fas fa-tachometer-alt"></i>
+<a href="{{route('users.index')}}" class="opt-link" title="Usuarios">
+    <div class="{{request()->routeIs('users.*') ? 'activeRoute' : ' '}}">
+      <i class="fas fa-users"></i>
       <p>Usuarios</p>
+    </div>
+  </a>
+  <a href="" class="opt-link" title="Usuarios">
+    <div class="{{request()->routeIs('dashboard') ? 'activeRoute' : ' '}}">
+      <i class="fas fa-user-tag"></i>
+      <p>Roles</p>
+    </div>
+  </a>
+  <a href="" class="opt-link" title="Usuarios">
+    <div class="{{request()->routeIs('dashboard') ? 'activeRoute' : ' '}}">
+      <i class="fas fa-user-shield"></i>
+      <p>Permisos</p>
     </div>
   </a>
   <div class="opt-list">
