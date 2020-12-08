@@ -13,7 +13,7 @@ use App\Notifications\ResetPasswordNotification;
 class User extends Authenticatable
 {
   use HasRoles;
-    use HasFactory, Notifiable;
+  use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +21,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'username',
-        'email',
-        'password',
+      'username',
+      'email',
+      'password',
+      'status',
+      'cedula',
+      'nombres',
+      'apellidos',
+      'avatar',
+      'cargo',
     ];
 
     /**

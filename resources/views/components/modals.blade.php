@@ -4,13 +4,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Cerrar sesion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
-        <i class="fas fa-question-circle"></i>
-        <p>Usted esta seguro/a de salir del sistema</p>
+        <i class="fas fa-question-circle icon-info text-danger"></i>
+        <p class="text-aviso">¿Usted esta seguro/a de salir del sistema?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

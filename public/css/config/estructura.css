@@ -57,9 +57,9 @@
     z-index: calc(var(--capa-modal) - 20);
     overflow: auto;
     top: 60px;
-    right: 15px;
+    right: 10px;
     width: 100%;
-    max-width: 360px;
+    max-width: 350px;
     border-radius: 5px;
     padding: 5px;
     box-sizing: border-box;
@@ -111,10 +111,10 @@
     max-width: 265px;
 }
 #box-barra-cuenta > a > div:nth-of-type(2) > h3 {
-    font-size: 16px;
+    font-size: calc(var(--text-default) - 2px);
 }
 #box-barra-cuenta > a > div:nth-of-type(2) > p {
-    font-size: 14px;
+    font-size: calc(var(--text-default) - 4px);
 }
 
 #box-barra-cuenta > a > i,

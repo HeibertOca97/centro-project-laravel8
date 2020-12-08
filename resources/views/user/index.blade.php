@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
+
+<link rel="stylesheet" href="{{asset('css/components/user/createUser.css')}}">
 @endsection
 
 @section('barra-menu')
@@ -17,18 +19,33 @@
 
 @section('section-content')
   @include('layouts.partials.header')
-  <h1>Gestion de usuarios</h1>
-  {{Auth::user()->created_at->diffForHumans()}}
+  <div class="container-xl">
+    <h1 class="title-module"><i class="fas fa-users"></i> Gestion de usuarios</h1>
+  </div>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-white container-xl">
+    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+    </ol>
+  </nav>
+
+  <div class="container-xl bg-white my-3">
+    <a href="{{route('users.create')}}" class="btn btn-primary btn-route-crear">Nuevo usuario</a>
+  </div>
+
 <div class="container-xl">
   <div class="card">
     <div class="card-body">
       <table id="tb-users-data" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>userName</th>
-                    <th>email</th>
-                    <th>created at</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>Permisos</th>
+                    <th>Estado</th>
+                    <th>Creado</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
       </table>
@@ -43,46 +60,14 @@
   <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+  <script src="{{asset('js/config/dataTable.js')}}"></script>
     <script>
-      const configLanguageTable = {
-            "sProcessing":     "Procesando...",
-		    "sLengthMenu": '<p>Mostrar </p>&nbsp; _MENU_ &nbsp;<p> registros</p>',    
-		    "sZeroRecords":    "No se encontraron resultados",
-		    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-		    "sInfo":           "Mostrando del (_START_ al _END_) de un total de _TOTAL_ registros",
-		    "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
-		    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-		    "sInfoPostFix":    "",
-		    "sSearch":         "Filtrar:",
-		    "sUrl":            "",
-		    "sInfoThousands":  ",",
-		    "sLoadingRecords": "Por favor espere - cargando...",
-		    "oPaginate": {
-		        "sFirst":    "Primero",
-		        "sLast":     "Último",
-		        "sNext":     "Siguiente",
-		        "sPrevious": "Anterior"
-		    },
-		    "oAria": {
-		        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-		        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        },
-      };
-      $(document).ready(function() {
-          $('#tb-users-data').DataTable({
-            // "serverSide":true,
-            "ajax":'{{route("users.create")}}',
-            "columns":[
-              {data:'name'},
-              {data:'username'},
-              {data:'email'},
-              {data:'created_at'}
-            ],
-            responsive:true,
-            // autoWidth:false
-            "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
-            "oLanguage": configLanguageTable
-          });
-      } );
+      document.addEventListener('DOMContentLoaded',()=>{
+        tableCreateUsers('{{route("users.listAll")}}');
+        @if (session('status_success'))
+        //js/config/messageAlert.js
+            successAlert('Exitoso','{{session("status_success")}}');
+        @endif
+      });
     </script>
 @endsection

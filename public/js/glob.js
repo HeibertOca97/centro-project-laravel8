@@ -177,3 +177,36 @@ function loadedDOM() {
 // function mayusFirstText(string){
 //   return string.charAt(0).toUpperCase() + string.slice(1);
 // }
+
+//PUSH JS
+// Push.create("Hello world!", {
+//     body: "Tienes un nuevo mensaje",
+//     icon: '{{asset('image/logo/logo.png')}}',
+//     timeout: 4000,
+//     onClick: function () {
+//         window.open("https://www.youtube.com/results?search_query=plugin+de+notificaciones+html","_bland");
+//         this.close();
+//     }
+// });
+
+// const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); 
+// headers:{
+    //   'X-CSRF-TOKEN': token,
+    //   // 'Content-Type':'application/json'
+    // },
+
+    function testCheck(el){
+      if(el.checked == false){
+         check(el.getAttribute('id'));
+      }else{
+         uncheck(el.getAttribute('id'));
+      }
+   }
+
+function check(element){
+   document.getElementById(element).checked = true;
+}
+  
+function uncheck(element){
+   document.getElementById(element).checked = false;
+}

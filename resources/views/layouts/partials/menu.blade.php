@@ -15,13 +15,13 @@
     </div>
   </a>
   <a href="" class="opt-link" title="Usuarios">
-    <div class="{{request()->routeIs('dashboard') ? 'activeRoute' : ' '}}">
+    <div class="">
       <i class="fas fa-user-tag"></i>
       <p>Roles</p>
     </div>
   </a>
   <a href="" class="opt-link" title="Usuarios">
-    <div class="{{request()->routeIs('dashboard') ? 'activeRoute' : ' '}}">
+    <div class="">
       <i class="fas fa-user-shield"></i>
       <p>Permisos</p>
     </div>

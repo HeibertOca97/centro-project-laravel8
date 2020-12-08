@@ -1,5 +1,3 @@
-// agregarElementoBarraMenu();
-  // agregarElementoSectionId();
 /*************
 FUNCIONALIDADES DEL DOM DISEÑO
 *************/
@@ -8,24 +6,6 @@ $(document).ready(() => {
   // getUserSessionData();
   console.log("Carga jquery");
 });
-
-/*************
-FUNCIONALIDADES DE ORDENAMIENTOS DE LOS ELEMENTOS - BARRA DE NAVEGACION Y SECCION DEL CONTENIDO
-*************/
-function agregarElementoBarraMenu() {
-  if ($barra_menu.children.length == 0) {
-    $barra_menu.append($list_menu);
-  }
-}
-
-function agregarElementoSectionId() {
-  const contenido = document.querySelector("#box-main-content");
-  if (contenido !== null) {
-    if ($seccion_contenido.children.length == 0) {
-      $seccion_contenido.append(contenido);
-    }
-  }
-}
 
 /****************
 FUNCION GENERAL ENCARGADA DE OBTENER LOS DATOS DEL USUARIO LOGEADO

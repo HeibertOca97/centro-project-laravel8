@@ -1,0 +1,58 @@
+/****ESTILOS DEL CONTENDOR****/
+.box-perfil-clave {
+    max-width: calc(var(--mx-width-cp) - 450px);
+    background-color: var(--bg-header-primary);
+    margin: auto;
+    padding: 20px 0;
+    width: 98%;
+}
+.box-perfil-clave form > div {
+    margin: 0px auto 15px auto;
+}
+.box-perfil-clave form > div input {
+    font-size: calc(var(--text-default) - 1px);
+}
+.title-input-pass label,
+.box-perfil-clave form > div > .inputpass,
+.box-perfil-clave form > div > small {
+    display: block;
+}
+.box-perfil-clave form > div > small {
+    text-align: center;
+}
+.title-input-pass label {
+    margin: 10px 15px;
+    font-size: calc(var(--text-default) - 2px);
+}
+.box-perfil-clave form > div > .inputpass {
+    width: 95%;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid var(--cl-border);
+    border-radius: 5px;
+    max-width: 300px;
+    margin-left: 10px;
+    padding: 8px 5px;
+    margin: auto;
+}
+
+.box-perfil-clave main {
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+}
+.box-perfil-clave main button {
+    box-sizing: border-box;
+    margin: 5px auto;
+}
+
+.title-input-pass {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: auto;
+}
+.title-input-pass i {
+    margin: 10px 15px;
+}

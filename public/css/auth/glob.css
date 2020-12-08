@@ -69,6 +69,7 @@ body {
     font-family: "Roboto";
     color: var(--first-text);
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /***PARA CUANDO SE USA BOOSTRAP EN ALGUNA VISTA***/
 /***QUITAR  MARGEN DE CIERTOS ELEMENTOS***/
@@ -96,6 +97,7 @@ body h3 {
     -moz-transition: all 200ms ease-in;
     -o-transition: all 200ms ease-in;
 }
+
 .box-loaded > img {
     width: 120px;
     height: 120px;
@@ -129,6 +131,11 @@ body h3 {
 /**************
 ESTILOS GENERALES DEL SISTEMA
 ***************/
+.title-module {
+    font-size: calc(var(--text-default) + 4px);
+    margin: 25px auto;
+}
+
 .header {
     background-color: var(--bg-header-primary);
 }
@@ -181,4 +188,22 @@ ESTILOS GENERALES DEL SISTEMA
 }
 [data-title] {
     position: relative;
+}
+/**margen general del contenedor de contenido**/
+.mg-content-box {
+    margin-bottom: 150px;
+}
+.mg-box {
+    max-width: calc(var(--mx-width-cp) - 300px);
+    margin: auto;
+}
+/**modal cerrar sesion**/
+.icon-info {
+    display: block;
+    font-size: 75px;
+    text-align: center;
+}
+.text-aviso {
+    text-align: center;
+    margin: 15px auto 5px auto;
 }

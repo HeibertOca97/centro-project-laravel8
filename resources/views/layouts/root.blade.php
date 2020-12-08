@@ -27,7 +27,9 @@
     {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> --}}
     <!-- css personalizado-->
     <link rel="stylesheet" href="{{asset("css/auth/glob.css")}}">
-
+    <link rel="stylesheet" href="{{asset('css/lib/sweetalert2.min.css')}}">
+    <script src="{{asset('js/lib/push.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/lib/toastr.min.css')}}">
     @yield('css')
 
     @yield('lib')
@@ -36,9 +38,12 @@
 <body>  
   <div class="box-loaded"><img src="{{asset('image/logo/logo.png')}}" alt="Logo"><p>Cargando....</p></div>
 
-  @extends('layouts.partials.section')
+  @include('layouts.partials.section')
 
   <script src="{{asset('js/glob.js')}}"></script>
+  <script src="{{asset('js/lib/sweetalert2.all.min.js')}}"></script>
+  <script src="{{asset('js/config/messageAlert.js')}}"></script>
+  <script src="{{asset('js/lib/toastr.min.js')}}"></script>
   @yield('js')
   
 </body>

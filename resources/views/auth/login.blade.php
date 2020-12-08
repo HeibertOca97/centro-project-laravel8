@@ -21,10 +21,14 @@
       @endforeach
     @endif
     
+    @if (session('status'))
+        <div class="box-message-nav"><div class="alert alert-danger" role="alert">{{session('status')}}</div></div> 
+    @endif
+    
     <div class="box-ac">
       <i class="fas fa-user style-icon @if ($errors->any()) cl-icon-invalid @else cl-icon-default @endif"></i>
-      <input type="email" name="email" id="email" autocomplete="off" maxlength="100" required value="{{old('email')}}"><span class="barra @if ($errors->any()) cl-barra-invalid @else cl-barra-default @endif"></span>
-      <label for="email" class="info-label @if ($errors->any()) cl-label-invalid @else cl-label-default @endif">Correo</label>
+      <input type="text" name="login" id="login" autocomplete="off" maxlength="100" required value="{{old('username') ?: old('email')}}"><span class="barra @if ($errors->any()) cl-barra-invalid @else cl-barra-default @endif"></span>
+      <label for="login" class="info-label @if ($errors->any()) cl-label-invalid @else cl-label-default @endif">Usuario</label>
     </div>
 
     <div class="box-ac">

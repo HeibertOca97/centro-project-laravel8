@@ -14,4 +14,5 @@
   @include('components.box-status',[
     'num_users'=>$users
   ])
+
 @endsection

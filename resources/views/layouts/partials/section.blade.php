@@ -2,8 +2,6 @@
 <!--CSS-->
 <link rel="stylesheet" href="{{asset('css/config/estructura.css')}}">
 <link rel="stylesheet" href="{{asset('css/config/navegacion.css')}}">
-<!--MODAL-->
-{{-- <div id="modals" class="modals"></div> --}}
 <!--HTML-->
 <section class="section">
 <!-- ELEMENTO SUPERIOR HEADER-->
@@ -12,7 +10,9 @@
   </section>
 <!-- ELEMENTO INFERIOR SECTION DEL CONTENIDO-->
   <section id="box-section">
-    @yield('section-content')
+    <div class="mg-content-box">
+      @yield('section-content')
+    </div>
   </section>
 
 </section>

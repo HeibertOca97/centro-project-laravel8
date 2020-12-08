@@ -1,0 +1,124 @@
+.btn-route-crear {
+    margin: 5px 3px;
+    font-size: calc(var(--text-default) - 3px);
+}
+div.dataTables_length label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+}
+/* seccion superior datatable buscador*/
+div.row:nth-of-type(1) {
+    margin-top: 25px;
+}
+div.dataTables_filter > label {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div.dataTables_length > label,
+div.dataTables_filter > label,
+table tbody tr td {
+    font-size: calc(var(--text-default) - 2px);
+}
+
+div.row:nth-of-type(1) div.dataTables_length,
+div.row:nth-of-type(1) div.dataTables_filter {
+    margin: 10px auto;
+}
+div.row:nth-of-type(1) div.dataTables_filter input {
+    width: 100%;
+    max-width: 220px;
+}
+/* seccion intermedia datatable tabla*/
+div.row:nth-of-type(2) {
+    margin: 30px auto;
+}
+div.row:nth-last-of-type(1) .dataTables_info,
+div.dataTables_paginate a {
+    font-size: calc(var(--text-default) - 2px);
+}
+/* seccion inferior datatable */
+div.row:nth-last-of-type(1) {
+    margin-bottom: 25px auto;
+}
+
+/**estilos del formulario de registro**/
+.box-form > img {
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    margin: 15px auto;
+}
+.box-form > form {
+    width: 100%;
+    display: block;
+    max-width: 400px;
+}
+.label-description {
+    font-size: calc(var(--text-default) - 2px);
+}
+@media screen and (min-width: 900px) {
+    .box-form > img {
+        margin: 15px;
+    }
+    .box-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+#rol-check input[type="radio"],
+#estado-check input[type="radio"] {
+    display: none;
+}
+/*estilos de los radio - ESTADO CUENTA*/
+#estado-check label {
+    display: block;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+    margin: 5px;
+    font-size: 15px;
+}
+#estado-check input:checked ~ label {
+    border-radius: 3px 15px 3px 15px;
+    border: 2px solid rgba(0, 146, 61, 0.781);
+    background-color: rgba(0, 146, 24, 0.657);
+    color: #fff;
+}
+/*estilos de los radio - ROLES*/
+
+#rol-check label {
+    display: block;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+    margin: 5px;
+    font-size: 15px;
+}
+
+#rol-check input:checked ~ label {
+    border-radius: 3px 15px 3px 15px;
+    border: 2px solid rgba(22, 0, 146, 0.781);
+    background-color: rgba(22, 0, 146, 0.657);
+    color: #fff;
+}
+
+.check-default {
+    border-radius: 3px;
+    border: 2px solid rgb(131, 131, 131);
+}
+
+.check-out {
+    border-radius: 3px 15px 3px 15px;
+    border: 2px solid rgba(22, 0, 146, 0.781);
+    background-color: rgba(22, 0, 146, 0.657);
+    color: #fff;
+}

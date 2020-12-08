@@ -148,10 +148,3 @@ function activeIcon(cl, bg) {
   $btn_cuenta.style.color = cl;
   $btn_cuenta.style.backgroundColor = bg;
 }
-
-$(document).ready(()=>{
-  console.log("JQuery");
-  // $('#icon-mas').css({
-  //   color:'red'
-  // });
-});
