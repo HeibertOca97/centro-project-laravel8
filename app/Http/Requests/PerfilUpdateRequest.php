@@ -24,7 +24,7 @@ class PerfilUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-          'cedula'=>'max:10|min:10',
+          'cedula'=>'max:10|unique:users,cedula,'.$this->user->id,
           'nombres'=>'max:50',
           'apellidos'=>'max:50',
           'cargo'=>'max:191',

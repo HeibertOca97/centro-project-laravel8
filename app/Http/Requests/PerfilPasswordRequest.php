@@ -24,9 +24,9 @@ class PerfilPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'contraseñaActual'=>'required|min:8|max:30',
-            'contraseñaNueva'=>'required|min:8|max:30',
-            'contraseñaConfirmacion'=>'required|min:8|max:30|same:contraseñaNueva'
+            'contraseñaActual'=>'required|min:8|max:15',
+            'contraseñaNueva'=>'required|min:8|max:15',
+            'contraseñaConfirmacion'=>'required|min:8|max:15|same:contraseñaNueva'
         ];
     }
 

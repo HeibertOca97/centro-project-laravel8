@@ -20,9 +20,20 @@
     display: block;
 }
 /****ICONO MENU***/
-.header > #box-op1 > #icon-mas,
-.header > #box-op2 > #icon-cuenta {
+.header > #box-op1 > .icon-headers {
     margin: 10px 10px 10px 15px;
+}
+.header > #box-op2 > .icon-headers {
+    margin: 10px 10px 10px 5px;
+    position: relative;
+}
+.header > #box-op2 > .icon-headers > small {
+    position: absolute;
+    right: -5px;
+    top: -8px;
+}
+.header > #box-op1 > .icon-headers,
+.header > #box-op2 > .icon-headers {
     padding: 10px 12px;
     border-radius: 50%;
     box-sizing: border-box;
@@ -30,14 +41,13 @@
     font-size: 18px;
     color: #313131;
     background-color: var(--bg-primary-icon);
-    /* box-shadow: 0px 2px 5px rgb(136, 136, 135); */
     transition: all 200ms ease-in-out;
     -webkit-transition: all 200ms ease-in-out;
     -moz-transition: all 200ms ease-in-out;
     -o-transition: all 200ms ease-in-out;
 }
-.header > #box-op1 > #icon-mas:hover,
-.header > #box-op2 > #icon-cuenta:hover {
+.header > #box-op1 > .icon-headers:hover,
+.header > #box-op2 > .icon-headers:hover {
     background-color: rgb(211, 211, 211);
 }
 .header > #box-op1,

@@ -1,10 +1,28 @@
 /****ESTILOS DEL CONTENDOR****/
 .box-perfil-clave {
-    max-width: calc(var(--mx-width-cp) - 450px);
+    /* max-width: calc(var(--mx-width-cp) - 450px); */
     background-color: var(--bg-header-primary);
     margin: auto;
     padding: 20px 0;
     width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.box-perfil-clave > img {
+    display: none;
+    max-width: 450px;
+    width: 100%;
+}
+@media screen and (min-width: 900px) {
+    .box-perfil-clave {
+        flex-direction: row-reverse;
+    }
+    .box-perfil-clave > img {
+        display: block;
+    }
 }
 .box-perfil-clave form > div {
     margin: 0px auto 15px auto;

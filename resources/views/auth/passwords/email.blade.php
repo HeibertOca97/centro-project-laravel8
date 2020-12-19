@@ -20,14 +20,6 @@
     <img src="{{asset('image/imageFondos/carta.svg')}}" alt="">
     </div>
 
-    @if (session('status'))
-      <div class="box-message-nav"><div class="alert alert-success" role="alert">{{ session('status') }}</div></div> 
-    @endif 
-
-    @error('email')
-      <div class="box-message-nav"><div class="alert alert-danger" role="alert">{{$message}}</div></div>
-    @enderror
-
     <div class="box-ac">
       <i class="fas fa-envelope style-icon @if ($errors->any()) cl-icon-invalid @else cl-icon-default @endif"></i>
       <input type="email" name="email" id="email" autocomplete="off" maxlength="100" required value="{{old('email')}}"><span class="barra @if ($errors->any()) cl-barra-invalid @else cl-barra-default @endif"></span>
@@ -41,6 +33,7 @@
     <div class="box-redirect">
       <p class="link-ini"><a href="{{ route('login') }}"> Volver a Iniciar sesion</a></p>
     </div>
+    <small class="text-secondary"><span class="text-center d-block">CELID © 2020 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></small>
   </form>
   </section>
 @endsection
@@ -48,5 +41,16 @@
 @section('js')
 @if ($errors->any())
 <script src="{{asset('js/auth/login.js')}}"></script>
+  @foreach ($errors->all() as $error)
+    <script>
+      toastr["error"](`{{$error}}`, 'Invalido');
+    </script> 
+  @endforeach
 @endif  
+@if (session('status'))
+  <script>
+    toastr["info"](`{{ session('status') }}`, 'Exitoso');
+  </script>
+@endif 
+
 @endsection

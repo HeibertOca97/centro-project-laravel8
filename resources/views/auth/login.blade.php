@@ -15,15 +15,6 @@
     <div>
       <h3>Iniciar Sesion</h3>
     </div>
-    @if ($errors->any())
-      @foreach ($errors->all() as $error)
-      <div class="box-message-nav"><div class="alert alert-danger" role="alert">{{$error}}</div></div> 
-      @endforeach
-    @endif
-    
-    @if (session('status'))
-        <div class="box-message-nav"><div class="alert alert-danger" role="alert">{{session('status')}}</div></div> 
-    @endif
     
     <div class="box-ac">
       <i class="fas fa-user style-icon @if ($errors->any()) cl-icon-invalid @else cl-icon-default @endif"></i>
@@ -43,13 +34,36 @@
     <div class="box-redirect">
       <p class="link-re"><a href="{{ route('password.request') }}">¿Perdiste tu contraseña, entra aqui?</a> </p>
     </div>
+    <small class="text-secondary"><span class="text-center d-block">CELID © 2020 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></small>
   </form>
 </section>
 @endsection
 
 @section('js')
+  <script src="{{asset('js/config/messageAlert.js')}}"></script>
   <script src="{{asset('js/auth/actionInput.js')}}"></script>
   @if ($errors->any())
-    <script src="{{asset('js/auth/login.js')}}"></script>
+  <script src="{{asset('js/auth/login.js')}}"></script>
+
+    @if (count($errors->all()) > 1)
+      @foreach ($errors->all() as $error)
+      <script>
+        toastr["error"](`{{$error}}`, 'Invalido');
+      </script> 
+      @endforeach
+    @else
+      @error('username')
+        <script>
+          errorAlert('Invalido',"{{$message}}");
+        </script>  
+      @enderror
+    @endif
+    
   @endif  
+   
+  @if (session('status'))
+      <script>
+        errorAlert('Invalido',"{{session('status')}}");
+      </script>
+  @endif
 @endsection

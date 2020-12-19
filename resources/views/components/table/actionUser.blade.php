@@ -5,14 +5,14 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     @can('user.show')
       <a class="dropdown-item" href="{{route('users.show',$id)}}">Ver</a>
-    @endcan
       <div class="dropdown-divider"></div>
+    @endcan
     @can('user.edit')
       <a class="dropdown-item" href="{{route('users.edit',$id)}}">Editar</a>
-    @endcan
       <div class="dropdown-divider"></div>
+    @endcan
     @can('user.destroy')
-    <form action="{{route('users.destroy',$id)}}" method="post">
+    <form action="{{route('users.destroy',$id)}}" method="post" class="formDelete">
       @csrf
       @method('delete')
       <button class="dropdown-item" >Eliminar</button>
@@ -20,3 +20,8 @@
     @endcan
   </div>
 </div>
+
+<script>
+  // js/validations/user/validation.user.js
+   actionDelete();
+</script>

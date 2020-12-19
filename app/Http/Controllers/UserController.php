@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\UserEditAllRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:user.index'],['only'=>['index','listUsers']]);
+    $this->middleware(['permission:user.create'],['only'=>['create','store']]);
+    $this->middleware(['permission:user.edit'],['only'=>['edit','update','editListAll','updateAll']]);
+    $this->middleware(['permission:user.destroy'],['only'=>'destroy']);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +28,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index',compact('users'));
+      if(Auth::user()->status != 1){
+        Auth::logout();
+        return redirect()->route('login')->with('status','Su cuenta se encuentra inactiva, para mayor informacion comunicarse con el administrador.');
+      }
+      return view('user.index');
     }
 
     /**
@@ -46,13 +56,12 @@ class UserController extends Controller
     {
       $user->username = $request->username;
       $user->email = $request->email;
-      $user->status = $request->status;
+      $user->status = $request->estado;
       $user->password = Hash::make($request->password);
+      
+      $user->assignRole($request->rol);
 
       if($user->save()){
-        if($request->rol){
-          $user->assignRole($request->rol);
-        }
         return back()->with("status_success","Nuevo usuario creado");
       }
     }
@@ -63,10 +72,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(User $user)
-    // {
-    //     return $user;
-    // }
+    public function show(User $user)
+    {
+      return view('user.show',compact('user'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,11 +85,15 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-      // return $user;
-      $roles = Role::all()->pluck('name','id');
+      $roles = Role::all()->pluck('name','id')->toArray();
       return view('user.edit',compact('roles','user'));  
     }
 
+    public function editListAll(User $user)
+    {
+      $roles = Role::all()->pluck('name','id')->toArray();
+      return view('user.editList',compact('roles','user'));  
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -92,16 +105,38 @@ class UserController extends Controller
     {
       $user->username = $request->username;
       $user->email = $request->email;
-      $user->status = $request->status;
+      $user->status = $request->estado;
       
       if($request->password){
+        $request->validate(['password'=>'min:8|max:15']);
         $user->password = Hash::make($request->password);
       }
+      
+      $user->syncRoles($request->rol);
 
       if($user->save()){
-        if($request->rol){
-          $user->assignRole($request->rol);
-        }
+        return back()->with("status_success","Datos del usuario actualizado");
+      }
+    }
+
+    public function updateAll(UserEditAllRequest $request, User $user)
+    {
+      $user->cedula = $request->cedula;
+      $user->nombres = $request->nombres;
+      $user->apellidos = $request->apellidos;
+      $user->cargo = $request->cargo;
+      $user->username = $request->username;
+      $user->email = $request->email;
+      $user->status = $request->estado;
+      
+      if($request->password){
+        $request->validate(['password'=>'min:8|max:15']);
+        $user->password = Hash::make($request->password);
+      }
+      
+      $user->syncRoles($request->rol);
+
+      if($user->save()){
         return back()->with("status_success","Datos del usuario actualizado");
       }
     }
@@ -112,21 +147,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user)
+    public function destroy(User $user)
     {
-      $user = User::findOrFail($user);
-        //eliminar rol
       foreach ($user->getRoleNames() as $value) {
         $user->removeRole($value);
       }
 
-      if ($user->delete()) {
-        return back()->with("status_success","El usuario ({$user->username}) ha sido eliminado");
-      }
+      $user->delete();
+      
+      return back()->with("status_success_delete","El usuario ({$user->username}) ha sido eliminado");
+      
     }
 
     public function listUsers(){
-      $users = User::all();
+      $users = User::select('id','email','status','created_at')->get();
       return datatables()
       ->of($users)
       ->addColumn('created_at', function(User $user){
@@ -138,7 +172,8 @@ class UserController extends Controller
         }
       })
       ->addColumn('permisos', function(User $user){
-        return $user->getAllPermissions();
+        return $user->getPermissionsViaRoles();
+        // return $user->getAllPermissions();
       })
       ->addColumn('status', function(User $user){
         if($user->status == 1){
@@ -149,14 +184,6 @@ class UserController extends Controller
       ->addColumn('btn', 'components.table.actionUser')
       ->rawColumns(['status','btn'])
       ->toJson();
-    }
-
-    public function cerrar(){
-      if (Auth::check()) {
-        // return "Logeada";
-      Auth::logout();
-      return redirect()->route('login');
-      }
     }
 
 }

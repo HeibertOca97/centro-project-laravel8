@@ -11,8 +11,13 @@
 @section('section-content')
   @include('layouts.partials.header')
   
-  @include('components.box-status',[
-    'num_users'=>$users
-  ])
-
+  @role('super admin')
+    @include('components.cards-status',[
+      'num_users'=>$users,
+      'numPermission'=>$numPermission
+    ])
+  @else
+    @include('components.welcome',['numPermission'=>$numPermission])
+  @endrole
+  
 @endsection

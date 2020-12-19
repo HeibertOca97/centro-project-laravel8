@@ -19,10 +19,8 @@ Route::get('/', function () {
   return redirect()->route('login');
 });
 
-Auth::routes();
-// Auth::routes(['register'=>false]);
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/informacion-confidencial', function () {
   dd(session('auth'));
@@ -47,13 +45,22 @@ Route::middleware('auth')->group(function () {
   Route::post('users/profiles/image/remove',[App\Http\Controllers\ProfileUserController::class,'removeImage'])->name('user.profiles.removeImage');
 
   //MODULO USER
-  Route::resource('users', App\Http\Controllers\UserController::class)->except('show','salir');
-
+  Route::resource('users', App\Http\Controllers\UserController::class);
+  
   Route::get('users/all/list', [App\Http\Controllers\UserController::class,'listUsers'])->name('users.listAll');
+  
+  Route::get('users/all/profile/{user}/listEdit', [App\Http\Controllers\UserController::class,'editListAll'])->name('users.editAll');
+  
+  Route::put('users/all/profile/{user}', [App\Http\Controllers\UserController::class,'updateAll'])->name('users.updateAll');
 
+  //MODULO PERMISOS
+  Route::resource('permissions', App\Http\Controllers\PermissionController::class)->except('show');
+  
+  Route::get('permissions/all/list', [App\Http\Controllers\PermissionController::class,'listPermissions'])->name('permissions.listAll');
+  
+  //MODULO ROLES
+  Route::resource('roles', App\Http\Controllers\RolesController::class)->except('show');
 
+  Route::get('roles/all/list', [App\Http\Controllers\RolesController::class,'listRoles'])->name('roles.listAll');
 
-  //RUTAS DE USUARIO LOGEADO
-  Route::get('users/close/session', [App\Http\Controllers\UserController::class,'cerrar'])->name('users.salir');
-
-});
+});//GRUPO DE RUTAS AUTENTICADAS

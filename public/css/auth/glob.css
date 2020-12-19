@@ -135,7 +135,6 @@ ESTILOS GENERALES DEL SISTEMA
     font-size: calc(var(--text-default) + 4px);
     margin: 25px auto;
 }
-
 .header {
     background-color: var(--bg-header-primary);
 }
@@ -197,6 +196,10 @@ ESTILOS GENERALES DEL SISTEMA
     max-width: calc(var(--mx-width-cp) - 300px);
     margin: auto;
 }
+/** barra indicadora de ruta **/
+#box-route {
+    font-size: calc(var(--text-default) - 2px);
+}
 /**modal cerrar sesion**/
 .icon-info {
     display: block;
@@ -206,4 +209,59 @@ ESTILOS GENERALES DEL SISTEMA
 .text-aviso {
     text-align: center;
     margin: 15px auto 5px auto;
+}
+
+/*Datatable*/
+div.dataTables_length label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+}
+/* seccion superior datatable buscador*/
+div.row:nth-of-type(1) {
+    margin-top: 25px;
+}
+div.dataTables_filter > label {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div.dataTables_length > label,
+div.dataTables_filter > label {
+    font-size: calc(var(--text-default) - 2px);
+}
+
+div.row:nth-of-type(1) div.dataTables_length,
+div.row:nth-of-type(1) div.dataTables_filter {
+    margin: 10px auto;
+}
+div.row:nth-of-type(1) div.dataTables_filter input {
+    width: 100%;
+    max-width: 220px;
+}
+/* seccion intermedia datatable tabla*/
+div.row:nth-of-type(2) {
+    margin: 30px auto;
+}
+div.row:nth-last-of-type(2) div table thead tr th,
+div.row:nth-last-of-type(2) div table tbody tr td {
+    font-size: calc(var(--text-default) - 2px);
+}
+/**boton de acciones**/
+div.row:nth-last-of-type(2) div table tbody tr td div > a,
+div.row:nth-last-of-type(2) div table tbody tr td div,
+div.row:nth-last-of-type(2) div table tbody tr td div button {
+    font-size: calc(var(--text-default) - 2px);
+}
+/* seccion inferior datatable */
+div.row:nth-last-of-type(1) {
+    margin-bottom: 25px auto;
+}
+div.row:nth-last-of-type(1) .dataTables_info,
+div.dataTables_paginate a {
+    font-size: calc(var(--text-default) - 2px);
 }

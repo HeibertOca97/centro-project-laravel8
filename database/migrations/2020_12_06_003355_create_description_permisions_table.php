@@ -15,8 +15,10 @@ class CreateDescriptionPermisionsTable extends Migration
     {
         Schema::create('description_permisions', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->string('nombre')->nullable();
+
             $table->unsignedBigInteger('permission_id')->unique();
+            
             $table->foreign('permission_id')
             ->references('id')
             ->on('permissions')

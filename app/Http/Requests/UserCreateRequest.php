@@ -26,8 +26,8 @@ class UserCreateRequest extends FormRequest
         return [
           'username'=>'required|max:25|unique:users,username',
           'email'=>'required|email|max:100|unique:users,email',
-          'password'=>'required',
-          'status'=>'required|in:1,0',
+          'password'=>'required|min:8|max:15',
+          'estado'=>'required',
         ];
     }
 
@@ -37,7 +37,6 @@ class UserCreateRequest extends FormRequest
         'username'=>'nombre de usuario',
         'email'=>'correo',
         'password'=>'contraseña',
-        'status'=>'estado',
       ];
     }
 

@@ -26,7 +26,7 @@ class UserEditRequest extends FormRequest
         return [
           'username'=>'required|max:25|unique:users,username,'.$this->user->id,
           'email'=>'required|email|max:100|unique:users,email,'.$this->user->id,
-          'status'=>'required|in:1,0',
+          'estado'=>'required',
         ];
     }
 
@@ -35,8 +35,6 @@ class UserEditRequest extends FormRequest
       return [
         'username'=>'nombre de usuario',
         'email'=>'correo',
-        'password'=>'contraseña',
-        'status'=>'estado',
       ];
     }
     

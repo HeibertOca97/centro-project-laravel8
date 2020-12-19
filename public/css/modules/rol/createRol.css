@@ -1,0 +1,44 @@
+.btn-route-crear {
+    margin: 5px 3px;
+    font-size: calc(var(--text-default) - 3px);
+}
+.label-description {
+    font-size: calc(var(--text-default) - 2px);
+}
+.box-permission-modules {
+    max-width: 650px;
+}
+.content-permission button {
+    font-size: calc(var(--text-default) - 4px);
+}
+
+@media screen and (min-width: 900px) {
+    table > thead tr > th,
+    table > tbody tr > td,
+    .content-permission button {
+        font-size: var(--text-default);
+    }
+}
+
+table > thead tr > th,
+table > tbody tr > td {
+    font-size: calc(var(--text-default) - 4px);
+}
+
+/**checkbox**/
+.content-permission input[type="checkbox"] {
+    display: none;
+}
+.content-permission label {
+    display: inline-block;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    border: 2px solid rgb(41, 101, 156);
+}
+.content-permission input:checked ~ label {
+    border: 2px solid rgba(0, 93, 146, 0.781);
+    background-color: rgba(0, 93, 146, 0.657);
+    color: #fff;
+}

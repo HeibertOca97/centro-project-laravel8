@@ -32,6 +32,11 @@
     margin: 15px 10px 15px 25px;
     font-size: 32px;
 }
+.box-cards-data > article > small {
+    margin: 15px 10px 15px 25px;
+    font-size: 20px;
+    display: block;
+}
 
 /***cards-data***/
 .cl-card-info {

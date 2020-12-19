@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
 
-<link rel="stylesheet" href="{{asset('css/components/user/createUser.css')}}">
+<link rel="stylesheet" href="{{asset('css/modules/user/createUser.css')}}">
 @endsection
 
 @section('barra-menu')
@@ -23,16 +23,18 @@
     <h1 class="title-module"><i class="fas fa-users"></i> Gestion de usuarios</h1>
   </div>
 
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
       <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
     </ol>
   </nav>
-
-  <div class="container-xl bg-white my-3">
-    <a href="{{route('users.create')}}" class="btn btn-primary btn-route-crear">Nuevo usuario</a>
-  </div>
+  
+@can('user.create')
+<div class="container-xl bg-white my-3">
+  <a href="{{route('users.create')}}" class="btn btn-primary btn-route-crear">Nuevo usuario</a>
+</div>
+@endcan
 
 <div class="container-xl">
   <div class="card">
@@ -61,12 +63,20 @@
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
   <script src="{{asset('js/config/dataTable.js')}}"></script>
+  <script src="{{"js/validations/user/validation.user.js"}}"></script>
     <script>
       document.addEventListener('DOMContentLoaded',()=>{
+        
         tableCreateUsers('{{route("users.listAll")}}');
+
         @if (session('status_success'))
         //js/config/messageAlert.js
             successAlert('Exitoso','{{session("status_success")}}');
+        @endif
+
+        @if (session('status_success_delete'))
+        //js/config/messageAlert.js
+          deleteAlert('{{session("status_success_delete")}}');
         @endif
       });
     </script>

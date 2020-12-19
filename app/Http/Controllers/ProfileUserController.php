@@ -14,6 +14,11 @@ class ProfileUserController extends Controller
 {
     public function index()
     {
+      if(Auth::user()->status != 1){
+        Auth::logout();
+        return redirect()->route('login')->with('status','Su cuenta se encuentra inactiva, para mayor informacion comunicarse con el administrador.');
+      }
+      
       $user = Auth::user();
       return view('user.profile.index',compact('user'));
     }
@@ -88,10 +93,9 @@ class ProfileUserController extends Controller
         $user->avatar = '';
         Storage::delete($url_public);
 
-        if($user->save()){
-          return redirect()->back();
-        }
+        $user->save();
       }
-
+      
+      return redirect()->back();
     }
 }

@@ -8,24 +8,33 @@
   </a>
   <hr>
   <p class="txt-clasificador">Gestiones</p>
-<a href="{{route('users.index')}}" class="opt-link" title="Usuarios">
+  @can('user.index')
+  <a href="{{route('users.index')}}" class="opt-link" title="Usuarios">
     <div class="{{request()->routeIs('users.*') ? 'activeRoute' : ' '}}">
       <i class="fas fa-users"></i>
       <p>Usuarios</p>
     </div>
   </a>
-  <a href="" class="opt-link" title="Usuarios">
-    <div class="">
+  @endcan
+
+  @can('role.index')
+  <a href="{{route('roles.index')}}" class="opt-link" title="Roles">
+    <div class="{{request()->routeIs('roles.*') ? 'activeRoute' : ' '}}">
       <i class="fas fa-user-tag"></i>
       <p>Roles</p>
     </div>
   </a>
-  <a href="" class="opt-link" title="Usuarios">
-    <div class="">
+  @endcan
+  
+  @can('permission.index')
+  <a href="{{route('permissions.index')}}" class="opt-link" title="Permisos">
+    <div class="{{request()->routeIs('permissions.*') ? 'activeRoute' : ' '}}">
       <i class="fas fa-user-shield"></i>
       <p>Permisos</p>
     </div>
   </a>
+  @endcan
+  
   <div class="opt-list">
     <div state="false">
       <i class="fas fa-book"></i><p>Academico</p><i class="fas fa-plus"></i>

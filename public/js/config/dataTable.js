@@ -35,12 +35,59 @@ function tableCreateUsers($url){
         let el = ``;
         $res.forEach(obj => {
           el +=`
-          <span class="badge badge-secondary">${obj.name}</span>
+          <span class="badge badge-dark">${obj.name}</span>
           `;
         });
         return el;
       }},
       {data:'status'},
+      {data:'created_at'},
+      {data:'btn'},
+    ],
+    responsive:true,
+    // autoWidth:false
+    "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
+    "oLanguage": configLanguageTable
+  });
+}
+
+function tableCreatePermissions($url){
+  $('#tb-permissions-data').DataTable({
+    // "serverSide":true,
+    "ajax":$url,
+    "columns":[
+      {data:'name'},
+      {data:'description'},
+      {data:'created_at'},
+      {data:'btn'},
+    ],
+    responsive:true,
+    // autoWidth:false
+    "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
+    "oLanguage": configLanguageTable
+  });
+}
+
+function tableCreateRoles($url){
+  $('#tb-roles-data').DataTable({
+    // "serverSide":true,
+    "ajax":$url,
+    "columns":[
+      {data:'name'},
+      {data:'permissions',render:(data)=>{
+        $res = JSON.parse(data);
+        if($res){
+          let el = ``;
+          $res.forEach(nombre => {
+            el +=`
+            <span class="badge badge-dark">${nombre}</span>
+            `;
+          });
+          return el;
+        }
+
+        return "Sin permisos";
+      }},
       {data:'created_at'},
       {data:'btn'},
     ],

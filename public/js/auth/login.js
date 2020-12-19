@@ -1,18 +1,12 @@
 let $inputs = document.querySelectorAll('input'); 
 
-const $box_message = document.querySelector(".box-message-nav"),
-$barraInput =document.querySelectorAll('.barra'),
+const $barraInput =document.querySelectorAll('.barra'),
 $label = document.querySelectorAll('.info-label'),
 $icon = document.querySelectorAll('.style-icon');
 
-//hidden message error
-$box_message.addEventListener('click',()=>{
-    $box_message.style.display="none";
-});
 // hidden style error input
 for (let i = 0; i < $inputs.length; i++) {
   $inputs[i].addEventListener('focus',()=>{
-    $box_message.style.display="none";
     //remover y agregar clases
     removeStyleBarra();
     removeStyleLabelInfo();

@@ -9,9 +9,13 @@ class DescriptionPermisions extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descripcion','permission_id'];
+    protected $fillable = [
+      'descripcion',
+      'permission_id'
+    ];
 
-    public function detallePermiso(){
-      return $this->belongsTo('Spatie\Permission\Models\Permission');
+    public function permiso(){
+      return \Spatie\Permission\Models\Permission::where('id','=',$this->permission_id)->get();
+      // return $this->belongsTo('Spatie\Permission\Models\Permission');
     }
 }
