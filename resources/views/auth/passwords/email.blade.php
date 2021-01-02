@@ -3,7 +3,6 @@
 @section('title')Recuperacion de contraseña @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{asset("css/auth/glob.css")}}">
   <link rel="stylesheet" href="{{asset("css/auth/login.css")}}">
 @endsection
 

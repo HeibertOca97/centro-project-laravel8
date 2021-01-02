@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de usuarios @endsection
 
@@ -29,8 +29,8 @@
 
   <div class="card container-xl">
     <div class="card-header">Registro de usuario</div>
-    <div class="card-body box-form">
-    <img src="{{asset('image/imageFondos/undraw/add_user.svg')}}" alt="fondo add user">
+    <div class="card-body box-style-default">
+
     <form action="{{route('users.store')}}" method="post" id="formUser">
         @csrf
 
@@ -87,6 +87,8 @@
         <button type="submit" class="btn btn-success mx-3">Crear</button>
         <a href="{{route('users.index')}}" class="btn btn-light">Volver</a>
       </form>
+
+      <img src="{{asset('image/imageFondos/undraw/add_user.svg')}}" alt="CELID - add user">
     </div>
   </div>
 @endsection
@@ -95,8 +97,9 @@
 <script src="{{asset('js/config/validations.js')}}"></script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
+  //js/config/validations.js
+  removeStyleErrorFormatOne('input');
   //js/validations/user/validation.user.js
-  removeStyleError();
   sendDataFormUser();
   eventClickUnCheck('uncheckEstado','estado');
   eventClickUnCheck('uncheckRol','rol');

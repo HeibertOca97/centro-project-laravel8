@@ -61,14 +61,65 @@
     margin-top: 5px;
     margin-left: 10px;
 }
-#box-barra-cuenta {
+/**Barra de opciones de cuenta y notificaciones**/
+#box-barra-notify > .title-barra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#box-barra-notify > .title-barra > span {
+    border-radius: 50%;
+    padding: 7px 7px;
+}
+#box-barra-notify > .title-barra > span:hover {
+    background-color: rgba(211, 211, 211, 0.726);
+}
+#box-barra-notify .box-option-notifique {
+    font-size: calc(var(--text-default) - 3px);
+}
+.box-option-notifique > div {
+    padding: 10px 0;
+}
+.box-option-notifique {
+    width: 90%;
+    overflow: hidden;
+}
+#box-barra-notify > dir > a:hover {
+    background-color: rgba(211, 211, 211, 0.199);
+}
+#box-barra-notify > dir a {
+    text-decoration: none;
+    display: block;
+    position: relative;
+}
+#box-barra-notify > dir a > dir {
+    display: flex;
+    font-size: calc(var(--text-default) - 5px);
+    /* line-height: 2.5em; */
+}
+#box-barra-notify > dir a dir span {
+    padding: 5px 5px;
+}
+#box-barra-notify > dir a > span {
+    position: absolute;
+    border-radius: 50%;
+    padding: 7px 7px;
+    box-shadow: 0px 0px 3px #ccc;
+    right: 5px;
+    top: 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+/*estilo del contenedor*/
+.box-barra-opciones {
     font-family: "Roboto Slab", serif;
     position: fixed;
     z-index: calc(var(--capa-modal) - 20);
     overflow: auto;
     top: 60px;
-    right: 10px;
-    width: 100%;
+    right: 5px;
+    width: 98%;
     max-width: 350px;
     border-radius: 5px;
     padding: 5px;
@@ -81,14 +132,14 @@
     -moz-transition: opacity 150ms ease-in-out;
     -o-transition: opacity 150ms ease-in-out;
 }
-#box-barra-cuenta > hr {
+.box-barra-opciones > hr {
     margin: auto;
     width: 95%;
     color: #ced0d4bd;
 }
 
-#box-barra-cuenta > a,
-#box-barra-cuenta > div {
+.box-barra-opciones > a,
+.box-barra-opciones > div {
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -99,16 +150,16 @@
     margin: 5px 0px 5px 0px;
     border: inherit;
 }
-#box-barra-cuenta > a:hover,
-#box-barra-cuenta > div:hover {
+.box-barra-opciones > a:hover,
+.box-barra-opciones > div:hover {
     background-color: rgba(211, 211, 211, 0.199);
 }
-#box-barra-cuenta > a > div:nth-of-type(1) {
+.box-barra-opciones > a > div:nth-of-type(1) {
     width: 100%;
     max-width: 60px;
     margin: 10px;
 }
-#box-barra-cuenta > a > div:nth-of-type(1) > img {
+.box-barra-opciones > a > div:nth-of-type(1) > img {
     width: 60px;
     height: 60px;
     border-radius: 30px;
@@ -116,19 +167,19 @@
     object-fit: cover;
     overflow: hidden;
 }
-#box-barra-cuenta > a > div:nth-of-type(2) {
+.box-barra-opciones > a > div:nth-of-type(2) {
     width: 100%;
     max-width: 265px;
 }
-#box-barra-cuenta > a > div:nth-of-type(2) > h3 {
+.box-barra-opciones > a > div:nth-of-type(2) > h3 {
     font-size: calc(var(--text-default) - 2px);
 }
-#box-barra-cuenta > a > div:nth-of-type(2) > p {
+.box-barra-opciones > a > div:nth-of-type(2) > p {
     font-size: calc(var(--text-default) - 4px);
 }
 
-#box-barra-cuenta > a > i,
-#box-barra-cuenta > div > i {
+.box-barra-opciones > a > i,
+.box-barra-opciones > div > i {
     padding: 10px 12px;
     border-radius: 50%;
     box-sizing: border-box;
@@ -140,14 +191,14 @@
     -moz-transition: all 200ms ease-in-out;
     -o-transition: all 200ms ease-in-out;
 }
-#box-barra-cuenta > a > p,
-#box-barra-cuenta > div > p {
+.box-barra-opciones > a > p,
+.box-barra-opciones > div > p {
     font-size: 14px;
     margin-left: 10px;
     width: 100%;
 }
 
-#box-barra-cuenta > div > strong {
+.box-barra-opciones > div > strong {
     width: 72px;
     height: 28px;
     border-radius: 25px;
@@ -156,7 +207,7 @@
     position: relative;
     overflow: hidden;
 }
-#box-barra-cuenta > div > strong > span {
+.box-barra-opciones > div > strong > span {
     display: block;
     position: absolute;
     top: 1.45px;
@@ -180,7 +231,9 @@
     position: fixed;
     z-index: calc(var(--capa-modal) - 25);
 }
-
+.box-barra-opciones > .developer-author {
+    font-size: calc(var(--text-default) - 5px);
+}
 /***********
 ESTILOS GENERAL DEL CONTENEDOR DEL CONTENIDO
 **********/

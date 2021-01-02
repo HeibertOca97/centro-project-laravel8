@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de usuarios @endsection
 
@@ -63,11 +63,16 @@
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
   <script src="{{asset('js/config/dataTable.js')}}"></script>
-  <script src="{{"js/validations/user/validation.user.js"}}"></script>
+  <script src="{{asset("js/config/validations.js")}}"></script>
     <script>
       document.addEventListener('DOMContentLoaded',()=>{
-        
-        tableCreateUsers('{{route("users.listAll")}}');
+        @if(Auth::user()->getRoleNames())
+          @if(Auth::user()->roles[0]->id == 1)
+          tableCreateUsers('{{route("users.listAll")}}');
+          @else
+          tableCreateUsers('{{route("users.listAllExceptToAdmin")}}');
+          @endif  
+        @endif
 
         @if (session('status_success'))
         //js/config/messageAlert.js

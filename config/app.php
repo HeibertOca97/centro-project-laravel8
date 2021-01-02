@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Centro de Emprendimiento'),
+    'name' => env('APP_NAME', 'CELID'),
 
     /*
     |--------------------------------------------------------------------------

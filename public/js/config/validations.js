@@ -36,7 +36,7 @@ function validatedInputRequired(){
     //VALIDAR CAMPOS OBLIGATORIOS
     if (!inputRequired[i].value) {
       // campoObligatorio();
-      toastr["warning"](`El campo ${inputRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que este señalados con un (*)`, 'Verificar');
+      toastr["warning"](`El campo ${inputRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
       validacion = false;
       return validacion;
     }
@@ -84,5 +84,29 @@ function validatedInputTypeNumber(){
   }
   if(validacion == true){
     return validacion;
+  }
+}
+
+//confirmacion para eliminar
+function actionDelete() {
+  $('.formDelete').submit(function(e){
+      e.preventDefault();
+      confirmDeleteAlert(e.target);    
+   });
+}
+
+//remover estilos de error
+function removeStyleErrorFormatOne(typeElement) {
+  let el = document.querySelectorAll(typeElement);
+  for (let i = 0; i < el.length; i++) {
+    if(!el[i].classList.contains('ignore')){
+      el[i].onfocus = ()=>{
+        el[i].classList.remove('border-danger');
+        el[i].parentElement.children[0].classList.remove('text-danger');
+        el[i].parentElement.children[0].classList.add('text-secondary');
+        el[i].parentElement.children[2].classList.remove('text-danger');
+        el[i].parentElement.children[2].textContent = "";
+      }
+    }
   }
 }

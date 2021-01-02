@@ -36,47 +36,23 @@
   @endcan
   
   <div class="opt-list">
-    <div state="false">
-      <i class="fas fa-book"></i><p>Academico</p><i class="fas fa-plus"></i>
+    <div state="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') ? 'true' : 'false'}}" class="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') ? 'activeRoute' : ' '}}">
+      <i class="fas fa-clipboard-list"></i><p>Tareas</p><i class="fas fa-plus"></i>
     </div>
     <main class="list-link">
-      <a href="#">
-        <div>
-          <i class="fas fa-check"></i>
-          <p>Facultades</p>
+      <a href="{{route('planes.index')}}">
+        <div class="{{request()->routeIs('planes.*') ? 'activeRoute' : ' '}}">
+          <i class="fas fa-book"></i>
+          <p>Plan de trabajo</p>
         </div>
       </a>
-      <a href="#">
-        <div>
-          <i class="fas fa-check"></i>
-          <p>Carreras</p>
-        </div>
-      </a>
-      <a href="#">
-        <div>
-          <i class="fas fa-check"></i>
-          <p>Periodos</p>
+      <a href="{{route('actividades.index')}}">
+        <div class="{{request()->routeIs('actividades.*') ? 'activeRoute' : ' '}}">
+          <i class="fas fa-clipboard-check"></i>
+          <p>Matriz de actividades</p>
         </div>
       </a>
     </main>
   </div>
-  <div class="opt-list">
-    <div state="false">
-      <i class="fas fa-briefcase"></i><p>Proyectos</p><i class="fas fa-plus"></i>
-    </div>
-    <main class="list-link">
-      <a href="#">
-        <div>
-          <i class="fas fa-check"></i>
-          <p>Estudiantiles</p>
-        </div>
-      </a>
-      <a href="#">
-        <div>
-          <i class="fas fa-check"></i>
-          <p>Escuela de lideres</p>
-        </div>
-      </a>
-    </main>
-  </div>
+
 </nav>

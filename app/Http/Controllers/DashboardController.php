@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DashboardController extends Controller
 {
@@ -24,16 +25,12 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(User $user)
     {     
-      if(Auth::user()->status != 1){
-        Auth::logout();
-        return redirect()->route('login')->with('status','Su cuenta se encuentra inactiva, para mayor informacion comunicarse con el administrador.');
-      }
-    
-      $users = User::all()->count();
-      $numPermission = count(Role::find(Auth::user()->id)->getPermissionNames());
+      $users = $user->all()->count();
       
-      return view('dashboard',compact('users','numPermission'));
+      $numPermission = Auth::user()->getRoleNames()->isEmpty() ? '0' : count(Auth::user()->getAllPermissions());
+      
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('dashboard',compact('users','numPermission'));
     }
 }

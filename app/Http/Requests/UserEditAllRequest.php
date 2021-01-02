@@ -24,7 +24,7 @@ class UserEditAllRequest extends FormRequest
     public function rules()
     {
         return [
-        'cedula'=>'max:10|min:10|unique:users,cedula,'.$this->user->id,
+        'cedula'=>'max:10|unique:users,cedula,'.$this->user->id,
         'username'=>'required|max:25|unique:users,username,'.$this->user->id,
         'email'=>'required|email|max:100|unique:users,email,'.$this->user->id,
         'estado'=>'required',

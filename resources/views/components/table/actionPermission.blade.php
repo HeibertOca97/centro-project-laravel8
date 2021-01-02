@@ -18,6 +18,6 @@
 </div>
 
 <script>
-  // js/validations/permission/validation.permission.js
+  //js/config/validations.js
   actionDelete();
 </script>

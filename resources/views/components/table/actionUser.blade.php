@@ -22,6 +22,6 @@
 </div>
 
 <script>
-  // js/validations/user/validation.user.js
+  //js/config/validations.js
    actionDelete();
 </script>

@@ -32,6 +32,7 @@ function tableCreateUsers($url){
       {data:'rol'},
       {data:'permisos', render:(data)=>{
         $res = JSON.parse(data);
+
         let el = ``;
         $res.forEach(obj => {
           el +=`
@@ -89,6 +90,62 @@ function tableCreateRoles($url){
         return "Sin permisos";
       }},
       {data:'created_at'},
+      {data:'btn'},
+    ],
+    responsive:true,
+    // autoWidth:false
+    "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
+    "oLanguage": configLanguageTable
+  });
+}
+
+function tableCreatePlanTrabajo($url){
+  $('#tb-planesTrabajo-data').DataTable({
+    // "serverSide":true,
+    "ajax":$url,
+    "columns":[
+      {data:'evento'},
+      {data:'responsables'},
+      {data:'lugar'},
+      {data:'hora'},
+      {data:'fecha'},
+      {data:'created_at'},
+      {data:'updated_at'},
+      {data:'btn'},
+    ],
+    responsive:true,
+    // autoWidth:false
+    "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
+    "oLanguage": configLanguageTable
+  });
+}
+
+function tableCreateMatrizActividades($url){
+  $('#tb-matrizActividad-data').DataTable({
+    // "serverSide":true,
+    "ajax":$url,
+    "columns":[
+      {data:'miembro'},
+      {data:'puesto'},
+      {data:'fecha'},
+      {data:'horario'},
+      {data:'modalidad'},
+      {data:'actividades',render:(data)=>{
+        let el = ``;
+        el+=`<ol>`;
+        for (let i = 0; i < data.length; i++) {
+          if(data[i] != null){
+            el += `
+            <li>${data[i]}</li>
+            `;
+          }
+        }
+        el+=`</ol>`;
+        return el;
+      }},
+      {data:'observaciones'},
+      {data:'created_at'},
+      {data:'updated_at'},
       {data:'btn'},
     ],
     responsive:true,

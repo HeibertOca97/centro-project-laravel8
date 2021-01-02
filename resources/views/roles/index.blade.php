@@ -1,16 +1,16 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de roles @endsection
 
 @section('css')
-  {{-- @include('layouts.plugins.CSSdatatable') --}}
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
 
-<link rel="stylesheet" href="{{asset('css/modules/permission/createPermission.css')}}">
+<link rel="stylesheet" href="{{asset('css/modules/rol/createRol.css')}}">
 @endsection
 
 @section('barra-menu')
@@ -56,13 +56,12 @@
 
 @endsection
 @section('js')
-  {{-- @include('layouts.plugins.JSdatatable') --}}
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 <script src="{{asset('js/config/dataTable.js')}}"></script>
-<script src="{{asset("js/validations/permission/validation.permission.js")}}"></script>
+<script src="{{asset("js/config/validations.js")}}"></script>
 <script>
   document.addEventListener('DOMContentLoaded',()=>{
     tableCreateRoles('{{route("roles.listAll")}}');
@@ -79,5 +78,3 @@
   });
 </script>
 @endsection
-
-{{-- <i class="fas fa-info-circle" tabindex="0" data-toggle="popover" data-trigger="focus" title="Gestion de permisos" data-content="Este modulo se crear los roles y se le asigna su correspondiente permiso" data-placement="top"></i> --}}

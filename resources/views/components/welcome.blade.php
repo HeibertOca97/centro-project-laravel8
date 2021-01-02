@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="{{asset('css/modules/components/cards-status.css')}}">
 
 <div id="box-main-content">
+  @if (!Auth::user()->nombres || !Auth::user()->apellidos || !Auth::user()->cedula || !Auth::user()->cargo)
+    <div class="container bg-light mt-3">
+      <div class="alert alert-warning" role="alert">
+        Complete la informacion faltante de su perfil! (cedula, nombres, apellidos, cargo)<a href="{{route('user.profiles.index')}}"> ir a completar</a>
+      </div>
+    </div>
+  @endif
+  
   <h1 class="titulo-interface"><i class="fas fa-tachometer-alt"></i> Tablero</h1>
  <div class="box-cards-data">
    <article class="bg-back-card">
@@ -38,15 +46,3 @@
 
 
 </div>
-
-
-{{-- <i class="fas fa-cloud-download-alt"></i>
-<i class="fas fa-cloud-upload-alt"></i>
-<i class="fas fa-coffee"></i>
-<i class="fas fa-cog"></i>
-<i class="fas fa-cogs"></i>
-<i class="fas fa-coins"></i>
-<i class="fas fa-comment-alt"></i>
-<i class="far fa-copy"></i>
-<i class="fas fa-couch"></i>
-<i class="fas fa-database"></i> --}}

@@ -24,6 +24,15 @@ function errorAlert(title,text) {
   text: text,
   })
 }
+
+//alerta de info
+function infoAlert(title,text) {
+  Swal.fire({
+  icon: 'info',
+  title: title,
+  text: text,
+  })
+}
 //alerta de confirmacion
 function confirmDeleteAlert(form){
   Swal.fire({

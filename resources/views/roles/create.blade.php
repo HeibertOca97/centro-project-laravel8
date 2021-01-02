@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de roles @endsection
 
@@ -92,14 +92,6 @@
                     'permissions'=>$permissions,
                     'collapseName'=>'collapseProject',
                   ])
-                {{-- @foreach ($permissions as $key=>$value)
-                  @if (preg_match("/user/i", $value)) 
-                  <tr class="collapse" id="collapseUsers">
-                  <td><input type="checkbox" name="permission[]" id="user_{{$key}}" value="{{$value->name}}" @if (is_array(old('permission')) && in_array("$value->name",old('permission'))) checked @endif><label for="user_{{$key}}">{{$value->name}}</label></td>
-                    <td>@foreach ($value->descriptions() as $item) {{$item->nombre}}@endforeach</td>
-                  </tr>
-                  @endif
-                @endforeach --}}
 
               </tbody>
             </table>
@@ -117,11 +109,12 @@
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
+  //js/config/validations.js
+  removeStyleErrorFormatOne('input');
   // js/components/permiso/validation.permission.js
   sendDataFormRol();
   numberInputChecked();
-  listInputChecked()
-  removeStyleError();
+  listInputChecked();
   @if (session('status_success'))
   //js/config/messageAlert.js
       successAlert('Exitoso','{{session("status_success")}}');

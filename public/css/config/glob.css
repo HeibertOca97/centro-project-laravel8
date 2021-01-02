@@ -1,0 +1,277 @@
+﻿:root {
+    --first-text: #292c30;
+    --seconds-text: #65676b;
+    --thirty-text: rgb(49, 49, 49);
+    /***ESTRUCTURA***/
+    --bg-header-primary: #ffffff;
+    --bg-header-secundary-dark: #242526;
+    --bg-section-primary: #f0f2f5;
+    --bg-section-secundary-dark: #18191a;
+    --bg-modal-primary: #f0f2f5;
+    --bg-box-primary: #fff;
+    /***ICONOS***/
+    --cl-text-primary-icon: #050505;
+    --cl-text-primary-icon2: #1d1f23;
+    --bg-primary-icon: #e4e6eb;
+    --cl-text-secundary-icon: #e4e6eb;
+    --bg-secundary-icon: #393a3b;
+    --bg-secundary-icon2: #3a3b3c;
+    --cl-text-active-icon: #0571ed;
+    --bg-active-icon: #e6f2fe;
+    --cl-text-active-icon2: #2e89ff;
+    --bg-deactive-icon: #ced0d4;
+    --cl-text-link: #2e89ff;
+
+    --cl-txt-men: #313131;
+    --cl-txt-sec: rgb(105, 105, 105);
+
+    /***LOGIN****/
+    --text-default: 16px;
+    --text-1: 30px;
+    --cl-fr-login: #159957;
+    --font-f1: "Grandstander", cursive;
+    --width-element-default: 100%;
+    --max-width-modal: 400px;
+    --max-width-form: 400px;
+    /**** VENTANA MODAL ****/
+    --cl-load: rgb(23, 67, 149);
+
+    --capa-modal: 50;
+    --bg-modal: rgba(0, 0, 0, 0.582);
+
+    --ms-trans: 100ms;
+    --s-trans: 1s;
+
+    /***DISEÑO DE RADIO Y CHECKBOX***/
+    --seudo-radio-wh: 15px;
+    --seudo-check-wh: 15px;
+    /***COLOR INPUT BORDER***/
+    --cl-border: rgba(32, 32, 167, 0.514);
+    --cl-border-focus: rgb(32, 32, 167);
+    /*** WIDTH ELEMENTS ***/
+    --mx-width-p: 1300px;
+    --mx-width-cp: 900px;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+    color: var(--first-text);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/***PARA CUANDO SE USA BOOSTRAP EN ALGUNA VISTA***/
+/***QUITAR  MARGEN DE CIERTOS ELEMENTOS***/
+body p {
+    margin: 0;
+}
+body h3 {
+    margin: 0px 0px 0px;
+}
+/*****VENTANA LOADED****/
+.box-loaded {
+    position: absolute;
+    z-index: var(--capa-modal);
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: visible;
+    opacity: 1;
+    transition: all 200ms ease-in;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+}
+
+.box-loaded > img {
+    width: 120px;
+    height: 120px;
+    transform: scale(0.5);
+    animation-name: animarLogo;
+    animation: animarLogo 1s linear 0.5s infinite alternate;
+}
+@keyframes animarLogo {
+    from {
+        transform: scale(1);
+    }
+}
+.box-loaded > p {
+    color: var(--cl-load);
+    animation: load 1s linear 0.5s infinite alternate;
+    margin-top: 25px;
+    font-family: "Roboto";
+}
+
+@keyframes load {
+    from {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 400px) {
+    .box-loaded > i {
+        font-size: 8em;
+    }
+}
+
+/**************
+ESTILOS GENERALES DEL SISTEMA
+***************/
+.title-module {
+    font-size: calc(var(--text-default) + 4px);
+    margin: 25px auto;
+}
+.header {
+    background-color: var(--bg-header-primary);
+}
+.section {
+    background-color: var(--bg-section-primary);
+}
+#box-nav,
+.box-barra-opciones {
+    background-color: var(--bg-header-primary);
+}
+
+#icon-mas,
+#icon-cuenta,
+.opt-link,
+.opt-list,
+.opt-link-br-c {
+    color: var(--cl-text-primary-icon);
+}
+.list-link > a,
+.txt-clasificador {
+    color: var(--seconds-text);
+}
+
+/*****ESTILOS DE CONTENEDORES*****/
+.box-mx-w {
+    max-width: var(--mx-width-p);
+}
+.box-cl-primary {
+    background-color: var(--bg-box-primary);
+}
+
+/**margen general del contenedor de contenido**/
+.mg-content-box {
+    margin-bottom: 150px;
+}
+.mg-box {
+    max-width: calc(var(--mx-width-cp) - 300px);
+    margin: auto;
+}
+/** barra indicadora de ruta **/
+#box-route {
+    font-size: calc(var(--text-default) - 2px);
+}
+/**modal cerrar sesion**/
+.icon-info {
+    display: block;
+    font-size: 75px;
+    text-align: center;
+}
+.text-aviso {
+    text-align: center;
+    margin: 15px auto 5px auto;
+}
+/*Datatable*/
+div.dataTables_length label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+}
+/* seccion superior datatable buscador*/
+div.row:nth-of-type(1) {
+    margin-top: 25px;
+}
+div.dataTables_filter > label {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div.dataTables_length > label,
+div.dataTables_filter > label {
+    font-size: calc(var(--text-default) - 2px);
+}
+
+div.row:nth-of-type(1) div.dataTables_length,
+div.row:nth-of-type(1) div.dataTables_filter {
+    margin: 10px auto;
+}
+div.row:nth-of-type(1) div.dataTables_filter input {
+    width: 100%;
+    max-width: 220px;
+}
+/* seccion intermedia datatable tabla*/
+div.row:nth-of-type(2) {
+    margin: 30px auto;
+}
+div.row:nth-last-of-type(2) div table thead tr th,
+div.row:nth-last-of-type(2) div table tbody tr td {
+    font-size: calc(var(--text-default) - 2px);
+}
+/**boton de acciones**/
+div.row:nth-last-of-type(2) div table tbody tr td div > a,
+div.row:nth-last-of-type(2) div table tbody tr td div,
+div.row:nth-last-of-type(2) div table tbody tr td div button {
+    font-size: calc(var(--text-default) - 2px);
+}
+/* seccion inferior datatable */
+div.row:nth-last-of-type(1) {
+    margin-bottom: 25px auto;
+}
+div.row:nth-last-of-type(1) .dataTables_info,
+div.dataTables_paginate a {
+    font-size: calc(var(--text-default) - 2px);
+}
+div.dataTables_paginate .pagination {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/**Estilo general de interfaz create and edit (agregando una imagen representativa)**/
+.box-style-default {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.box-style-default > form {
+    max-width: 450px;
+    display: block;
+    width: 100%;
+}
+
+.box-style-default img {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px 15px;
+}
+
+@media screen and (min-width: 1000px) {
+    .box-style-default {
+        flex-direction: row-reverse;
+    }
+    .box-style-default > img {
+        display: block;
+    }
+}

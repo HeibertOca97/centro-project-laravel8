@@ -28,7 +28,7 @@ Route::get('/informacion-confidencial', function () {
 })->middleware('password.confirm');
 
 Route::middleware('auth')->group(function () {
-  
+
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard'); 
 
   //MODULO PROFILE USER LOGOUT
@@ -47,7 +47,9 @@ Route::middleware('auth')->group(function () {
   //MODULO USER
   Route::resource('users', App\Http\Controllers\UserController::class);
   
-  Route::get('users/all/list', [App\Http\Controllers\UserController::class,'listUsers'])->name('users.listAll');
+  Route::get('users/all/list', [App\Http\Controllers\UserController::class,'listAllUsers'])->name('users.listAll');
+
+  Route::get('users/all/except', [App\Http\Controllers\UserController::class, 'listAllUsersExceptToAdmin'])->name('users.listAllExceptToAdmin');
   
   Route::get('users/all/profile/{user}/listEdit', [App\Http\Controllers\UserController::class,'editListAll'])->name('users.editAll');
   
@@ -62,5 +64,19 @@ Route::middleware('auth')->group(function () {
   Route::resource('roles', App\Http\Controllers\RolesController::class)->except('show');
 
   Route::get('roles/all/list', [App\Http\Controllers\RolesController::class,'listRoles'])->name('roles.listAll');
+
+  //MODULO PLAN TRABAJO
+  Route::resource('works/planes', App\Http\Controllers\PlanTrabajoController::class)->except('show');
+
+  Route::get('works/planes/all/list', [App\Http\Controllers\PlanTrabajoController::class,'listPlanes'])->name('planes.listAll');
+
+  Route::post('works/planes/export/foryear', [App\Http\Controllers\PlanTrabajoController::class,'exportWorksForYear'])->name('planes.export.foryear');
+
+  //MODULO MATRIZ ACTIVIDADES
+  Route::resource('works/actividades', App\Http\Controllers\MatrizActividadController::class)->except('show');
+
+  Route::get('works/actividades/all/list', [App\Http\Controllers\MatrizActividadController::class,'listActivities'])->name('actividades.listAll');
+
+  Route::post('works/actividades/export/formonth', [App\Http\Controllers\MatrizActividadController::class,'exportWorksForMonth'])->name('actividades.export.formonth');
 
 });//GRUPO DE RUTAS AUTENTICADAS

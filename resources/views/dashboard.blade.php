@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Dashboard @endsection
 <!--SECCION DE LA BARRA MENU-->
@@ -10,14 +10,12 @@
 <!--SECCION DEL CONTENIDO HEADER Y SECTION-->
 @section('section-content')
   @include('layouts.partials.header')
-  
-  @role('super admin')
+  <div id="box-main-content">
+    
     @include('components.cards-status',[
       'num_users'=>$users,
       'numPermission'=>$numPermission
     ])
-  @else
-    @include('components.welcome',['numPermission'=>$numPermission])
-  @endrole
-  
+    
+  </div>
 @endsection

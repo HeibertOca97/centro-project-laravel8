@@ -1,0 +1,53 @@
+.btn-route-crear {
+    margin: 5px 3px;
+    font-size: calc(var(--text-default) - 3px);
+}
+
+/**seccion de descargas**/
+#descargas-trabajos {
+    font-size: 12px;
+}
+#descargas-trabajos > tbody > tr td a {
+    padding: 2px 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
+    font-size: 10px;
+}
+#descargas-trabajos > tbody > tr td a i {
+    color: rgb(255, 187, 0);
+}
+.btn-download {
+    position: relative;
+    padding-left: 45px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.btn-download > i {
+    position: absolute;
+    left: 10px;
+    top: 16px;
+}
+.btn-download > small > span {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+.btn-download > small > span:nth-of-type(1) {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.btn-download > small > span:nth-last-of-type(1) {
+    font-weight: 100;
+    font-size: 10px;
+}
+
+/**Estilo de vista create**/
+.box-style-default > form div label,
+.box-style-default > form div input,
+.box-style-default > form div textarea {
+    font-size: 14px;
+}

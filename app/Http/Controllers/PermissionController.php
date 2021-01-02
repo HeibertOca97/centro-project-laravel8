@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DescriptionPermisions;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class PermissionController extends Controller
 {
@@ -22,7 +24,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('permission.index');
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.index');
     }
 
     /**
@@ -32,7 +34,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permission.create');
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.create');
     }
 
     /**
@@ -66,10 +68,10 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -77,16 +79,15 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($permission)
-    {
-        $permission = Permission::findOrFail($permission);
+    public function edit(Permission $permission)
+    {      
+      $description = [];
+      
+      foreach ($permission->descriptions() as $value) {
+        $description[] = $value->nombre;
+      }
 
-        $description = [];
-        foreach ($permission->descriptions() as $value) {
-          $description[] = $value->nombre;
-        }
-
-        return view('permission.edit',compact('permission','description'));
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.edit',compact('permission','description'));
     }
 
     /**
@@ -137,7 +138,8 @@ class PermissionController extends Controller
       return datatables()
       ->of($permissions)
       ->addColumn('created_at', function(Permission $permission){
-        return date('d-m-Y', strtotime($permission->created_at));
+        $f = new Carbon($permission->created_at);
+        return $f->format('d-m-Y');
       })
       ->addColumn('description', function(Permission $permission){
         // Metodo creado - no pertenece a spatie Permission

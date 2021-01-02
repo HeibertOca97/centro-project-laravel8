@@ -13,27 +13,21 @@ use Illuminate\Support\Facades\Hash;
 class ProfileUserController extends Controller
 {
     public function index()
-    {
-      if(Auth::user()->status != 1){
-        Auth::logout();
-        return redirect()->route('login')->with('status','Su cuenta se encuentra inactiva, para mayor informacion comunicarse con el administrador.');
-      }
-      
+    {      
       $user = Auth::user();
-      return view('user.profile.index',compact('user'));
+
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.profile.index',compact('user'));
     }
 
     public function editPassword()
     {
       $user = Auth::user();
-      return view('user.profile.password',compact('user'));
+
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.profile.password',compact('user'));
     }
 
     public function update(PerfilUpdateRequest $request, User $user)
     {
-
-      $user = $user::findOrFail($user->id);
-
       $user->cedula = $request->cedula;
       $user->nombres = $request->nombres;
       $user->apellidos = $request->apellidos;

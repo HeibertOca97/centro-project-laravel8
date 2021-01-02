@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Perfil @endsection
 
@@ -27,7 +27,7 @@
   </nav>
 
     <section class="box-perfil-clave container">  
-      <img src="{{asset('image/imageFondos/undraw/add_security.svg')}}" alt="add_security">
+      <img src="{{asset('image/imageFondos/undraw/add_security.svg')}}" alt="CELID - add_security">
     <form action="{{route('user.profiles.update.password',Auth::user()->id)}}" method="post" id="fr-Password">
         @csrf
         @method('PUT')

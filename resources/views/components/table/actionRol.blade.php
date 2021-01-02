@@ -18,6 +18,6 @@
 </div>
 
 <script>
-  // js/validations/rol/validation.rol.js
+  //js/config/validations.js
   actionDelete();
 </script>

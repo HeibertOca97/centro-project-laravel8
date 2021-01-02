@@ -4,30 +4,10 @@
 }
 
 /**estilos del formulario de registro**/
-.box-form > img {
-    display: block;
-    width: 90%;
-    max-width: 400px;
-    margin: 15px auto;
-}
-.box-form > form {
-    width: 100%;
-    display: block;
-    max-width: 400px;
-}
 .label-description {
     font-size: calc(var(--text-default) - 2px);
 }
-@media screen and (min-width: 900px) {
-    .box-form > img {
-        margin: 15px;
-    }
-    .box-form {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
+
 #rol-check input[type="radio"],
 #estado-check input[type="radio"] {
     display: none;

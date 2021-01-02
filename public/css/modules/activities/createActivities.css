@@ -1,0 +1,106 @@
+.btn-route-crear {
+    margin: 5px 3px;
+    font-size: calc(var(--text-default) - 3px);
+}
+
+/**seccion de descargas**/
+#descargas-trabajos {
+    font-size: 12px;
+}
+#descargas-trabajos > tbody > tr td a {
+    padding: 2px 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
+    font-size: 10px;
+}
+#descargas-trabajos > tbody > tr td a i {
+    color: rgb(255, 187, 0);
+}
+.btn-download {
+    position: relative;
+    padding-left: 45px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.btn-download > i {
+    position: absolute;
+    left: 10px;
+    top: 16px;
+}
+.btn-download > small > span {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+.btn-download > small > span:nth-of-type(1) {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.btn-download > small > span:nth-last-of-type(1) {
+    font-weight: 100;
+    font-size: 10px;
+}
+
+/* .box-style-default */
+.box-style-default > form div label,
+.box-style-default > form div input,
+.box-style-default > form div textarea,
+.box-style-default > form div select {
+    font-size: 14px;
+}
+.box-style-default > form div input[type="number"] {
+    text-align: center;
+}
+
+.box-control-activities {
+    display: flex;
+    flex-wrap: wrap;
+}
+.box-control-activities > span,
+.box-control-activities > input {
+    margin: 5px;
+}
+.box-control-activities > input {
+    max-width: 65px;
+}
+.box-control-activities > span {
+    font-size: 14px;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.box-control-activities > span:nth-of-type(1) {
+    background-color: rgb(42, 79, 165);
+}
+.box-control-activities > span:nth-of-type(2) {
+    background-color: rgb(42, 136, 165);
+}
+.box-activities .textarea-activity {
+    height: 35px;
+    max-height: 100px;
+    min-height: 35px;
+}
+.box-activities > div {
+    position: relative;
+}
+.box-activities > div span {
+    cursor: pointer;
+    padding: 5px 8px;
+    position: absolute;
+    left: -20px;
+    top: -12px;
+    font-size: 14px;
+    background-color: rgba(220, 20, 60, 0.445);
+    color: #fff;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.box-activities .textarea-activity:focus ~ span {
+    background-color: rgba(220, 20, 60, 0.685);
+}

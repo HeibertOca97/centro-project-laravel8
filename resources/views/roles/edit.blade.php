@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de roles @endsection
 
@@ -110,11 +110,12 @@
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
+  //js/config/validations.js
+  removeStyleErrorFormatOne('input');
   // js/components/permiso/validation.permission.js
   sendDataFormRol();
   numberInputChecked();
-  listInputChecked()
-  removeStyleError();
+  listInputChecked();
   @if (session('status_success'))
   //js/config/messageAlert.js
       successAlert('Exitoso','{{session("status_success")}}');

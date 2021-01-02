@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class RolesController extends Controller
 {
@@ -24,7 +26,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        return view('roles.index');
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('roles.index');
     }
 
     /**
@@ -35,7 +37,8 @@ class RolesController extends Controller
     public function create()
     {
       $permissions = Permission::all();
-      return view('roles.create',compact('permissions'));
+
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('roles.create',compact('permissions'));
     }
 
     /**
@@ -78,10 +81,11 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
-    {
+    {      
       $permission = $role->getPermissionNames()->toArray();
       $permissions = Permission::all();
-      return view('roles.edit',compact('role','permission','permissions'));
+
+      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('roles.edit',compact('role','permission','permissions'));
     }
 
     /**
@@ -128,7 +132,8 @@ class RolesController extends Controller
       return datatables()
       ->of($roles)
       ->addColumn('created_at', function(Role $roles){
-        return date('d-m-Y', strtotime($roles->created_at));
+        $f = new Carbon($roles->created_at);
+        return $f->format('d-m-Y');
       })
       ->addColumn('permissions', function(Role $roles){
         return $roles->getPermissionNames();
@@ -137,4 +142,5 @@ class RolesController extends Controller
       ->rawColumns(['btn'])
       ->toJson();
     }
+    
 }

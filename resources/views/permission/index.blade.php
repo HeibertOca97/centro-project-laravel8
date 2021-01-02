@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de permisos @endsection
 
@@ -62,7 +62,7 @@
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 <script src="{{asset('js/config/dataTable.js')}}"></script>
-<script src="{{asset("js/validations/permission/validation.permission.js")}}"></script>
+<script src="{{asset("js/config/validations.js")}}"></script>
 <script>
   document.addEventListener('DOMContentLoaded',()=>{
 

@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de permisos @endsection
 
@@ -59,7 +59,9 @@
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  
+  //js/config/validations.js
+  removeStyleErrorFormatOne('input');
+  removeStyleErrorFormatOne('textarea');
   // js/components/permiso/validation.permission.js
   sendDataFormPermission();
   

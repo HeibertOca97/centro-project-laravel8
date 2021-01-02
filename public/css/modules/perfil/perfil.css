@@ -7,7 +7,7 @@ CONTENEDOR DE LA INTERFAZ
     align-items: center;
     flex-direction: column;
     background-color: var(--bg-header-primary);
-    max-width: var(--mx-width-p);
+    max-width: calc(var(--mx-width-p) - 160px);
     margin: auto;
     width: 98%;
 }

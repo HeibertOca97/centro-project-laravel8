@@ -1,6 +1,6 @@
 @extends('components.modals')
 
-@extends('layouts.root')
+@extends('layouts.app')
 
 @section('title') Gestion de permisos @endsection
 
@@ -41,7 +41,7 @@
 
         <div class="mb-4">
           <label for="descripcion" class="form-label label-description @if ($errors->has('descripcion')) text-danger @else text-secondary @endif">Descripcion</label>
-          <textarea class="form-control text @error('descripcion') border-danger @enderror" id="descripcion" rows="3" name="descripcion" maxlength="191" style="max-height: 150px;">{{old('descripcion')}}</textarea>
+          <textarea class="form-control text @error('descripcion') border-danger @enderror" id="descripcion" rows="3" name="descripcion" maxlength="191" style="max-height: 150px;min-height:80px;">{{old('descripcion')}}</textarea>
           <small class="form-text @error('descripcion') text-danger @enderror">@error('descripcion') {{$message}} @enderror</small>
         </div>
 
@@ -58,6 +58,9 @@
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
+  //js/config/validations.js
+  removeStyleErrorFormatOne('input');
+  removeStyleErrorFormatOne('textarea');
   // js/components/permiso/validation.permission.js
   sendDataFormPermission();
 
