@@ -132,7 +132,7 @@ function tableCreateMatrizActividades($url){
       {data:'modalidad'},
       {data:'actividades',render:(data)=>{
         let el = ``;
-        el+=`<ol>`;
+        el+=`<ol class="d-block ml-2">`;
         for (let i = 0; i < data.length; i++) {
           if(data[i] != null){
             el += `

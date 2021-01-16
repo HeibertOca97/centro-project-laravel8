@@ -2,7 +2,7 @@
 
 @extends('layouts.app')
 
-@section('title') Matriz de actividades @endsection
+@section('title') Mis Actividades @endsection
 
 @section('css')
 <link rel="stylesheet" href="{{asset('css/modules/activities/createActivities.css')}}">
@@ -15,14 +15,14 @@
 @section('section-content')
   @include('layouts.partials.header')
   <div class="container-xl">
-    <h1 class="title-module"><i class="fas fa-clipboard-check"></i> Matriz de actividades</h1>
+    <h1 class="title-module"><i class="far fa-calendar-check"></i> Mis actividades</h1>
   </div>
 
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
     @can('matrizActividad.index')
-    <li class="breadcrumb-item"><a href="{{route('actividades.index')}}">Matriz de actividades</a></li>
+    <li class="breadcrumb-item"><a href="{{route('mis-actividades.index')}}">Actividades</a></li>
     @endcan
     <li class="breadcrumb-item active" aria-current="page">Crear</li>
     </ol>
@@ -33,20 +33,8 @@
     <div class="card-body box-style-default">
       <img src="{{asset('image/imageFondos/undraw/add_no_data.svg')}}" alt="CELID - add_no_data">
 
-      <form action="{{route('actividades.store')}}" method="post" id="mActividad">
+      <form action="{{route('mis-actividades.store')}}" method="post" id="mActividad">
         @csrf
-
-        <div class="mb-4">
-          <label for="miembro" class="form-label label-description @if ($errors->has('miembro')) text-danger @else text-secondary @endif">Nombres y apellidos</label>
-          <select name="miembro" id="miembro" class="form-control @if ($errors->has('miembro')) border-danger @endif">
-            @include('components.selectOption',[
-              'action'=>'create',
-              'users'=>$users,
-              'returnValue'=>old('miembro')
-            ])
-          </select>
-          <small class="form-text @error('miembro')text-danger @enderror">@error('miembro') {{$message}} @enderror</small>
-        </div>
 
         <div class="mb-4 mt-4">
           <label for="fecha" class="form-label label-description @if ($errors->has('fecha')) text-danger @else text-secondary @endif">Fecha *</label>
@@ -83,8 +71,8 @@
         </div>
 
         <br><hr>
-        <button class="btn btn-success mr-3 mb-3">Crear</button>
-        <a href="{{route('actividades.index')}}" class="btn btn-light mb-3">Volver</a>
+        <button class="btn btn-success mr-3 mb-3" id="btn-fr">Crear</button>
+        <a href="{{route('mis-actividades.index')}}" class="btn btn-light mb-3">Volver</a>
       </form>
 
     </div>
@@ -92,6 +80,7 @@
 
 @endsection
 @section('js')
+<script src="{{asset('js/config/peticiones.js')}}"></script>
 <script src="{{asset('js/validations/activities/validation.activities.js')}}"></script>
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
@@ -110,7 +99,7 @@
     actionEventDeleteElement();
     sendDataFormMatrizActividad();
     //validar en que interfaz estamos
-    setModo('general');
+    setModo('personal');
 
     @if (session('status_success'))
       //js/config/messageAlert.js

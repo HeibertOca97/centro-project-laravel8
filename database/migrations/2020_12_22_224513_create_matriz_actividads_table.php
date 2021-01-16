@@ -15,10 +15,6 @@ class CreateMatrizActividadsTable extends Migration
     {
         Schema::create('matriz_actividads', function (Blueprint $table) {
             $table->id();
-
-            // $table->integer('responsable')->nullable();
-            // $table->string('miembro',150)->nullable();
-            // $table->string('puesto',150)->nullable();
             $table->date('fecha')->nullable();
             $table->string('horario',100)->nullable();
             $table->string('modalidad',150)->nullable();
@@ -28,7 +24,7 @@ class CreateMatrizActividadsTable extends Migration
             $table->foreign('user_id')
             ->references('id')
             ->on('users')
-            ->onDelete('set null')->onUpdate('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

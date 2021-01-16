@@ -68,19 +68,22 @@ class PermissionSeeder extends Seeder
       //ACTIONS
       $p = Permission::create(['name' => 'plantrabajo.destroy']);
       DescriptionPermisions::create(['nombre'=>'Accion para eliminar','permission_id'=>$p->id]);
+      $p = Permission::create(['name' => 'plantrabajo.download']);
+      DescriptionPermisions::create(['nombre'=>'Accion para descargar y/o exportar los datos de este modulo','permission_id'=>$p->id]);
 
       //ACTIVIDADES - MATRIZ
       //NAVEGACION
-      $p = Permission::create(['name' => 'actividad.index']);
+      $p = Permission::create(['name' => 'matrizActividad.index']);
       DescriptionPermisions::create(['nombre'=>'Interfaz principal del modulo','permission_id'=>$p->id]);
-      $p= Permission::create(['name' => 'actividad.create']);
+      $p= Permission::create(['name' => 'matrizActividad.create']);
       DescriptionPermisions::create(['nombre'=>'Interfaz y accion para crear','permission_id'=>$p->id]);
-      $p = Permission::create(['name' => 'actividad.edit']);
+      $p = Permission::create(['name' => 'matrizActividad.edit']);
       DescriptionPermisions::create(['nombre'=>'Interfaz y accion para editar','permission_id'=>$p->id]);
       //ACTIONS
-      $p = Permission::create(['name' => 'actividad.destroy']);
+      $p = Permission::create(['name' => 'matrizActividad.destroy']);
       DescriptionPermisions::create(['nombre'=>'Accion para eliminar','permission_id'=>$p->id]);
-
+      $p = Permission::create(['name' => 'matrizActividad.download']);
+      DescriptionPermisions::create(['nombre'=>'Accion para descargar y/o exportar los datos de este modulo','permission_id'=>$p->id]);
      
       //CREATE ROL
       $admin = Role::create(['name'=>'super admin']);

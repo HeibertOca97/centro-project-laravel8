@@ -91,9 +91,9 @@
       <div class="card-title"><i class="fas fa-plus"></i> Crear nuevo</div><hr>
       <div class="d-flex align-content-center flex-wrap">
         @if (Auth::user()->getRoleNames()->isEmpty())
-            <small class="text-secondary">Por el momento no cuenta con ningun permiso, que le permita realizar alguna accion.</small>
+            <small class="text-secondary">Por el momento no cuenta con ningun rol o permiso, que le permita realizar alguna accion.</small>
         @else
-            
+          @if(Auth::user()->hasAnyPermission(['user.create','role.create','permission.create','matrizActividad.create','plantrabajo.create']))
           @can('user.create')
           <a href="{{route('users.create')}}" class="card d-block text-center mr-2 mb-2" role="button" style="text-decoration: none;">
             <div class="card-body">
@@ -110,6 +110,22 @@
             </div>
           </a>
           @endcan
+          @can('matrizActividad.create')
+          <a href="{{route('actividades.create')}}" class="card d-block text-center mr-2 mb-2" role="button" style="text-decoration: none;">
+            <div class="card-body">
+              <div class="card-title"><i  style="font-size:30px;" class="fas fa-plus-circle"></i></div>
+              <p class="card-text text-secondary ">Actividades</p>
+            </div>
+          </a>
+          @endcan
+          @can('plantrabajo.create')
+          <a href="{{route('planes.create')}}" class="card d-block text-center mr-2 mb-2" role="button" style="text-decoration: none;">
+            <div class="card-body">
+              <div class="card-title"><i  style="font-size:30px;" class="fas fa-plus-circle"></i></div>
+              <p class="card-text text-secondary ">Plan de trabajo</p>
+            </div>
+          </a>
+          @endcan
           @can('permission.create')
           <a href="{{route('permissions.create')}}" class="card d-block text-center mr-2 mb-2" role="button" style="text-decoration: none;">
             <div class="card-body">
@@ -118,6 +134,9 @@
             </div>
           </a>
           @endcan
+          @else
+            <small class="text-secondary">Usted no cuenta con un rol con permisos de creador.</small>
+          @endif
         @endif
 
       </div>
@@ -125,7 +144,7 @@
   </div>
  </div>
 
-{{-- <i class="fas fa-cloud-download-alt"></i>
+<i class="fas fa-cloud-download-alt"></i>
 <i class="fas fa-cloud-upload-alt"></i>
 
 <i class="fas fa-plus-circle"></i>
@@ -136,4 +155,4 @@
 <i class="fas fa-comment-alt"></i>
 <i class="far fa-copy"></i>
 <i class="fas fa-couch"></i>
-<i class="fas fa-database"></i> --}}
+<i class="fas fa-database"></i>

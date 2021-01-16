@@ -5,11 +5,11 @@
 <!--HTML-->
 <section class="section">
 <!-- ELEMENTO SUPERIOR HEADER-->
-  <section id="box-nav" state="false">
+  <section id="box-nav" state="false" class="scroll-default">
     @yield('barra-menu')
   </section>
 <!-- ELEMENTO INFERIOR SECTION DEL CONTENIDO-->
-  <section id="box-section">
+  <section id="box-section" class="scroll-default">
     <div class="mg-content-box">
       @yield('section-content')
     </div>

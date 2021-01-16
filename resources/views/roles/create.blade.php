@@ -47,7 +47,8 @@
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"><i class="fas fa-th-list"></i> Usuarios</button>
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseRoles" aria-expanded="false" aria-controls="collapseRoles"><i class="fas fa-th-list"></i> Roles</button>
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapsePermisos" aria-expanded="false" aria-controls="collapsePermisos"><i class="fas fa-th-list"></i> Permisos</button>
-              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseProject" aria-expanded="false" aria-controls="collapseProject"><i class="fas fa-th-list"></i> Proyectos</button>
+              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapsePlanTrabajo" aria-expanded="false" aria-controls="collapsePlanTrabajo"><i class="fas fa-th-list"></i> Plan de trabajo</button>
+              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseMatrizActividad" aria-expanded="false" aria-controls="collapseMatrizActividad"><i class="fas fa-th-list"></i> Matriz de Actividades</button>
             </div>
           </div>
 
@@ -88,9 +89,17 @@
                   @include('components.listCollapse',[
                     'accion'=>'crear',
                     'permission'=>'',
-                    'modulo'=>'project',
+                    'modulo'=>'plantrabajo',
                     'permissions'=>$permissions,
-                    'collapseName'=>'collapseProject',
+                    'collapseName'=>'collapsePlanTrabajo',
+                  ])
+
+                  @include('components.listCollapse',[
+                    'accion'=>'crear',
+                    'permission'=>'',
+                    'modulo'=>'matrizActividad',
+                    'permissions'=>$permissions,
+                    'collapseName'=>'collapseMatrizActividad',
                   ])
 
               </tbody>

@@ -37,7 +37,7 @@ WithTitle
   {
     $monthYear = Str::upper(Carbon::parse("{$this->year}-{$this->month}-01")->translatedFormat('F Y'));
 
-    $planTrabajos = PlanTrabajo::whereYear('fecha',$this->year)->whereMonth('fecha', $this->month)->get();
+    $planTrabajos = PlanTrabajo::whereYear('fecha',$this->year)->whereMonth('fecha', $this->month)->orderBy('fecha','asc')->get();
 
     return view('exports.tbPlanTrabajo',compact('planTrabajos','monthYear'));
   }

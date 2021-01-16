@@ -18,7 +18,7 @@ class CreatePlanTrabajosTable extends Migration
             $table->string('evento',255)->nullable();
             $table->string('lugar',100)->nullable();
             $table->string('responsables',200)->nullable();
-            $table->date('fecha',0)->nullable();
+            $table->date('fecha',0)->unique()->nullable();
             $table->string('hora',50)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')

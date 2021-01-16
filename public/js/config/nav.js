@@ -1,3 +1,4 @@
+const APP_URL="http://centro.test/";
 const $pxmax = "250px",
   $pxdefault = "0px",
   $barra_menu = document.querySelector("#box-nav"),

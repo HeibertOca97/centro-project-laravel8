@@ -60,12 +60,11 @@ WithTitle
 
   public function title(): string
   {
-    // return Str::upper(Carbon::parse("{$this->year}-{$this->month}-{$this->day}")->translatedFormat('d-Y F'));
     $date = "{$this->year}-{$this->month}-{$this->day}";
     $dia = ConvertToDate::extractDay($date);
     $mes_es = ConvertToDate::transformDateGetTranslateMonth($date);
     $mes_subt = Str::substr($mes_es,0, 3);
-    return "{$dia} {$mes_subt}";
+    return "Actividades del {$dia} {$mes_subt}";
   }
 
   public function drawings()

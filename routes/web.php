@@ -73,10 +73,19 @@ Route::middleware('auth')->group(function () {
   Route::post('works/planes/export/foryear', [App\Http\Controllers\PlanTrabajoController::class,'exportWorksForYear'])->name('planes.export.foryear');
 
   //MODULO MATRIZ ACTIVIDADES
+  //Actividades administrables
   Route::resource('works/actividades', App\Http\Controllers\MatrizActividadController::class)->except('show');
 
   Route::get('works/actividades/all/list', [App\Http\Controllers\MatrizActividadController::class,'listActivities'])->name('actividades.listAll');
 
+  Route::post('works/actividades/fecha-existente', [App\Http\Controllers\ActivitieController::class,'validatedExistingDate'])->name('actividades.existingDate');
+
   Route::post('works/actividades/export/formonth', [App\Http\Controllers\MatrizActividadController::class,'exportWorksForMonth'])->name('actividades.export.formonth');
+  //Actividades personales
+  Route::resource('works/mis-actividades', App\Http\Controllers\ActivitieController::class)->except('show');
+
+  Route::get('works/mis-actividades/list', [App\Http\Controllers\ActivitieController::class,'listActivities'])->name('mis-actividades.listAll');
+
+  Route::post('works/mis-actividades/fecha-existente', [App\Http\Controllers\ActivitieController::class,'validatedExistingDate'])->name('mis-actividades.existingDate');
 
 });//GRUPO DE RUTAS AUTENTICADAS

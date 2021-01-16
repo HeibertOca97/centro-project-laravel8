@@ -34,25 +34,39 @@
     </div>
   </a>
   @endcan
-  
+ 
+  @if(Auth::user()->hasAnyPermission(['matrizActividad.index','plantrabajo.index']))
   <div class="opt-list">
-    <div state="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') ? 'true' : 'false'}}" class="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') ? 'activeRoute' : ' '}}">
+    <div state="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') || request()->routeIs('mis-actividades.*') ? 'true' : 'false'}}" class="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') || request()->routeIs('mis-actividades.*') ? 'activeRoute' : ' '}}">
       <i class="fas fa-clipboard-list"></i><p>Tareas</p><i class="fas fa-plus"></i>
     </div>
     <main class="list-link">
+      @can('plantrabajo.index')
       <a href="{{route('planes.index')}}">
         <div class="{{request()->routeIs('planes.*') ? 'activeRoute' : ' '}}">
           <i class="fas fa-book"></i>
           <p>Plan de trabajo</p>
         </div>
       </a>
+      @endcan
+      @can('matrizActividad.index')
       <a href="{{route('actividades.index')}}">
         <div class="{{request()->routeIs('actividades.*') ? 'activeRoute' : ' '}}">
           <i class="fas fa-clipboard-check"></i>
           <p>Matriz de actividades</p>
         </div>
       </a>
+      @endcan
+      {{-- @can('matrizActividad.index') --}}
+      <a href="{{route('mis-actividades.index')}}">
+        <div class="{{request()->routeIs('mis-actividades.*') ? 'activeRoute' : ' '}}">
+          <i class="far fa-calendar-check"></i>
+          <p>Mis actividades</p>
+        </div>
+      </a>
+      {{-- @endcan --}}
     </main>
   </div>
-
+  @endif
+  
 </nav>

@@ -21,7 +21,9 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+    @can('matrizActividad.index')
     <li class="breadcrumb-item"><a href="{{route('actividades.index')}}">Matriz de actividades</a></li>
+    @endcan
       <li class="breadcrumb-item active" aria-current="page">Editar</li>
     </ol>
   </nav>
@@ -69,11 +71,11 @@
         <div class="mb-4 mt-4">
           <label for="number" class="form-label label-description text-secondary">Actividades</label>
           <div class="box-control-activities">
-            <input type="number" name="number" id="number" class="ignore"  value="{{old('number',1)}}" class="form-control">
+            <input type="number" name="number" id="number" value="{{old('number',1)}}" class="form-control ignore">
               <span id="btn-increment"><i class="fas fa-plus-square"></i> Agregar</span>
               <span id="btn-decrement"><i class="fas fa-minus-square"></i> Remover</span>
           </div>
-          <div class="mb-3 mt-3 box-activities">
+          <div class="mb-3 mt-3 box-activities"></div>
         </div>
 
         <div class="mb-4 mt-4">
@@ -107,9 +109,7 @@
     actionEventKeyupInputNumber();
     actionEventDeleteElement();
     sendDataFormMatrizActividad();
-  //js/config/validations.js
-    removeStyleErrorFormatOne('input');
-    removeStyleErrorFormatOne('textarea');
+    
     @if (session('status_success'))
       //js/config/messageAlert.js
       successAlert('Exitoso','{{session("status_success")}}');

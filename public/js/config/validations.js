@@ -110,3 +110,28 @@ function removeStyleErrorFormatOne(typeElement) {
     }
   }
 }
+
+function addStyleErrorInput(typeElement,sms) {
+  let el = document.querySelectorAll(typeElement);
+  for (let i = 0; i < el.length; i++) {
+    if(!el[i].classList.contains('ignore')){
+      el[i].classList.add('border-danger');
+      el[i].parentElement.children[0].classList.add('text-danger');
+      el[i].parentElement.children[0].classList.remove('text-secondary');
+      el[i].parentElement.children[2].classList.add('text-danger');
+      el[i].parentElement.children[2].textContent = sms;
+    }
+  }
+}
+function removeStyleErrorInput(typeElement) {
+  let el = document.querySelectorAll(typeElement);
+  for (let i = 0; i < el.length; i++) {
+    if(!el[i].classList.contains('ignore')){
+      el[i].classList.remove('border-danger');
+      el[i].parentElement.children[0].classList.remove('text-danger');
+      el[i].parentElement.children[0].classList.add('text-secondary');
+      el[i].parentElement.children[2].classList.remove('text-danger');
+      el[i].parentElement.children[2].textContent = "";
+    }
+  }
+}

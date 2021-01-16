@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
       $this->call(\Database\Seeders\PermissionSeeder::class);
       $this->call(\Database\Seeders\UserSeeder::class);
         
-      \App\Models\PlanTrabajo::factory(200)->create();
       \App\Models\MatrizActividad::factory(150)->create();
+      \App\Models\PlanTrabajo::factory(200)->create();
 
     }
 }

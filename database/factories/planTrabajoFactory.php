@@ -25,7 +25,7 @@ class planTrabajoFactory extends Factory
             'evento' => $this->faker->text(255),
             'lugar' => $this->faker->text(50),
             'responsables' => $this->faker->text(10),
-            'fecha' => $this->faker->dateTimeBetween('-5 years'),
+            'fecha' => $this->faker->unique()->dateTimeBetween('-5 years'),
             'hora' => '13H00 - 16H00',
             'user_id' => rand(1,3),
         ];

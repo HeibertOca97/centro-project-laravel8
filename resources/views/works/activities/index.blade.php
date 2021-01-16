@@ -30,9 +30,9 @@
     </ol>
   </nav>
   
-@can('actividad.create')
+@can('matrizActividad.create')
 <div class="container-xl bg-white my-3">
-  <a href="{{route('actividades.create')}}" class="btn btn-primary btn-route-crear">Nueva actividad</a>
+  <a href="{{route('actividades.create')}}" class="btn btn-primary btn-route-crear"><i class="fas fa-plus"></i> Crear nuevo</a>
 </div>
 @endcan
 
@@ -59,6 +59,7 @@
   </div>
 </div>
 
+@can('matrizActividad.download')
 <div class="container-xl mt-4">
   <div class="card">
     <div class="card-body">
@@ -92,7 +93,8 @@
                 <label for="">De:</label>
                 <input type="date" name="f_inicio" class="pt-1 pb-1"><br>
                 <label for="">Hasta:</label>
-                <input type="date" name="f_fin" class="pt-1 pb-1">
+                <input type="date" name="f_fin" class="pt-1 pb-1"><br>
+                <label class="d-block">Obtendra un archivo con los datos separados y ordenados por su dia y mes correspondiente.</label>
                 </form>
               </td>
               <td>Excel/.xlsx</td>
@@ -105,6 +107,7 @@
     </div>
   </div>
 </div>
+@endcan
 
 @endsection
 @section('js')
@@ -117,11 +120,13 @@
 <script src="{{asset('js/validations/activities/validation.activities.js')}}"></script>
 <script>
   document.addEventListener('DOMContentLoaded',()=>{
-    // js/components/planes/validation.planes.js
-    // addMonthsYearSelect('.months');
-    exportWorksForMonths();
-    
+    //js/config/dataTable.js
     tableCreateMatrizActividades('{{route("actividades.listAll")}}');
+
+    // js/validations/activities/validation.activities.js
+    @can('matrizActividad.download')
+    exportWorksForMonths();
+    @endcan
 
     @if (session('status_success'))
      //js/config/messageAlert.js

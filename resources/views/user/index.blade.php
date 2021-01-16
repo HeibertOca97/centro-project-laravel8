@@ -32,7 +32,7 @@
   
 @can('user.create')
 <div class="container-xl bg-white my-3">
-  <a href="{{route('users.create')}}" class="btn btn-primary btn-route-crear">Nuevo usuario</a>
+  <a href="{{route('users.create')}}" class="btn btn-primary btn-route-crear"><i class="fas fa-plus"></i> Crear nuevo</a>
 </div>
 @endcan
 

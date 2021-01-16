@@ -22,8 +22,10 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+    @can('plantrabajo.index')
     <li class="breadcrumb-item"><a href="{{route('planes.index')}}">Plan de Trabajo</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Editar</li>
+    @endcan
+    <li class="breadcrumb-item active" aria-current="page">Editar</li>
     </ol>
   </nav>
 

@@ -1,11 +1,67 @@
 function sendDataFormMatrizActividad() {
   let form = document.querySelector('#mActividad');
-form.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  if(validatedInputTypeText()){
-    e.target.submit();
+  form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(validatedInputTypeText() && validatedInputRequired() && $fecha.getAttribute('state') == "true"){
+      e.target.submit();
+    }
+  });
+}
+//para validar la fecha del registro de actividades
+let $fecha = document.querySelector('#fecha');
+if($fecha){
+  $fecha.setAttribute('state',true);
+  //funcionalidad encargada de verificar si ya existe un registro con esa fecha
+  function setModo(modo){
+    if(modo=='personal'){
+      $fecha.addEventListener('change',(e)=>existingDate(e));
+    }else if(modo=='general'){
+      $fecha.addEventListener('change',(e)=>existingDate(e));
+    }
+
   }
-});
+}
+//create activitie - interfaz personal
+async function existingDate(e){
+  let form, data, response; 
+  
+  form = new FormData();
+  form.append('fecha',e.target.value);
+  data = await sendPostDataDB("works/mis-actividades/fecha-existente",form);
+  response = await data.json();
+  const {res} = response;
+  if(res == true){
+    e.target.setAttribute('state',false);
+    addStyleErrorInput('input[type="date"]','Ya existe un registro con esta fecha');
+  }else{
+    e.target.setAttribute('state',true);
+    removeStyleErrorInput('input[type="date"]');
+  }
+}
+
+async function existingDateActivitius(e){
+  let form, data, response; 
+  
+  form = new FormData();
+  form.append('fecha',e.target.value);
+  data = await sendPostDataDB("works/mis-actividades/fecha-existente",form);
+  response = await data.json();
+  const {res} = response;
+  if(res == true){
+    e.target.setAttribute('state',false);
+    addStyleErrorInput('input[type="date"]','Ya existe un registro con esta fecha');
+  }else{
+    e.target.setAttribute('state',true);
+    removeStyleErrorInput('input[type="date"]');
+  }
+}
+const activities = [];
+//funcionalidad para editar
+function validatedDateExisting(action){
+  if(action == 'edit'){
+    activities.push({fecha:$fecha.getAttribute('value')});
+  }
+  console.log(activities[0].fecha);
 }
 
 //funcionalidad para la exportacion o descarga de documento
