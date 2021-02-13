@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="{{asset('image/logo/logo-mini.png')}}" type="image/x-icon">
   <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') | {{ config('app.name', 'CELID') }}</title>
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Grandstander&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap" rel="stylesheet">

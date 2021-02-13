@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -22,7 +22,9 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+    @can('role.index')
     <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
+    @endcan
       <li class="breadcrumb-item active" aria-current="page">Crear</li>
     </ol>
   </nav>
@@ -48,11 +50,12 @@
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseRoles" aria-expanded="false" aria-controls="collapseRoles"><i class="fas fa-th-list"></i> Roles</button>
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapsePermisos" aria-expanded="false" aria-controls="collapsePermisos"><i class="fas fa-th-list"></i> Permisos</button>
               <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapsePlanTrabajo" aria-expanded="false" aria-controls="collapsePlanTrabajo"><i class="fas fa-th-list"></i> Plan de trabajo</button>
-              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseMatrizActividad" aria-expanded="false" aria-controls="collapseMatrizActividad"><i class="fas fa-th-list"></i> Matriz de Actividades</button>
+              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseActivities" aria-expanded="false" aria-controls="collapseActivities"><i class="fas fa-th-list"></i> Gestion de Actividades</button>
+              <button type="button" class="btn btn-dark text-warning" data-toggle="collapse" data-target="#collapseMyActivitie" aria-expanded="false" aria-controls="collapseMyActivitie"><i class="fas fa-th-list"></i> Actividades (Personal)</button>
             </div>
           </div>
 
-          <label class="form-label label-description text-secondary mb-4 ">Total: <b>{{count($permissions)}}</b>  |  Seleccionados: <b id="select_permission">15</b></label>
+          <label class="form-label label-description text-secondary mb-4 ">Total: <b>{{count($permissions)}}</b>  |  Seleccionados: <b id="select_permission"></b></label>
 
           <table class="table table-dark mx-auto">
               <thead>
@@ -62,6 +65,7 @@
                 </tr>
               </thead>
               <tbody class="content-permission">
+
                 @include('components.listCollapse',[
                     'accion'=>'crear',
                     'permission'=>'',
@@ -97,9 +101,17 @@
                   @include('components.listCollapse',[
                     'accion'=>'crear',
                     'permission'=>'',
-                    'modulo'=>'matrizActividad',
+                    'modulo'=>'Activities',
                     'permissions'=>$permissions,
-                    'collapseName'=>'collapseMatrizActividad',
+                    'collapseName'=>'collapseActivities',
+                  ])
+
+                  @include('components.listCollapse',[
+                    'accion'=>'crear',
+                    'permission'=>'',
+                    'modulo'=>'MyActivitie',
+                    'permissions'=>$permissions,
+                    'collapseName'=>'collapseMyActivitie',
                   ])
 
               </tbody>

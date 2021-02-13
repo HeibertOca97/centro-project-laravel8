@@ -12,7 +12,7 @@
 </header>
 
 <!-- VENTANA - BARRA DE CUENTA -->
-<main id="box-barra-cuenta" state="false" class="box-barra-opciones">
+<main id="box-barra-cuenta" state="false" class="box-barra-opciones scroll-default">
   <a href="{{route('user.profiles.index')}}" class="opt-link-br-c">
     <div>
     <img src="@if(Auth::user()->avatar){{asset(Auth::user()->avatar)}}@else{{asset('image/perfil/user_man.svg')}}@endif" alt="{{Auth::user()->nombres}}" class="" loaded>
@@ -30,14 +30,14 @@
   <div class="opt-link-br-c" id="btn-cerrar-secion" data-toggle="modal" data-target="#modalCerrarSesion"><i class="fas fa-sign-in-alt"></i><p>Cerrar sesion</p>
   </div>
   <hr>
-  <p class="text-secondary developer-author"><span class="ml-2">CELID © 2020 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></p>
+  <p class="text-secondary developer-author"><span class="ml-2">CELID © 2021 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></p>
   <!--Importante-->
   <div></div>
   <!--Importante-->
 </main>
 
 <!--VENTANA - BARRA NOTIFICACIONES-->
-<main id="box-barra-notify" state="false" class="box-barra-opciones">
+<main id="box-barra-notify" state="false" class="box-barra-opciones scroll-default">
   <dir class="title-barra">
     <h4 class="ml-3 mt-2">Notificaciones</h4><span class="fas fa-ellipsis-h mr-3 d-block" role="button" id="barra-opciones-notify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
     <div class="dropdown-menu box-option-notifique" aria-labelledby="barra-opciones-notify">
@@ -52,7 +52,7 @@
       <dir>
         <span class="far fa-flag text-dark d-block"></span><p class="text-dark">Titulo</p>&nbsp; <p class="text-secondary">Descripcion</p>
       </dir>
-      <small class="ml-4 text-primary">hace 2 minutos</small>
+      <small class="ml-4">hace 2 minutos</small>
       <span class="fas fa-ellipsis-h mr-3 d-block text-dark" role="button" id="notify-uno" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
       <div class="dropdown-menu box-option-notifique" aria-labelledby="notify-uno">
           <div class="dropdown-item" role="button"><i class="fas fa-check ml-2"></i> Marcar como leida</div>
@@ -66,7 +66,7 @@
       <dir>
         <span class="fas fa-flag text-dark d-block"></span><p class="text-dark">Titulo</p>&nbsp; <p class="text-secondary">Descripcion</p>
       </dir>
-      <small class="ml-4 text-primary">hace 2 minutos</small>
+      <small class="ml-4">hace 2 minutos</small>
       <span class="fas fa-ellipsis-h mr-3 d-block text-dark" role="button" id="notify-uno" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
       <div class="dropdown-menu box-option-notifique" aria-labelledby="notify-uno">
           <div class="dropdown-item" role="button"><i class="fas fa-check ml-2"></i> Marcar como leida</div>
@@ -76,7 +76,7 @@
   </dir>
   <hr class="mt-2">
   <p class="text-secondary 
-developer-author"><span class="ml-2">CELID © 2020 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></p>
+developer-author"><span class="ml-2">CELID © 2021 | Desarrollado por: <a href="https://ec.linkedin.com/in/heibert-joseph-oca%C3%B1a-rodr%C3%ADguez-1a29871b7" class="text-secondary" target="_blank">Heibert Ocaña <i class="fab fa-linkedin"></i></a></span></p>
   <!--Importante-->
   <div></div>
   <!--Importante-->

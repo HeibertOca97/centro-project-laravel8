@@ -20,7 +20,7 @@ class CreateMatrizActividadsTable extends Migration
             $table->string('modalidad',150)->nullable();
             $table->text('actividades')->nullable();
             $table->string('observaciones',255)->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
             ->references('id')
             ->on('users')

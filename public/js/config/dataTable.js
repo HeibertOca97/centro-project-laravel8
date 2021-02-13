@@ -33,12 +33,20 @@ function tableCreateUsers($url){
       {data:'permisos', render:(data)=>{
         $res = JSON.parse(data);
 
-        let el = ``;
+        let el = `
+          <div class="d-flex justify-content-center">
+          <p><b>Cant:</b> ${$res.length}</p>
+          <div class="dropdown ml-2">
+          <a class="far fa-eye text-dark d-block" style="text-decoration:none;background:#fff;box-shadow:0px 0px 5px #000;padding:5px;border-radius:50%;" href="#" role="button" id="dropdownPermission" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownPermission">
+        `;
         $res.forEach(obj => {
           el +=`
           <span class="badge badge-dark">${obj.name}</span>
           `;
         });
+        el += `</div>
+        </div></div>`;
         return el;
       }},
       {data:'status'},
@@ -78,12 +86,20 @@ function tableCreateRoles($url){
       {data:'permissions',render:(data)=>{
         $res = JSON.parse(data);
         if($res){
-          let el = ``;
+          let el = `
+          <div class="d-flex justify-content-center">
+          <p><b>Cant:</b> ${$res.length}</p>
+          <div class="dropdown ml-2">
+          <a class="far fa-eye text-dark d-block" style="text-decoration:none;background:#fff;box-shadow:0px 0px 5px #000;padding:5px;border-radius:50%;" href="#" role="button" id="dropdownPermission" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownPermission">
+          `;
           $res.forEach(nombre => {
             el +=`
             <span class="badge badge-dark">${nombre}</span>
             `;
           });
+          el += `</div>
+        </div></div>`;
           return el;
         }
 
@@ -144,6 +160,28 @@ function tableCreateMatrizActividades($url){
         return el;
       }},
       {data:'observaciones'},
+      {data:'created_at'},
+      {data:'updated_at'},
+      {data:'btn'},
+    ],
+    responsive:true,
+    // autoWidth:false
+    "lengthMenu": [ [25,50, 100, 200, -1], [25,50, 100, 200, "Mostrar Todo"] ],
+    "oLanguage": configLanguageTable
+  });
+}
+
+function tableCreateEnterprising($url){
+  $('#tb-enterprising-data').DataTable({
+    // "serverSide":true,
+    "ajax":$url,
+    "columns":[
+      {data:'cedula'},
+      {data:'nombres'},
+      {data:'email'},
+      {data:'telefonos'},
+      {data:'red_wa'},
+      {data:'creador'},
       {data:'created_at'},
       {data:'updated_at'},
       {data:'btn'},

@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -22,7 +22,9 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
+    @can('permission.index')
     <li class="breadcrumb-item"><a href="{{route('permissions.index')}}">Permisos</a></li>
+    @endcan
       <li class="breadcrumb-item active" aria-current="page">Crear</li>
     </ol>
   </nav>

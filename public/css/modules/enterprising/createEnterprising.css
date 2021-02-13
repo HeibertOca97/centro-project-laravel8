@@ -1,0 +1,4 @@
+.btn-route-crear {
+    margin: 5px 3px;
+    font-size: calc(var(--text-default) - 3px);
+}

@@ -39,6 +39,5 @@ function setSelectTotal(num){
 }
 
 function getSelectTotal(){
-  console.log(total);
   return total;
 }

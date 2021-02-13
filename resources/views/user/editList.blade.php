@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -33,7 +33,7 @@
   </nav>
 
   <div class="card container-xl">
-    <div class="card-header">Actualizacion de informacion del usuario</div>
+    <div class="card-header">Datos generales</div>
     <div class="card-body box-style-default">
     
     <form action="{{route('users.updateAll',$user)}}" method="post" id="formUser">

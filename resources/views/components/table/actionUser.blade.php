@@ -4,15 +4,15 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     @can('user.show')
-      <a class="dropdown-item" href="{{route('users.show',$id)}}">Ver</a>
+      <a class="dropdown-item" href="{{route('users.show',$slug)}}">Ver</a>
       <div class="dropdown-divider"></div>
     @endcan
     @can('user.edit')
-      <a class="dropdown-item" href="{{route('users.edit',$id)}}">Editar</a>
+      <a class="dropdown-item" href="{{route('users.edit',$slug)}}">Editar</a>
       <div class="dropdown-divider"></div>
     @endcan
     @can('user.destroy')
-    <form action="{{route('users.destroy',$id)}}" method="post" class="formDelete">
+    <form action="{{route('users.destroy',$slug)}}" method="post" class="formDelete">
       @csrf
       @method('delete')
       <button class="dropdown-item" >Eliminar</button>

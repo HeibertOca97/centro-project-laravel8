@@ -35,7 +35,10 @@ table > tbody tr > td {
     box-sizing: border-box;
     cursor: pointer;
     transition: all 200ms ease-in;
+    color: rgb(41, 101, 156);
     border: 2px solid rgb(41, 101, 156);
+    background-color: rgba(255, 255, 255, 0.836);
+    border-radius: 5px;
 }
 .content-permission input:checked ~ label {
     border: 2px solid rgba(0, 93, 146, 0.781);

@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -21,7 +21,7 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
-    @can('matrizActividad.index')
+    @can('MyActivitie.index')
     <li class="breadcrumb-item"><a href="{{route('mis-actividades.index')}}">Actividades</a></li>
     @endcan
     <li class="breadcrumb-item active" aria-current="page">Crear</li>
@@ -80,7 +80,6 @@
 
 @endsection
 @section('js')
-<script src="{{asset('js/config/peticiones.js')}}"></script>
 <script src="{{asset('js/validations/activities/validation.activities.js')}}"></script>
 <script src="{{asset("js/config/validations.js")}}"></script>
 <script>
@@ -98,8 +97,8 @@
     actionEventKeyupInputNumber();
     actionEventDeleteElement();
     sendDataFormMatrizActividad();
-    //validar en que interfaz estamos
-    setModo('personal');
+    //validar en que interfaz estamos - - tipo crear/editar
+    setMode('personal','created');
 
     @if (session('status_success'))
       //js/config/messageAlert.js

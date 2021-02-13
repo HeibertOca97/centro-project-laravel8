@@ -107,9 +107,13 @@
     padding: 7px 7px;
     box-shadow: 0px 0px 3px #ccc;
     right: 5px;
-    top: 10px;
+    top: 8px;
     background-color: #fff;
     box-sizing: border-box;
+}
+#box-barra-notify > dir a small {
+    font-size: 12px;
+    color: rgb(78, 154, 240);
 }
 /*estilo del contenedor*/
 .box-barra-opciones {

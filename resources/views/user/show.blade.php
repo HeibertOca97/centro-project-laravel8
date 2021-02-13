@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -30,7 +30,7 @@
   </nav>
 
   <div class="card container-xl">
-    <div class="card-header">Informacion del usuario n° {{$user->id}}</div>
+    <div class="card-header">Datos generales de {{$user->username}}</div>
     <div class="card-body content-info">
       <img src="@if ($user->avatar) {{asset($user->avatar)}} @else {{asset('image/perfil/user_man.svg')}}  @endif" alt="{{$user->nombre}}">
       <div class="info-user">

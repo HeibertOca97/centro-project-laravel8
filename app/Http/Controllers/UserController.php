@@ -10,9 +10,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Models\helpers\ConvertToDate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterUserMailable;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -23,21 +25,12 @@ class UserController extends Controller
     $this->middleware(['permission:user.edit'],['only'=>['edit','update','editListAll','updateAll']]);
     $this->middleware(['permission:user.destroy'],['only'=>'destroy']);
   }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
       $roles = Role::all()->pluck('name','id');
@@ -45,43 +38,29 @@ class UserController extends Controller
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.create',compact('roles'));        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserCreateRequest $request,User $user)
     {
       $user->username = $request->username;
       $user->email = $request->email;
       $user->status = $request->estado;
       $user->password = Hash::make($request->password);
+      if(!$user->nombres && !$user->apellidos){
+        $user->slug = Str::slug($request->username,'-');
+      }
       
       $user->assignRole($request->rol);
 
       if($user->save()){
+        Mail::to($request->email)->send(new RegisterUserMailable($request->username,$request->password));
         return back()->with("status_success","Nuevo usuario creado");
       }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.show',compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
       $roles = Role::all()->pluck('name','id')->toArray();
@@ -93,18 +72,15 @@ class UserController extends Controller
       $roles = Role::all()->pluck('name','id')->toArray();
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.editList',compact('roles','user'));  
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UserEditRequest $request, User $user)
     {
       $user->username = $request->username;
       $user->email = $request->email;
       $user->status = $request->estado;
+      if(!$user->nombres && !$user->apellidos){
+        $user->slug = Str::slug($request->username,'-');
+      }
       
       if($request->password){
         $request->validate(['password'=>'min:8|max:15']);
@@ -114,7 +90,7 @@ class UserController extends Controller
       $user->syncRoles($request->rol);
 
       if($user->save()){
-        return back()->with("status_success","Datos del usuario actualizado");
+        return redirect()->route('users.edit',$user)->with("status_success","Datos del usuario actualizado");
       }
     }
 
@@ -127,6 +103,13 @@ class UserController extends Controller
       $user->username = $request->username;
       $user->email = $request->email;
       $user->status = $request->estado;
+      if(!$user->nombres && !$user->apellidos){
+        $slug = "{$request->username}";
+        $user->slug = Str::slug("{$slug}",'-');
+      }else{
+        $slug = "{$request->nombres} {$request->apellidos}";
+        $user->slug = Str::slug("{$slug}",'-');
+      }
       
       if($request->password){
         $request->validate(['password'=>'min:8|max:15']);
@@ -136,16 +119,10 @@ class UserController extends Controller
       $user->syncRoles($request->rol);
 
       if($user->save()){
-        return back()->with("status_success","Datos del usuario actualizado");
+        return redirect()->route('users.editAll',$user)->with("status_success","Datos del usuario actualizado");
       }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $user)
     {
       foreach ($user->getRoleNames() as $value) {
@@ -167,7 +144,7 @@ class UserController extends Controller
     }
 
     public function listAllUsers(){
-      $users = User::select('id','email','status','created_at')->get();
+      $users = User::select('id','email','status','slug','created_at')->get();
 
       return datatables()
       ->of($users)
@@ -194,7 +171,7 @@ class UserController extends Controller
     }
 
     public function listAllUsersExceptToAdmin(){
-      $users = User::select('id','email','status','created_at')->join('model_has_roles','users.id','=','model_has_roles.model_id')->where('role_id','!=',1)->get();
+      $users = User::select('id','email','status','slug','created_at')->join('model_has_roles','users.id','=','model_has_roles.model_id')->where('role_id','!=',1)->get();
 
       return datatables()
       ->of($users)

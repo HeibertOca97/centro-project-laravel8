@@ -35,7 +35,7 @@
   </a>
   @endcan
  
-  @if(Auth::user()->hasAnyPermission(['matrizActividad.index','plantrabajo.index']))
+  @if(Auth::user()->hasAnyPermission(['Activities.index','MyActivitie.index','plantrabajo.index']))
   <div class="opt-list">
     <div state="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') || request()->routeIs('mis-actividades.*') ? 'true' : 'false'}}" class="{{request()->routeIs('planes.*') || request()->routeIs('actividades.*') || request()->routeIs('mis-actividades.*') ? 'activeRoute' : ' '}}">
       <i class="fas fa-clipboard-list"></i><p>Tareas</p><i class="fas fa-plus"></i>
@@ -49,24 +49,33 @@
         </div>
       </a>
       @endcan
-      @can('matrizActividad.index')
+      @can('Activities.index')
       <a href="{{route('actividades.index')}}">
         <div class="{{request()->routeIs('actividades.*') ? 'activeRoute' : ' '}}">
           <i class="fas fa-clipboard-check"></i>
-          <p>Matriz de actividades</p>
+          <p>Actividades</p>
         </div>
       </a>
       @endcan
-      {{-- @can('matrizActividad.index') --}}
+      @can('MyActivitie.index')
       <a href="{{route('mis-actividades.index')}}">
         <div class="{{request()->routeIs('mis-actividades.*') ? 'activeRoute' : ' '}}">
           <i class="far fa-calendar-check"></i>
           <p>Mis actividades</p>
         </div>
       </a>
-      {{-- @endcan --}}
+      @endcan
     </main>
   </div>
   @endif
+
+  @can('emprendedor.index')
+  <a href="{{route('emprendedores.index')}}" class="opt-link" title="Emprendedores">
+    <div class="{{request()->routeIs('emprendedores.*') ? 'activeRoute' : ' '}}">
+      <i class="fab fa-black-tie"></i>
+      <p>Emprendedores</p>
+    </div>
+  </a>
+  @endcan
   
 </nav>

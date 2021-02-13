@@ -19,7 +19,7 @@
       <h3>Restablecer Contraseña</h3>
     </div>
     <div class="box-icon">
-      <img src="{{asset('/image/imageFondos/new-secure.svg')}}" alt="new secure">
+      <img src="{{asset('/image/imageFondos/new-secure.svg')}}" alt="new secure" style="max-width: 200px;">
     </div>
 
       <input type="hidden" name="email" id="email" autocomplete="off" maxlength="100" required value="{{ $email ?? old('email') }}">

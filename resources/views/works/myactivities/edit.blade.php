@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -21,7 +21,7 @@
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
-    @can('matrizActividad.index')
+    @can('MyActivitie.index')
     <li class="breadcrumb-item"><a href="{{route('mis-actividades.index')}}">Actividades</a></li>
     @endcan
       <li class="breadcrumb-item active" aria-current="page">Editar</li>
@@ -91,12 +91,13 @@
     removeStyleErrorFormatOne('textarea');
     removeStyleErrorFormatOne('select');
     @endif
-    validatedDateExisting('edit');
     //js/validations/activities/validation.activities.js
     actionEventIncrementAndDecrementButton();
     actionEventKeyupInputNumber();
     actionEventDeleteElement();
     sendDataFormMatrizActividad();
+    //validar en que interfaz estamos - tipo crear/editar
+    setMode('personal','updated',"{{$act->fecha}}");
     
     @if (session('status_success'))
       //js/config/messageAlert.js

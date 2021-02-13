@@ -1,4 +1,4 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
@@ -11,7 +11,6 @@
 @section('section-content')
   @include('layouts.partials.header')
   <div id="box-main-content">
-    
     @include('components.cards-status',[
       'num_users'=>$users,
       'numPermission'=>$numPermission

@@ -1,5 +1,5 @@
-@extends('components.modalimage')
-@extends('components.modals')
+{{-- @extends('components.modalimage') --}}
+@extends('components.modals',['modal'=>'perfil'])
 
 @extends('layouts.app')
 
@@ -42,7 +42,7 @@
 
     <article class="box-info-datos">
       <h3>Tu informaci&oacute;n</h3>
-    <form action="{{route('user.profiles.update',$user->id)}}" method="post" id="form-perfil">
+    <form action="{{route('user.profiles.update',$user)}}" method="post" id="form-perfil">
       @csrf
       @method('PUT')
         <div>
@@ -57,18 +57,18 @@
         </div>
         <div>
           <label for="nombre de usuario" class="@error('username') text-danger @enderror">Nombre de usuario *</label>
-          <input type="text" name="username" id="nombre de usuario" class="@error('username') border-danger @enderror required" autocomplete="off" maxlength="25" required value="{{old('username',$user->username)}}" placeholder="max 15 caracteres">
+          <input type="text" name="username" id="nombre de usuario" class="@error('username') border-danger @enderror required unique" autocomplete="off" maxlength="25" required value="{{old('username',$user->username)}}" placeholder="max 15 caracteres">
           <small class="@error('username') text-danger @enderror">@error('username') {{$message}} @enderror</small>
         </div>
         <div>
-          <label for="correo" class="@error('email') text-danger @enderror">Correo *</label>
-        <input type="email" name="email" id="correo" class="@error('email') border-danger @enderror required" autocomplete="off" maxlength="100" required value="{{old('email',$user->email)}}">
+          <label for="email" class="@error('email') text-danger @enderror">Correo *</label>
+        <input type="email" name="email" id="email" class="@error('email') border-danger @enderror required unique" autocomplete="off" maxlength="100" required value="{{old('email',$user->email)}}">
           <small class="@error('email') text-danger @enderror">@error('email') {{$message}} @enderror</small>
         </div>
         <div>
           <label for="cedula" class="@error('cedula') text-danger @enderror">Cedula</label>
-          <input type="number" name="cedula" id="cedula" class="@error('cedula') border-danger @enderror num" autocomplete="off" maxlength="10" minlength="10" value="{{old('cedula',$user->cedula)}}">
-          <small class="@error('cedula') text-danger @enderror">@error('cedula') {{$message}} @enderror</small>
+          <input type="number" name="cedula" id="cedula" class="@error('cedula') border-danger @enderror num unique" autocomplete="off" maxlength="10" minlength="10" value="{{old('cedula',$user->cedula)}}">
+          <small class="@error('cedula') text-danger @enderror cedula">@error('cedula') {{$message}} @enderror</small>
         </div>
         <div>
           <label for="cargo" class="@error('cargo') text-danger @enderror">Cargo</label>
@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   eventSendUpdateDeleteImage();
   removeStyleError();
   sendDataFormUpdatedUser();
+  actionValidationInput('register');
   @if (session('status_success'))
   //js/config/messageAlert.js
       successAlert('Exitoso','{{session("status_success")}}');

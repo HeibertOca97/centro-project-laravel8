@@ -11,15 +11,15 @@ use App\Exports\ActivitieMultipleSheets;
 use App\Models\helpers\ConvertToDate;
 use Carbon\Carbon;
 
-class MatrizActividadController extends Controller
+class ActivitiesController extends Controller
 {
    public function __construct()
   {
-    $this->middleware(['permission:matrizActividad.index'],['only'=>['index','listPlanes']]);
-    $this->middleware(['permission:matrizActividad.create'],['only'=>['create','store']]);
-    $this->middleware(['permission:matrizActividad.edit'],['only'=>['edit','update']]);
-    $this->middleware(['permission:matrizActividad.destroy'],['only'=>'destroy']);
-    $this->middleware(['permission:matrizActividad.download'],['only'=>'exportWorksForYear']);
+    $this->middleware(['permission:Activities.index'],['only'=>['index','listActivities']]);
+    $this->middleware(['permission:Activities.create'],['only'=>['create','store']]);
+    $this->middleware(['permission:Activities.edit'],['only'=>['edit','update']]);
+    $this->middleware(['permission:Activities.destroy'],['only'=>'destroy']);
+    $this->middleware(['permission:Activities.download'],['only'=>'exportWorksForMonth']);
   }
 
   public function index(){
@@ -117,7 +117,6 @@ class MatrizActividadController extends Controller
   
   public function exportWorksForMonth(Request $request, ActivitieMultipleSheets $act){
     $f_ini_year = ConvertToDate::extractYear($request->f_inicio);
-    $f_last_year = ConvertToDate::extractYear($request->f_fin);
     $f_ini = ConvertToDate::transformDateGetNewDate($request->f_inicio);
     $f_last = ConvertToDate::transformDateGetNewDate($request->f_fin);
   
@@ -126,9 +125,20 @@ class MatrizActividadController extends Controller
 
   public function validatedExistingDate(Request $request)
   {
-    $fecha = MatrizActividad::whereDate('fecha',"{$request->fecha}")->where('user_id','=',$request->miembro)->select('user_id','fecha')->get();
-    
-    return $fecha->isNotEmpty() ? response()->json(['res'=>true]) : response()->json(['res'=>false]);
+    if($request->miembro != null || $request->miembro == ''){
+      if($request->action=='created'){
+        $fecha = MatrizActividad::whereDate('fecha',"{$request->fecha}")->where('user_id','=',$request->miembro)->select('user_id','fecha')->get();
+        
+        return $fecha->isNotEmpty() ? response()->json(['res'=>true]) : response()->json(['res'=>false]);
+      }else{
+        $fecha = MatrizActividad::whereDate('fecha',"{$request->fecha}")
+        ->where('fecha','!=',"{$request->fechaActual}")
+        ->where('user_id','=',$request->miembro)
+        ->select('user_id','fecha')->get();
+        
+        return $fecha->isNotEmpty() ? response()->json(['res'=>true]) : response()->json(['res'=>false]);
+      }
+    }
   }
 
 }

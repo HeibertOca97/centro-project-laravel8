@@ -16,7 +16,7 @@
       <h3>Recuperaci&oacute;n de contraseña</h3>
     </div>
     <div class="box-icon">
-    <img src="{{asset('image/imageFondos/carta.svg')}}" alt="">
+    <img src="{{asset('image/imageFondos/carta.svg')}}" alt="" style="max-width: 200px;">
     </div>
 
     <div class="box-ac">

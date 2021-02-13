@@ -1,8 +1,8 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
-@section('title') Matriz de actividades @endsection
+@section('title') Gestion de actividades @endsection
 
 @section('css')
 <link rel="stylesheet" href="{{asset('css/modules/activities/createActivities.css')}}">
@@ -15,14 +15,14 @@
 @section('section-content')
   @include('layouts.partials.header')
   <div class="container-xl">
-    <h1 class="title-module"><i class="fas fa-clipboard-check"></i> Matriz de actividades</h1>
+    <h1 class="title-module"><i class="fas fa-clipboard-check"></i> Gestion de actividades</h1>
   </div>
 
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
-    @can('matrizActividad.index')
-    <li class="breadcrumb-item"><a href="{{route('actividades.index')}}">Matriz de actividades</a></li>
+    @can('Activities.index')
+    <li class="breadcrumb-item"><a href="{{route('actividades.index')}}">Actividades</a></li>
     @endcan
       <li class="breadcrumb-item active" aria-current="page">Editar</li>
     </ol>
@@ -103,13 +103,13 @@
     removeStyleErrorFormatOne('textarea');
     removeStyleErrorFormatOne('select');
     //js/validations/activities/validation.activities.js
-    // createdElementForDefault();
     actionEventIncrementAndDecrementButton();
-    // actionEventChangeInputNumber();
     actionEventKeyupInputNumber();
     actionEventDeleteElement();
     sendDataFormMatrizActividad();
-    
+    //validar en que interfaz estamos - tipo crear/editar
+    setMode('general','updated',"{{$act->fecha}}");
+
     @if (session('status_success'))
       //js/config/messageAlert.js
       successAlert('Exitoso','{{session("status_success")}}');

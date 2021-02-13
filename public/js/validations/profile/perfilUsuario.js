@@ -1,13 +1,73 @@
 //envia y valida la informacion del perfil del usuario
 function sendDataFormUpdatedUser() {
-  const $form = document.querySelector('#form-perfil');
+  const $form = document.querySelector('#form-perfil'),
+    ci = document.querySelector("input[name='cedula']"),
+    email = document.querySelector("input[name='email']"),
+    username = document.querySelector("input[name='username']");
   $form.addEventListener('submit',e =>{
     e.preventDefault();
     // js/config/validations.js
-      if(validatedInputRequired() && validatedInputTypeText() && validatedInputEmail() && validatedInputTypeNumber()){
+      if(validatedInputRequired() && validatedInputTypeText() && validatedInputEmail() && validatedInputTypeNumber() && ci.getAttribute('state') == "true" && email.getAttribute('state') == "true" && username.getAttribute('state') == "true"){
         e.target.submit();
       }
   });
+}
+let inputUnique = document.querySelectorAll('.unique');
+for (let i = 0; i < inputUnique.length; i++) {
+  if(inputUnique[i].value){
+    inputUnique[i].setAttribute('state',true);    
+  }else{
+    inputUnique[i].setAttribute('state',false);    
+  }
+}
+function actionValidationInput(action){
+  for (let i = 0; i < inputUnique.length; i++) {
+    inputUnique[i].addEventListener('change',e=>validatedIdentityData(e,action));    
+  }
+}
+//validacion de cedula
+function validatedIdentityData(e,action) {
+  const nameElement = e.target.getAttribute('name'),
+  elementInput = e.target;
+
+  validatedRequestInput(nameElement,elementInput,action);
+}
+
+let validatedRequestInput = (nameElement,elementInput,action)=>{
+  switch (nameElement) {
+    case 'cedula':
+      sendRequestData(nameElement,elementInput,action);
+      break;
+    case 'username':
+      sendRequestData(nameElement,elementInput,action);
+      break;
+    case 'email':
+      sendRequestData(nameElement,elementInput,action);
+      break;
+  
+    default:
+      break;
+  }
+}
+let sendRequestData = async (name, input, action)=>{
+  const url = "users/profiles/validated-data-user-authentique",
+  fr = new FormData(); 
+  fr.append('action',action);
+  fr.append('column',name);
+  fr.append(`${name}`,input.value);
+  
+  let data = await sendPostDataDB(url,fr);
+  let response = await data.json();
+  const {res} = response;
+  validatedAction(input,name,res);
+}
+function validatedAction(input,name,state){
+  if(state === true && typeof state == "boolean"){
+    input.setAttribute('state',state); 
+  }else{
+    input.setAttribute('state',state); 
+    addStyleErrorInput(`input[name="${name}"]`,'Este dato ya existe');
+  }
 }
 //envia y valida la contraseña de la cuenta del usuario
 function sendDataFormUpdatedUserPassword() {
@@ -47,6 +107,7 @@ async function sendUpdatedFilePhotoUser(formFoto) {
   }
 }
 
+//validacion de constrasña
 function verifySamePassword(){
   const newPassword = document.querySelector('input[name="contraseñaNueva"]'),
   confirmedPassword = document.querySelector('input[name="contraseñaConfirmacion"]');

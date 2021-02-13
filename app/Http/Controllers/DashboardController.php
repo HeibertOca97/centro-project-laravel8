@@ -26,7 +26,7 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(User $user)
-    {     
+    { 
       $users = $user->all()->count();
       
       $numPermission = Auth::user()->getRoleNames()->isEmpty() ? '0' : count(Auth::user()->getAllPermissions());

@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function toolWindowHeight(maxHeightWindowModal,el){
   if(window.innerHeight <= maxHeightWindowModal){
       const mx_height = document.getElementById(el).clientHeight;
-      console.log(mx_height);
+      
       document.getElementById(el).style.minHeight = mx_height+"px";
       document.getElementById(el).style.maxHeight = mx_height+"px";
       document.getElementById(el).style.overflow = "auto";
@@ -83,8 +83,8 @@ FUNCIONALIDAD DEL EVENTO CLICK DE LA BARRA DE MENUS
 if (document.querySelector("#icon-mas") !== null) {
   $btn_menu.addEventListener("click", ()=>{
     accionarBarraMenu();
-    desactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
-    desactiveBarOptionAccount('box-barra-notify','icon-notify');
+    inactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
+    inactiveBarOptionAccount('box-barra-notify','icon-notify');
   });
 }
 
@@ -125,8 +125,9 @@ function ejecutarAccionMenuPorDefecto(){
 
 function toggleListMenuDefault(i) {
   if ($opt_list[i].children[0].getAttribute("state") === "true") {
-    let alto_el = $opt_list[i].children[1].children[0].clientHeight,
+    let alto_el = ($opt_list[i].children[1].children[0].clientHeight / 2) - 1,
       num_el = $opt_list[i].children[1].children.length;
+      console.log(alto_el, num_el, alto_el/2)
     $opt_list[i].children[0].setAttribute("state", "true");
     $opt_list[i].children[1].style.height = alto_el * num_el + "px";
     $opt_list[i].children[0].children[2].setAttribute(
@@ -180,8 +181,8 @@ FUNCIONALIDAD DEL EVENTO CLICK PARA OCULTAR LAS BARRAS DE OPCIONES
 //ocultar ventana de cuenta
 document.addEventListener('click',(e)=>{
   if (e.target.matches('header.header')) {
-  desactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
-  desactiveBarOptionAccount('box-barra-notify','icon-notify');
+  inactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
+  inactiveBarOptionAccount('box-barra-notify','icon-notify');
   }
 });
 /****************************
@@ -191,7 +192,7 @@ FUNCIONALIDAD DEL EVENTO CLICK DE LA BARRA DE NOTIFICACIONES
 if (document.querySelector("#icon-notify") !== null) {
   $btn_notify.addEventListener("click", ()=>{
     activeBarOptionAccount('box-barra-notify','icon-notify');
-    desactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
+    inactiveBarOptionAccount('box-barra-cuenta','icon-cuenta');
   });
 }
 /****************************
@@ -201,7 +202,7 @@ FUNCIONALIDAD DEL EVENTO CLICK DE LA BARRA DE MENUS
 if (document.querySelector("#icon-cuenta") !== null) {
   $btn_cuenta.addEventListener("click", ()=>{
     activeBarOptionAccount('box-barra-cuenta','icon-cuenta');
-    desactiveBarOptionAccount('box-barra-notify','icon-notify');
+    inactiveBarOptionAccount('box-barra-notify','icon-notify');
   });
 }
 function activeBarOptionAccount(el,btnId) {
@@ -223,7 +224,7 @@ function activeIcon(el,cl, bg) {
   document.getElementById(el).style.backgroundColor = bg;
 }
 
-function desactiveBarOptionAccount(el,btnId){
+function inactiveBarOptionAccount(el,btnId){
   document.getElementById(el).setAttribute("state", "false");
   document.getElementById(el).style.visibility = "";
   document.getElementById(el).style.opacity = "";

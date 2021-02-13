@@ -1,8 +1,8 @@
-@extends('components.modals')
+@extends('components.modals',['modal'=>''])
 
 @extends('layouts.app')
 
-@section('title') Matriz de Actividades @endsection
+@section('title') Gestion de Actividades @endsection
 
 @section('css')
   
@@ -20,17 +20,17 @@
 @section('section-content')
   @include('layouts.partials.header')
   <div class="container-xl">
-    <h1 class="title-module"><i class="fas fa-clipboard-check"></i> Matriz de actividades</h1>
+    <h1 class="title-module"><i class="fas fa-clipboard-check"></i> Gestion de actividades</h1>
   </div>
 
   <nav aria-label="breadcrumb" id="box-route">
     <ol class="breadcrumb bg-white container-xl">
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Inicio</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Matriz de actividades</li>
+      <li class="breadcrumb-item active" aria-current="page">Actividades</li>
     </ol>
   </nav>
   
-@can('matrizActividad.create')
+@can('Activities.create')
 <div class="container-xl bg-white my-3">
   <a href="{{route('actividades.create')}}" class="btn btn-primary btn-route-crear"><i class="fas fa-plus"></i> Crear nuevo</a>
 </div>
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-@can('matrizActividad.download')
+@can('Activities.download')
 <div class="container-xl mt-4">
   <div class="card">
     <div class="card-body">
@@ -124,7 +124,7 @@
     tableCreateMatrizActividades('{{route("actividades.listAll")}}');
 
     // js/validations/activities/validation.activities.js
-    @can('matrizActividad.download')
+    @can('Activities.download')
     exportWorksForMonths();
     @endcan
 

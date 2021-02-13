@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
           'nombres'=>'HEIBERT JOSEPH',
           'apellidos'=>'OCAÑA RODRIGUEZ',
           'cargo'=>'ADMINISTRADOR DEL SISTEMA',
+          'slug'=>'admin1'
         ]);
         
         $user1->assignRole('super admin');
@@ -37,6 +38,7 @@ class UserSeeder extends Seeder
           'nombres'=>'USUARIO UNO',
           'apellidos'=>'USER ONE',
           'cargo'=>'USUARIO I',
+          'slug'=>'user1'
         ]);
         
         $user2->assignRole('member');
@@ -50,6 +52,7 @@ class UserSeeder extends Seeder
           'nombres'=>'USUARIO DOS',
           'apellidos'=>'USER TWO',
           'cargo'=>'USUARIO II',
+          'slug'=>'user2'
         ]);
         
         $user3->assignRole('member');

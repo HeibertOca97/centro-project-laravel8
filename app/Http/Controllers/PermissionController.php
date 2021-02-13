@@ -17,32 +17,17 @@ class PermissionController extends Controller
     $this->middleware(['permission:permission.edit'],['only'=>['edit','update']]);
     $this->middleware(['permission:permission.destroy'],['only'=>'destroy']);
   }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Permission $permission, DescriptionPermisions $description)
     {
         $request->validate([
@@ -62,23 +47,6 @@ class PermissionController extends Controller
         }        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Permission $permission)
     {      
       $description = [];
@@ -90,13 +58,6 @@ class PermissionController extends Controller
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('permission.edit',compact('permission','description'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $permission)
     {
       $request->validate([
@@ -119,12 +80,6 @@ class PermissionController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Permission $permission)
     {
       $permission->delete();

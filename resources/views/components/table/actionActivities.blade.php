@@ -3,11 +3,11 @@
     Acciones
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    @can('matrizActividad.edit')
+    @can('Activities.edit')
       <a class="dropdown-item" href="{{route('actividades.edit',$id)}}">Editar</a>
       <div class="dropdown-divider"></div>
     @endcan
-    @can('matrizActividad.destroy')
+    @can('Activities.destroy')
     <form action="{{route('actividades.destroy',$id)}}" method="post" class="formDelete">
       @csrf
       @method('delete')

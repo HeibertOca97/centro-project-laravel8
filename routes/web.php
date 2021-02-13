@@ -14,18 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['register'=>false]);
+
 Route::get('/', function () {
   // return view('auth.login');
   return redirect()->route('login');
 });
-
-// Auth::routes();
-Auth::routes(['register'=>false]);
-
-Route::get('/informacion-confidencial', function () {
-  dd(session('auth'));
-    return "informacion confidencial";
-})->middleware('password.confirm');
 
 Route::middleware('auth')->group(function () {
 
@@ -44,11 +38,13 @@ Route::middleware('auth')->group(function () {
 
   Route::post('users/profiles/image/remove',[App\Http\Controllers\ProfileUserController::class,'removeImage'])->name('user.profiles.removeImage');
 
+  Route::post('users/profiles/validated-data-user-authentique',[App\Http\Controllers\ProfileUserController::class,'validatedUserDataUnique'])->name('user.profiles.validated');
+
   //MODULO USER
   Route::resource('users', App\Http\Controllers\UserController::class);
   
   Route::get('users/all/list', [App\Http\Controllers\UserController::class,'listAllUsers'])->name('users.listAll');
-
+  
   Route::get('users/all/except', [App\Http\Controllers\UserController::class, 'listAllUsersExceptToAdmin'])->name('users.listAllExceptToAdmin');
   
   Route::get('users/all/profile/{user}/listEdit', [App\Http\Controllers\UserController::class,'editListAll'])->name('users.editAll');
@@ -74,18 +70,27 @@ Route::middleware('auth')->group(function () {
 
   //MODULO MATRIZ ACTIVIDADES
   //Actividades administrables
-  Route::resource('works/actividades', App\Http\Controllers\MatrizActividadController::class)->except('show');
+  Route::resource('works/actividades', App\Http\Controllers\ActivitiesController::class)->except('show');
 
-  Route::get('works/actividades/all/list', [App\Http\Controllers\MatrizActividadController::class,'listActivities'])->name('actividades.listAll');
+  Route::get('works/actividades/all/list', [App\Http\Controllers\ActivitiesController::class,'listActivities'])->name('actividades.listAll');
 
-  Route::post('works/actividades/fecha-existente', [App\Http\Controllers\ActivitieController::class,'validatedExistingDate'])->name('actividades.existingDate');
+  Route::post('works/actividades/fecha-existente', [App\Http\Controllers\ActivitiesController::class,'validatedExistingDate'])->name('actividades.existingDate');
 
-  Route::post('works/actividades/export/formonth', [App\Http\Controllers\MatrizActividadController::class,'exportWorksForMonth'])->name('actividades.export.formonth');
+  Route::post('works/actividades/export/formonth', [App\Http\Controllers\ActivitiesController::class,'exportWorksForMonth'])->name('actividades.export.formonth');
   //Actividades personales
-  Route::resource('works/mis-actividades', App\Http\Controllers\ActivitieController::class)->except('show');
+  Route::resource('works/mis-actividades', App\Http\Controllers\MyActivitieController::class)->except('show');
 
-  Route::get('works/mis-actividades/list', [App\Http\Controllers\ActivitieController::class,'listActivities'])->name('mis-actividades.listAll');
+  Route::get('works/mis-actividades/list', [App\Http\Controllers\MyActivitieController::class,'listActivities'])->name('mis-actividades.listAll');
 
-  Route::post('works/mis-actividades/fecha-existente', [App\Http\Controllers\ActivitieController::class,'validatedExistingDate'])->name('mis-actividades.existingDate');
+  Route::post('works/mis-actividades/fecha-existente', [App\Http\Controllers\MyActivitieController::class,'validatedExistingDate'])->name('mis-actividades.existingDate');
+
+  //MODULO EMPRENDEDORES
+  Route::resource('works/emprendedores', App\Http\Controllers\EmprendedorController::class)->except(['show','create']);
+  
+  Route::get('works/emprendedores/create/inscripcion',[ App\Http\Controllers\EmprendedorController::class,'createRegister'])->name('emprendedores.create.register');
+  
+  Route::get('works/emprendedores/create/nuevo',[ App\Http\Controllers\EmprendedorController::class,'createNew'])->name('emprendedores.create.new');
+
+  Route::get('works/emprendedores/all/list', [App\Http\Controllers\EmprendedorController::class,'listEnterprising'])->name('emprendedores.listAll');
 
 });//GRUPO DE RUTAS AUTENTICADAS

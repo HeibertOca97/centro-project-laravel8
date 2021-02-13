@@ -34,20 +34,19 @@ function infoAlert(title,text) {
   })
 }
 //alerta de confirmacion
-function confirmDeleteAlert(form){
-  Swal.fire({
-  title: 'Estas seguro?',
-  text: "¡No podrás revertir esto!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, eliminar!'
-}).then((result) => {
+async function confirmDeleteAlert(form){
+  const result = await Swal.fire({
+    title: 'Estas seguro?',
+    text: "¡No podrás revertir esto!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar!'
+  });
   if (result.isConfirmed) {
     form.submit();
   }
-})
 }
 
 function deleteAlert(text) {

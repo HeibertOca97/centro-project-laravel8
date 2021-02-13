@@ -17,5 +17,5 @@
 
 </section>
 <!-- JS -->
-<script src="{{asset('js/config/peticiones.js')}}"></script>
+<script src="{{asset('js/config/request.js')}}"></script>
 <script src="{{asset('js/config/nav.js')}}"></script>

@@ -8,62 +8,95 @@ function sendDataFormMatrizActividad() {
   });
 }
 //para validar la fecha del registro de actividades
+const $Miembro = document.getElementById('miembro');
 let $fecha = document.querySelector('#fecha');
 if($fecha){
   $fecha.setAttribute('state',true);
   //funcionalidad encargada de verificar si ya existe un registro con esa fecha
-  function setModo(modo){
-    if(modo=='personal'){
-      $fecha.addEventListener('change',(e)=>existingDate(e));
-    }else if(modo=='general'){
-      $fecha.addEventListener('change',(e)=>existingDate(e));
+  function setMode(modo,accion,fechaActual){
+    switch (modo) {
+      case 'personal':
+        $fecha.addEventListener('change',(e)=>existingDateActivitiesPersonal(e,accion,fechaActual));
+      break;
+      case 'general':
+        $fecha.addEventListener('change',()=>existingDateActivitiesGeneral(accion,fechaActual));  
+        $Miembro.addEventListener('change',()=>{
+          if($fecha.value){
+            existingDateActivitiesGeneral(accion,fechaActual);
+          } 
+        }); 
+      break;
+      // default:
+      //   break;
     }
-
   }
 }
 //create activitie - interfaz personal
-async function existingDate(e){
+async function existingDateActivitiesPersonal(e,action,fechaActual){
+  const url = "works/mis-actividades/fecha-existente";
   let form, data, response; 
-  
   form = new FormData();
   form.append('fecha',e.target.value);
-  data = await sendPostDataDB("works/mis-actividades/fecha-existente",form);
-  response = await data.json();
-  const {res} = response;
-  if(res == true){
-    e.target.setAttribute('state',false);
-    addStyleErrorInput('input[type="date"]','Ya existe un registro con esta fecha');
+  form.append('action',action);
+  if(action == 'created'){
+    data = await sendPostDataDB(url,form);
+    response = await data.json();
+    const {res} = response;
+    //respuesta: true/false, elemento, tipo de modo
+    validatedRequest(res,e.target,'personal');
   }else{
-    e.target.setAttribute('state',true);
-    removeStyleErrorInput('input[type="date"]');
+    form.append('fechaActual',fechaActual);
+    data = await sendPostDataDB(url,form);
+    response = await data.json();
+    const {res} = response;
+    //respuesta: true/false, elemento, tipo de modo
+    validatedRequest(res,e.target,'personal');
   }
 }
 
-async function existingDateActivitius(e){
+async function existingDateActivitiesGeneral(action,fechaActual){
+  const url = "works/actividades/fecha-existente";
   let form, data, response; 
-  
   form = new FormData();
-  form.append('fecha',e.target.value);
-  data = await sendPostDataDB("works/mis-actividades/fecha-existente",form);
-  response = await data.json();
-  const {res} = response;
-  if(res == true){
-    e.target.setAttribute('state',false);
-    addStyleErrorInput('input[type="date"]','Ya existe un registro con esta fecha');
+  form.append('miembro',$Miembro.value);
+  form.append('fecha',$fecha.value);
+  form.append('action',action);
+  if(action == 'created'){
+    data = await sendPostDataDB(url,form);
+    response = await data.json();
+    const {res} = response;
+    //respuesta: true/false, elemento, tipo de modo
+    validatedRequest(res,$fecha,'general');
   }else{
-    e.target.setAttribute('state',true);
-    removeStyleErrorInput('input[type="date"]');
+    form.append('fechaActual',fechaActual);
+    data = await sendPostDataDB(url,form);
+    response = await data.json();
+    const {res} = response;
+    //respuesta: true/false, elemento, tipo de modo
+    validatedRequest(res,$fecha,'general');
   }
-}
-const activities = [];
-//funcionalidad para editar
-function validatedDateExisting(action){
-  if(action == 'edit'){
-    activities.push({fecha:$fecha.getAttribute('value')});
-  }
-  console.log(activities[0].fecha);
 }
 
+let validatedRequest = (res,el,typeMode)=>{
+  switch (res) {
+    case true:
+      el.setAttribute('state',false);
+      addStyleErrorInput('input[type="date"]','Ya existe un registro con esta fecha');
+    break;
+  
+    default:
+      if(typeMode=='personal'){
+        el.setAttribute('state',true);
+        removeStyleErrorInput('input[type="date"]');
+      }else{
+        if($Miembro.value !== null){
+          el.setAttribute('state',true);
+          removeStyleErrorInput('input[type="date"]');
+        }
+      }
+    break;
+  }
+}
 //funcionalidad para la exportacion o descarga de documento
 function addMonthsYearSelect(el){
   let $months =['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']; 
