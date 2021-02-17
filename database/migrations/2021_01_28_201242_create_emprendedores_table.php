@@ -23,6 +23,7 @@ class CreateEmprendedoresTable extends Migration
             $table->string('telefono',10)->nullable();
             $table->string('celular',10)->nullable();
             $table->integer('red_wa')->nullable();
+            $table->string('slug',100)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
             ->references('id')

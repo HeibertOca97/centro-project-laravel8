@@ -4,7 +4,7 @@
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Formularios</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Formularios de registro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,7 +17,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Formulario de inscripcion</h5>
                         <p class="card-text">Se recopilan datos del emprendedor y su emprendimiento.</p>
-                        <a href="{{route('emprendedores.create.register')}}" class="btn btn-primary">Registrar</a>
+                        <a href="{{route('emprendedores.create')}}" class="btn btn-primary">Acceder</a>
                       </div>
                     </div>
                   </div>
@@ -27,7 +27,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Formulario de inscripcion: <span class="badge badge-danger">NEW</span></h5>
                         <p class="card-text">Se recopilan datos del emprendedor y su idea de negocio.</p>
-                        <a href="{{route('emprendedores.create.new')}}" class="btn btn-primary">Registrar</a>
+                        <a href="{{route('emprendedores.createnew')}}" class="btn btn-primary">Acceder</a>
                       </div>
                     </div>
                   </div>

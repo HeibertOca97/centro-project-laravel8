@@ -15,18 +15,18 @@ class CreateProfilenewemprendedorsTable extends Migration
     {
         Schema::create('profilenewemprendedors', function (Blueprint $table) {
             $table->id();
-            $table->string('ciudad',100);
-            $table->string('direccion',200);
-            $table->string('nom_universidad',255);
+            $table->string('ciudad',100)->nullable();
+            $table->string('direccion',200)->nullable();
+            $table->string('nom_universidad',255)->nullable();
             $table->unsignedBigInteger('niveleducativo_id')->nullable();
-            $table->unsignedBigInteger('emprendedore_id')->unique();
+            $table->unsignedBigInteger('emprendedor_id')->unique();
 
             $table->foreign('niveleducativo_id')
             ->references('id')
             ->on('niveleducativos')
             ->onDelete('set null')->onUpdate('cascade');
 
-            $table->foreign('emprendedore_id')
+            $table->foreign('emprendedor_id')
             ->references('id')
             ->on('emprendedores')
             ->onDelete('cascade')->onUpdate('cascade');

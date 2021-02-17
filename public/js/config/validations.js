@@ -31,12 +31,21 @@ let validacion = true;
 
 function validatedInputRequired(){
  let inputRequired = document.querySelectorAll("input.required");
+ let areaRequired = document.querySelectorAll("textarea.required");
  let validacion = true;
   for (let i = 0; i < inputRequired.length; i++) {
     //VALIDAR CAMPOS OBLIGATORIOS
     if (!inputRequired[i].value) {
-      // campoObligatorio();
       toastr["warning"](`El campo ${inputRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
+      validacion = false;
+      return validacion;
+    }
+  }
+
+  for (let i = 0; i < areaRequired.length; i++) {
+    //VALIDAR CAMPOS OBLIGATORIOS
+    if (!areaRequired[i].value) {
+      toastr["warning"](`El campo ${areaRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
       validacion = false;
       return validacion;
     }

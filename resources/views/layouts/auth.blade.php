@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@400;500&display=swap" rel="stylesheet">
     <!--ICON-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!--LIBS-->
@@ -34,6 +34,7 @@
   <script src="{{asset('js/glob.js')}}"></script>
   <script src="{{asset('js/lib/sweetalert2.all.min.js')}}"></script>
   <script src="{{asset('js/lib/toastr.min.js')}}"></script>
+
   @yield('js')
 </body>
 </html>

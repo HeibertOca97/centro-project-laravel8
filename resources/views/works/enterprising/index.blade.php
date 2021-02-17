@@ -47,7 +47,7 @@
                     <th>Nombre completo</th>
                     <th>Correo</th>
                     <th>Contacto</th>
-                    <th>Whatsapp</th>
+                    <th>Tiene Whatsapp</th>
                     <th>Creador por</th>
                     <th>Creado</th>
                     <th>Actualizado</th>

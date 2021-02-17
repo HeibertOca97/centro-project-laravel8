@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<section class="box-login">
+<section class="box-login scroll-default">
   <form action="{{ route('login') }}" method="post" class="box-fr">
     @csrf
     <picture><img src="{{asset('image/logo/logo.png')}}" alt="Centro de Emprendimiento" class="box-logo"></picture>

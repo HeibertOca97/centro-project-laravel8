@@ -46,7 +46,7 @@ class CreateEmprendimientosTable extends Migration
             $table->double('monto_inv',15,2);
             $table->unsignedBigInteger('necesidadinversion_id')->nullable();//--
             $table->string('necesidad_inv',150);//--
-            $table->unsignedBigInteger('emprendedore_id')->unique();
+            $table->unsignedBigInteger('emprendedor_id')->unique();
             
             $table->timestamps();
 
@@ -58,7 +58,7 @@ class CreateEmprendimientosTable extends Migration
             $table->foreign('movimientoemprendimiento_id')->references('id')->on('movimientoemprendimientos')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('buscasayuda_id')->references('id')->on('buscasayudas')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('tipoinconveniente_id')->references('id')->on('tipoinconvenientes')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('emprendedore_id')
+            $table->foreign('emprendedor_id')
             ->references('id')
             ->on('emprendedores')
             ->onDelete('cascade')->onUpdate('cascade');

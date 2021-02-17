@@ -21,7 +21,7 @@
   @include('layouts.partials.header')
   
   <div class="container-xl">
-    <h1 class="title-module"><i class="fas fa-user-tag"></i> Gestion de permisos</h1>
+    <h1 class="title-module"><i class="fas fa-user-tag"></i> Gestion de roles</h1>
   </div>
 
   <nav aria-label="breadcrumb" id="box-route">

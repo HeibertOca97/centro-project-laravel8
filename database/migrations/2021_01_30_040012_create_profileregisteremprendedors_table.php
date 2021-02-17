@@ -16,7 +16,7 @@ class CreateProfileregisteremprendedorsTable extends Migration
         Schema::create('profileregisteremprendedors', function (Blueprint $table) {
             $table->id();
             $table->integer('edad');
-            $table->string('sexo',10);
+            $table->integer('sexo');
 
             $table->unsignedBigInteger('tipodoc_id')->nullable();
             $table->foreign('tipodoc_id')
@@ -68,8 +68,8 @@ class CreateProfileregisteremprendedorsTable extends Migration
 
             $table->string('sector_tb',50);
 
-            $table->unsignedBigInteger('emprendedore_id')->unique();
-            $table->foreign('emprendedore_id')
+            $table->unsignedBigInteger('emprendedor_id')->unique();
+            $table->foreign('emprendedor_id')
             ->references('id')
             ->on('emprendedores')
             ->onDelete('cascade')->onUpdate('cascade');

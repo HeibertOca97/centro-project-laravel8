@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<section class="box-login">
+<section class="box-login scroll-default">
   <form action="{{ route('password.update') }}" method="post" class="box-fr" id="fr-reset-pass">
     @csrf
 

@@ -62,9 +62,10 @@
 
 .box-fr > div:nth-of-type(1) > h3 {
     text-align: center;
-    margin: 65px auto 25px auto;
+    /* margin: 65px auto 25px auto; */
+    margin: 50px auto 0px auto;
     color: var(--cl-fr-login);
-    font-family: var(--font-f1);
+    font-family: var(--font-grandstander);
     font-size: var(--text-1);
 }
 .box-fr > .box-ac {
@@ -129,7 +130,7 @@
     left: 35px;
     top: 12px;
     transition: all 300ms ease-in-out;
-    font-family: var(--font-f1);
+    font-family: var(--font-grandstander);
 }
 .cl-label-default {
     color: var(--cl-fr-login);
@@ -154,7 +155,7 @@
     bottom: -20px;
     left: 25px;
     font-size: 12px;
-    font-family: var(--font-f1);
+    font-family: var(--font-grandstander);
     color: rgba(255, 0, 0, 0.897);
 }
 .msg-valid {
@@ -162,7 +163,7 @@
     right: 0;
     top: -15px;
     font-size: 12px;
-    font-family: var(--font-f1);
+    font-family: var(--font-grandstander);
     color: rgba(255, 0, 0, 0.897);
 }
 
@@ -183,7 +184,7 @@
         #159957
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #155799, #159957);
-    font-family: var(--font-f1);
+    font-family: var(--font-grandstander);
     color: var(--cl-fr-login);
     color: #fff;
     line-height: 2.8em;

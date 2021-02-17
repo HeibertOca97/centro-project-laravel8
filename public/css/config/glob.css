@@ -29,7 +29,8 @@
     --text-default: 16px;
     --text-1: 30px;
     --cl-fr-login: #159957;
-    --font-f1: "Grandstander", cursive;
+    --font-grandstander: "Grandstander", cursive;
+    --font-oswald: "Oswald", sans-serif;
     --width-element-default: 100%;
     --max-width-modal: 400px;
     --max-width-form: 400px;
@@ -114,11 +115,12 @@ body h3 {
     color: var(--cl-load);
     animation: load 1s linear 0.5s infinite alternate;
     margin-top: 25px;
-    font-family: "Roboto";
+    font-family: var(--font-oswald);
 }
 
 @keyframes load {
     from {
+        font-family: var(--font-oswald);
         font-size: 18px;
     }
 }
@@ -134,6 +136,7 @@ ESTILOS GENERALES DEL SISTEMA
 .title-module {
     font-size: calc(var(--text-default) + 4px);
     margin: 25px auto;
+    font-family: var(--font-oswald);
 }
 .header {
     background-color: var(--bg-header-primary);

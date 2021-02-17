@@ -11,4 +11,13 @@ class InscripcionNuevoEmprendedor extends Model
     
     protected $guarded = [];
     protected $table = "profilenewemprendedors";
+
+    public function createStore($request, $emp_id){
+      $this->ciudad=$request->ciudad; 
+      $this->direccion=$request->direccion; 
+      $this->nom_universidad=$request->estudio; 
+      $this->niveleducativo_id=$request->nivel; 
+      $this->emprendedor_id=$emp_id;
+      $this->save();
+    }
 }

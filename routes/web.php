@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register'=>false]);
+\Illuminate\Support\Facades\Auth::routes(['register'=>false]);
 
 Route::get('/', function () {
   // return view('auth.login');
@@ -84,13 +84,27 @@ Route::middleware('auth')->group(function () {
 
   Route::post('works/mis-actividades/fecha-existente', [App\Http\Controllers\MyActivitieController::class,'validatedExistingDate'])->name('mis-actividades.existingDate');
 
-  //MODULO EMPRENDEDORES
-  Route::resource('works/emprendedores', App\Http\Controllers\EmprendedorController::class)->except(['show','create']);
-  
-  Route::get('works/emprendedores/create/inscripcion',[ App\Http\Controllers\EmprendedorController::class,'createRegister'])->name('emprendedores.create.register');
-  
-  Route::get('works/emprendedores/create/nuevo',[ App\Http\Controllers\EmprendedorController::class,'createNew'])->name('emprendedores.create.new');
+  //MODULO EMPRENDEDORES  
+  Route::resource('emprendedores', App\Http\Controllers\EmprendedorController::class)->except(['show','create','store','edit','destroy']);
 
-  Route::get('works/emprendedores/all/list', [App\Http\Controllers\EmprendedorController::class,'listEnterprising'])->name('emprendedores.listAll');
+  Route::get('emprendedores/formulario-inscripcion-para-emprendedores/create',[ App\Http\Controllers\EmprendedorController::class,'create'])->name('emprendedores.create');
+
+  Route::post('emprendedores/formulario-inscripcion-para-emprendedores',[ App\Http\Controllers\EmprendedorController::class,'store'])->name('emprendedores.store');
+  
+  Route::get('emprendedores/formulario-inscripcion-para-nuevos-emprendedores/create',[ App\Http\Controllers\EmprendedorController::class,'createNew'])->name('emprendedores.createnew');
+
+  Route::post('emprendedores/formulario-inscripcion-para-nuevos-emprendedores',[ App\Http\Controllers\EmprendedorController::class,'storeNew'])->name('emprendedores.storeNew');
+
+  Route::get('emprendedores/formulario-inscripcion-para-emprendedores/emprendedor={emp}/edit',[ App\Http\Controllers\EmprendedorController::class,'edit'])->name('emprendedores.edit');
+
+  Route::put('emprendedores/formulario-inscripcion-para-emprendedores/{emp}',[ App\Http\Controllers\EmprendedorController::class,'update'])->name('emprendedores.update');
+  
+  Route::get('emprendedores/formulario-inscripcion-para-nuevos-emprendedores/emprendedor={emp}/edit',[ App\Http\Controllers\EmprendedorController::class,'editNew'])->name('emprendedores.editnew');
+  
+  Route::put('emprendedores/formulario-inscripcion-para-nuevos-emprendedores/{emp}',[ App\Http\Controllers\EmprendedorController::class,'updateNew'])->name('emprendedores.updatenew');
+
+  Route::delete('emprendedores/{emp}',[ App\Http\Controllers\EmprendedorController::class,'destroy'])->name('emprendedores.destroy');
+
+  Route::get('emprendedores/all/list', [App\Http\Controllers\EmprendedorController::class,'listEnterprising'])->name('emprendedores.listAll');
 
 });//GRUPO DE RUTAS AUTENTICADAS

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<section class="box-login">
+<section class="box-login scroll-default">
   <form action="{{ route('password.email') }}" method="post" class="box-fr">
     @csrf
     <aside class="box-progress"><p></p></aside>
