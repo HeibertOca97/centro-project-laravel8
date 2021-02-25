@@ -15,7 +15,7 @@ class CreateTipoinconvenientesTable extends Migration
     {
         Schema::create('tipoinconvenientes', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
+            $table->string('opciones',50);
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateMovimientoemprendimientosTable extends Migration
     {
         Schema::create('movimientoemprendimientos', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
+            $table->string('opciones',50);
             $table->timestamps();
         });
     }

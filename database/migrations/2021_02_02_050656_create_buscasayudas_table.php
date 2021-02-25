@@ -15,7 +15,7 @@ class CreateBuscasayudasTable extends Migration
     {
         Schema::create('buscasayudas', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
+            $table->string('opciones',50);
             $table->timestamps();
         });
     }

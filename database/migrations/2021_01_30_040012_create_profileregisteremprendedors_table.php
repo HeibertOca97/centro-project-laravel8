@@ -17,7 +17,7 @@ class CreateProfileregisteremprendedorsTable extends Migration
             $table->id();
             $table->integer('edad');
             $table->integer('sexo');
-
+            $table->string('nacionalidad',50);
             $table->unsignedBigInteger('tipodoc_id')->nullable();
             $table->foreign('tipodoc_id')
             ->references('id')
@@ -49,7 +49,7 @@ class CreateProfileregisteremprendedorsTable extends Migration
             ->onDelete('set null')->onUpdate('cascade');
 
             $table->date('fec_titulacion'); 
-            $table->string('trabajoActual',2);
+            $table->integer('trabajoActual');
 
             $table->unsignedBigInteger('tipotrabajo_id')->nullable();
             $table->foreign('tipotrabajo_id')
@@ -57,8 +57,8 @@ class CreateProfileregisteremprendedorsTable extends Migration
             ->on('tipotrabajos')
             ->onDelete('set null')->onUpdate('cascade');
 
-            $table->string('ingreso_princ',2);
-            $table->string('ingreso_emp',2);
+            $table->integer('ingreso_princ');
+            $table->integer('ingreso_emp');
 
             $table->unsignedBigInteger('sectortrabajo_id')->nullable();
             $table->foreign('sectortrabajo_id')

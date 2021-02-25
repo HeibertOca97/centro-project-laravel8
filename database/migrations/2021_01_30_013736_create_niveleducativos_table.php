@@ -15,7 +15,7 @@ class CreateNiveleducativosTable extends Migration
     {
         Schema::create('niveleducativos', function (Blueprint $table) {
             $table->id();
-            $table->string('nivel_edu',80);
+            $table->string('opciones',80);
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @switch($modal)
     @case('emprendedor')
         <div class="modal fade" id="modal-emprendedor" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Formularios de registro</h5>
@@ -15,9 +15,9 @@
                     {{-- CARD 1--}}
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Formulario de inscripcion</h5>
-                        <p class="card-text">Se recopilan datos del emprendedor y su emprendimiento.</p>
-                        <a href="{{route('emprendedores.create')}}" class="btn btn-primary">Acceder</a>
+                        <h5 class="card-title text-info">Formulario de inscripcion</h5>
+                        <p class="card-text" style="font-size: 14px;"><b class="text-dark">Descripcion:</b> Se recopilan datos del emprendedor y su emprendimiento.</p>
+                        <a href="{{route('emprendedores.create')}}" class="btn btn-primary mt-3">Acceder</a>
                       </div>
                     </div>
                   </div>
@@ -25,9 +25,9 @@
                   <div class="col-sm-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Formulario de inscripcion: <span class="badge badge-danger">NEW</span></h5>
-                        <p class="card-text">Se recopilan datos del emprendedor y su idea de negocio.</p>
-                        <a href="{{route('emprendedores.createnew')}}" class="btn btn-primary">Acceder</a>
+                        <h5 class="card-title text-info">Formulario de inscripcion: <span class="text-dark" style="font-size: 14px;">(Para nuevos emprendedores)</span></h5>
+                        <p class="card-text" style="font-size: 14px;"><b class="text-dark">Descripcion:</b> Se recopilan datos del emprendedor y su idea de negocio.</p>
+                        <a href="{{route('emprendedores.createnew')}}" class="btn btn-primary mt-3">Acceder</a>
                       </div>
                     </div>
                   </div>

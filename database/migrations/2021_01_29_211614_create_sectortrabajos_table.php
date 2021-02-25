@@ -15,7 +15,7 @@ class CreateSectortrabajosTable extends Migration
     {
         Schema::create('sectortrabajos', function (Blueprint $table) {
             $table->id();
-            $table->string('sectores_tb',125);
+            $table->string('opciones',125);
             $table->timestamps();
         });
     }

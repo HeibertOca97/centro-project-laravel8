@@ -15,7 +15,7 @@ class CreateAyudarnegociosTable extends Migration
     {
         Schema::create('ayudarnegocios', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',200);
+            $table->string('opciones',200);
             $table->timestamps();
         });
     }

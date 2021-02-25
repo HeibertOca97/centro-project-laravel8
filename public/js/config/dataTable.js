@@ -181,6 +181,7 @@ function tableCreateEnterprising($url){
       {data:'email'},
       {data:'telefonos'},
       {data:'red_wa'},
+      {data:'tipo'},
       {data:'creador'},
       {data:'created_at'},
       {data:'updated_at'},

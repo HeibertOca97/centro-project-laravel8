@@ -38,13 +38,13 @@
 
         <div class="mb-4 mt-4">
           <label for="nombre" class="form-label label-description @if ($errors->has('nombre')) text-danger @else text-secondary @endif">Nombre *</label>
-        <input type="text" class="form-control text @if ($errors->has('nombre')) border-danger @endif" id="nombre" value="{{old('nombre',$permission->name)}}" maxlength="191" autocomplete="off" name="nombre" required>
+        <input type="text" class="form-control text @if ($errors->has('nombre')) border-danger @endif" id="nombre" value="{{old('nombre',$permission->name)}}" maxlength="191" autocomplete="off" name="nombre" data-name="nombre">
         <small class="form-text @error('nombre')text-danger @enderror">@error('nombre') {{$message}} @enderror</small>
         </div>
 
         <div class="mb-4">
           <label for="descripcion" class="form-label label-description @if ($errors->has('descripcion')) text-danger @else text-secondary @endif">Descripcion</label>
-          <textarea class="form-control text @error('descripcion') border-danger @enderror" id="descripcion" rows="3" name="descripcion" maxlength="191" style="max-height: 150px;">{{old('descripcion',$description[0])}}</textarea>
+          <textarea class="form-control text @error('descripcion') border-danger @enderror" id="descripcion" rows="3" name="descripcion" maxlength="191" style="max-height: 150px;" data-name="descripcion">{{old('descripcion',$description[0])}}</textarea>
           <small class="form-text @error('descripcion') text-danger @enderror">@error('descripcion') {{$message}} @enderror</small>
         </div>
 

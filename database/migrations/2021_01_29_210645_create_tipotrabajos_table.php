@@ -15,7 +15,7 @@ class CreateTipotrabajosTable extends Migration
     {
         Schema::create('tipotrabajos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_tb',125);
+            $table->string('opciones',125);
             $table->timestamps();
         });
     }

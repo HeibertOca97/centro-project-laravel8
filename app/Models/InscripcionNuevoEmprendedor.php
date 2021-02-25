@@ -20,4 +20,12 @@ class InscripcionNuevoEmprendedor extends Model
       $this->emprendedor_id=$emp_id;
       $this->save();
     }
+
+    public function editUpdate($column,$request){
+      $column->ciudad=$request->ciudad; 
+      $column->direccion=$request->direccion; 
+      $column->nom_universidad=$request->estudio; 
+      $column->niveleducativo_id=$request->nivel; 
+      $column->save();
+    }
 }

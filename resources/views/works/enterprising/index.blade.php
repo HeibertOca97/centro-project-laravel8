@@ -21,7 +21,7 @@
   @include('layouts.partials.header')
   
   <div class="container-xl">
-    <h1 class="title-module"><i class="fas fa-user-tag"></i> Gestion de emprendedores</h1>
+    <h1 class="title-module"><i class="fab fa-black-tie"></i> Gestion de emprendedores</h1>
   </div>
 
   <nav aria-label="breadcrumb" id="box-route">
@@ -48,7 +48,8 @@
                     <th>Correo</th>
                     <th>Contacto</th>
                     <th>Tiene Whatsapp</th>
-                    <th>Creador por</th>
+                    <th>Tipo de documento</th>
+                    <th>Registrado por</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
                     <th>&nbsp;</th>

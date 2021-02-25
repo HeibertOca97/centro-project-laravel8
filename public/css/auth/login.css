@@ -33,6 +33,7 @@
     padding-right: 5px;
     box-sizing: border-box;
     margin-top: 200px;
+    font-family: var(--font-grandstander);
 }
 @media screen and (min-height: 400px) {
     .box-fr {
@@ -88,7 +89,9 @@
 .cl-icon-invalid {
     color: red;
 }
-
+#ico-lock {
+    cursor: pointer;
+}
 .box-fr > div input {
     display: block;
     width: var(--width-element-default);
@@ -172,7 +175,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px auto;
+    margin: 25px auto 20px auto;
 }
 .box-fr > .box-btn > button {
     border: 0;
@@ -200,14 +203,22 @@
     border-radius: 5px 5px 5px 5px;
 }
 .box-fr > .box-redirect {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: center;
 }
 .box-fr > .box-redirect p {
-    font-size: 13px;
     color: #155799;
     cursor: pointer;
     display: inline-block;
+}
+.box-fr > .box-redirect p a {
+    font-size: 13px;
+}
+
+form small {
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
 }
 
 /***MEDIA QUERYS****/

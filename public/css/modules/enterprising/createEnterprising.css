@@ -1,4 +1,73 @@
-.btn-route-crear {
-    margin: 5px 3px;
-    font-size: calc(var(--text-default) - 3px);
+input[type="radio"] {
+    display: none;
+}
+input[type="date"] {
+    font-size: 14px;
+}
+/* input[name="sexo"] ~ label,
+input[name="tipodoc"] ~ label,
+input[name="nivel"] ~ label,
+input[name="nivel1"] ~ label,
+input[name="nivel2"] ~ label,
+input[name="nivel3"] ~ label,
+input[name="nivel4"] ~ label,
+input[name="red_wa"] ~ label,
+input[name="trabajoActual"] ~ label,
+input[name="t_plan"] ~ label,
+input[name="ingreso_e"] ~ label,
+input[name="ingreso_p"] ~ label,
+input[name="opc_dir"] ~ label,
+input[name="sector_tb"] ~ label, */
+#formEmp input[type="radio"] ~ label {
+    color: rgba(19, 94, 233, 0.774);
+    background-color: rgba(76, 137, 250, 0.151);
+    padding: 5px 8px;
+    font-size: 14px !important;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 250ms ease-in;
+    -moz-transition: all 250ms ease-in;
+    -webkit-transition: all 250ms ease-in;
+    -o-transition: all 250ms ease-in;
+    text-align: center;
+}
+input[name="tipotrabajo"] ~ label {
+    text-align: left !important;
+    /* padding: 5px 8px;
+    font-size: 14px !important;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 250ms ease-in;
+    -moz-transition: all 250ms ease-in;
+    -webkit-transition: all 250ms ease-in;
+    -o-transition: all 250ms ease-in; */
+}
+
+/* input[name="sexo"]:checked ~ label,
+input[name="tipodoc"]:checked ~ label,
+input[name="nivel"]:checked ~ label,
+input[name="nivel1"]:checked ~ label,
+input[name="nivel2"]:checked ~ label,
+input[name="nivel3"]:checked ~ label,
+input[name="nivel4"]:checked ~ label,
+input[name="red_wa"]:checked ~ label,
+input[name="trabajoActual"]:checked ~ label,
+input[name="tipotrabajo"]:checked ~ label,
+input[name="t_plan"]:checked ~ label,
+input[name="ingreso_e"]:checked ~ label,
+input[name="ingreso_p"]:checked ~ label,
+input[name="opc_dir"]:checked ~ label,
+input[name="sector_tb"]:checked ~ label, */
+#formEmp input[type="radio"]:checked ~ label {
+    color: #fff;
+    background-color: rgba(19, 94, 233, 0.952);
+}
+
+.input-check-disabled {
+    color: rgba(56, 56, 56, 0.774) !important;
+    background-color: rgba(117, 117, 117, 0.151) !important;
+}
+.input-check-enabled {
+    color: rgba(19, 94, 233, 0.774);
+    background-color: rgba(76, 137, 250, 0.151);
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmprendedorRequest extends FormRequest
+class EmpCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,7 +31,7 @@ class EmprendedorRequest extends FormRequest
           'email'=>'required|email|max:100',
           'ciudad'=>'required|max:100',
           'direccion'=>'required|max:200',
-          'celular'=>'required|max:10',
+          'celular'=>'required|max:10|min:10',
           'telefono'=>'max:10',
           'nom_idea'=>'required|max:255',
         ];
@@ -39,9 +39,9 @@ class EmprendedorRequest extends FormRequest
 
     public function attributes(){
       return [
-        'fec_nac' => 'Fecha de nacimiento',
-        'cedula' => 'Cedula de ciudadania',
-        'nom_idea' => 'Idea de negocio',
+        'fec_nac' => 'fecha de nacimiento',
+        'cedula' => 'cedula de ciudadania',
+        'nom_idea' => 'idea de negocio',
       ];
     }
 }

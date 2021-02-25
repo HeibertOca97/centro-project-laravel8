@@ -15,7 +15,7 @@ class CreateRazonemprendersTable extends Migration
     {
         Schema::create('razonemprenders', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
+            $table->string('opciones',50);
             $table->timestamps();
         });
     }

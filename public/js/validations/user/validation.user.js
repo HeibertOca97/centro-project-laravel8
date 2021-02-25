@@ -1,13 +1,21 @@
 function sendDataFormUser() {
-  let $form = document.querySelector('#formUser');
+  const $form = document.querySelector('#formUser');
+  const $formDataPersonal = document.querySelector('#form2User');
 
   $form.addEventListener('submit',(e)=>{
-      e.preventDefault();
-      // js/config/validations.js
-      if(validatedInputRequired() && validatedInputTypeText() && inputCheckedRequired('estado') && validatedInputEmail() && validatedInputTypeNumber()){
-        e.target.submit();
-      }
-    });
+    e.preventDefault();
+    // js/config/validations.js
+    if(validatedInputRequired() && validatedInputTypeText() && inputCheckedRequired('estado') && validatedInputEmail() && validatedInputTypeNumber()){
+      e.target.submit();
+    }
+  });
+  $formDataPersonal.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    // js/config/validations.js
+    if(validatedInputRequired() && validatedInputTypeText() &&validatedInputTypeNumber()){
+      e.target.submit();
+    }
+  });
 }
 
 function inputCheckedRequired(name) {

@@ -2,7 +2,7 @@ function sendDataFormPlanTrabajo() {
   let form = document.querySelector('#formPlanTrabajo');
 form.addEventListener('submit',(e)=>{
   e.preventDefault();
-  if(validatedInputTypeText()){
+  if(validatedInputTypeText() && validatedInputRequired()){
     e.target.submit();
   }
 });

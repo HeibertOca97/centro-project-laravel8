@@ -3,9 +3,9 @@ function sendDataFormRol() {
   let form = document.querySelector('#formRol');
 form.addEventListener('submit',(e)=>{
   e.preventDefault();
-  // if(validatedInputTypeText()){
+  if(validatedInputTypeText() && validatedInputRequired()){
     e.target.submit();
-  // }
+  }
 });
 }
 

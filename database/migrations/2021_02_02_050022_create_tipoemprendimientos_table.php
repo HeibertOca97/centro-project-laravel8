@@ -15,7 +15,7 @@ class CreateTipoemprendimientosTable extends Migration
     {
         Schema::create('tipoemprendimientos', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',100);
+            $table->string('opciones',100);
             $table->timestamps();
         });
     }

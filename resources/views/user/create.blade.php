@@ -37,20 +37,20 @@
         @csrf
 
         <div class="form-group">
-          <label for="nombre de usuario"class="@if ($errors->has('username')) text-danger @else text-secondary @endif label-description">Nombre de usuario *</label>
-          <input type="text" name="username" class="form-control required @if ($errors->has('username')) border-danger @endif" id="nombre de usuario" aria-describedby="username-description" autocomplete="off" value="{{old('username')}}" maxlength="25">
+          <label for="usuario"class="@if ($errors->has('username')) text-danger @else text-secondary @endif label-description">Nombre de usuario *</label>
+          <input type="text" name="username" class="form-control required @if ($errors->has('username')) border-danger @endif" id="usuario" aria-describedby="username-description" autocomplete="off" value="{{old('username')}}" maxlength="25" data-name="nombre de usuario">
           <small id="username-description" class="form-text @error('username') text-danger @enderror">@error('username') {{$message}} @enderror</small>
         </div>
 
         <div class="form-group">
           <label for="email" class="@if ($errors->has('email')) text-danger @else text-secondary @endif label-description">Correo *</label>
-          <input type="email" name="email" class="form-control required @if ($errors->has('email')) border-danger @endif" id="email" aria-describedby="email-description" autocomplete="off" value="{{old('email')}}" maxlength="100">
+          <input type="email" name="email" class="form-control required @if ($errors->has('email')) border-danger @endif" id="email" aria-describedby="email-description" autocomplete="off" value="{{old('email')}}" maxlength="100" data-name="email">
           <small id="email-description" class="form-text @error('email') text-danger @enderror">@error('email'){{$message}}@enderror</small>
         </div>
 
         <div class="form-group">
           <label for="password" class="@if ($errors->has('password')) text-danger @else text-secondary @endif label-description">Contraseña *</label>
-          <input type="password" name="password" class="form-control required @if ($errors->has('password')) border-danger @endif" id="password" value="{{old('password')}}" placeholder="min 8 | max 15 caracteres" maxlength="15">
+          <input type="password" name="password" class="form-control required @if ($errors->has('password')) border-danger @endif" id="password" value="{{old('password')}}" placeholder="min 8 | max 15 caracteres" maxlength="15" data-name="contraseña">
           <small id="password-description" class="form-text @error('password') text-danger @enderror">@error('password'){{$message}}@enderror</small>
         </div>
 

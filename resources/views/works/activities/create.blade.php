@@ -36,9 +36,15 @@
       <form action="{{route('actividades.store')}}" method="post" id="mActividad">
         @csrf
 
-        <div class="mb-4">
-          <label for="miembro" class="form-label label-description @if ($errors->has('miembro')) text-danger @else text-secondary @endif">Nombres y apellidos</label>
-          <select name="miembro" id="miembro" class="form-control @if ($errors->has('miembro')) border-danger @endif">
+        <div class="mb-4 mt-2">
+          <label for="fecha" class="form-label label-description @if ($errors->has('fecha')) text-danger @else text-secondary @endif">Fecha *</label>
+          <input type="date" class="form-control @if ($errors->has('fecha')) border-danger @endif required" id="fecha" value="{{old('fecha')}}" autocomplete="off" name="fecha" data-name="fecha">
+          <small class="form-text @error('fecha')text-danger @enderror">@error('fecha') {{$message}} @enderror</small>
+        </div>
+
+        <div class="mb-4 mt-4">
+          <label for="miembro" class="form-label label-description @if ($errors->has('miembro')) text-danger @else text-secondary @endif">Nombres y apellidos *</label>
+          <select name="miembro" id="miembro" class="form-control @if ($errors->has('miembro')) border-danger @endif required" data-name="Nombre y apellido">
             @include('components.selectOption',[
               'action'=>'create',
               'users'=>$users,
@@ -49,20 +55,14 @@
         </div>
 
         <div class="mb-4 mt-4">
-          <label for="fecha" class="form-label label-description @if ($errors->has('fecha')) text-danger @else text-secondary @endif">Fecha *</label>
-          <input type="date" class="form-control @if ($errors->has('fecha')) border-danger @endif required" id="fecha" value="{{old('fecha')}}" autocomplete="off" name="fecha">
-          <small class="form-text @error('fecha')text-danger @enderror">@error('fecha') {{$message}} @enderror</small>
-        </div>
-
-        <div class="mb-4 mt-4">
           <label for="horario" class="form-label label-description @if ($errors->has('horario')) text-danger @else text-secondary @endif">Horario</label>
-          <input type="text" class="form-control @if ($errors->has('horario')) border-danger @endif" id="horario" value="{{old('horario')}}" maxlength="100" autocomplete="off" name="horario">
+          <input type="text" class="form-control @if ($errors->has('horario')) border-danger @endif" id="horario" value="{{old('horario')}}" maxlength="100" autocomplete="off" name="horario" data-name="horario">
           <small class="form-text @error('horario')text-danger @enderror">@error('horario') {{$message}} @enderror</small>
         </div>
 
         <div class="mb-4 mt-4">
           <label for="modalidad" class="form-label label-description @if ($errors->has('modalidad')) text-danger @else text-secondary @endif">Modalidad</label>
-          <input type="text" class="form-control text @if ($errors->has('modalidad')) border-danger @endif" id="modalidad" value="{{old('modalidad')}}" maxlength="150" autocomplete="off" name="modalidad">
+          <input type="text" class="form-control @if ($errors->has('modalidad')) border-danger @endif text" id="modalidad" value="{{old('modalidad')}}" maxlength="150" autocomplete="off" name="modalidad" data-name="modalidad">
           <small class="form-text @error('modalidad')text-danger @enderror">@error('modalidad') {{$message}} @enderror</small>
         </div>
 
@@ -78,7 +78,7 @@
 
         <div class="mb-4 mt-4">
           <label for="observacion" class="form-label label-description @if ($errors->has('observacion')) text-danger @else text-secondary @endif">Observacion</label>
-          <textarea class="form-control @error('observacion') border-danger @enderror text" id="observacion" rows="3" name="observacion" maxlength="255" style="max-height: 150px;min-height:80px;">{{old('observacion')}}</textarea>
+          <textarea class="form-control @error('observacion') border-danger @enderror text" id="observacion" rows="3" name="observacion" maxlength="255" style="max-height: 150px;min-height:80px;" data-name="observacion">{{old('observacion')}}</textarea>
           <small class="form-text @error('observacion')text-danger @enderror">@error('observacion') {{$message}} @enderror</small>
         </div>
 

@@ -47,9 +47,7 @@ Route::middleware('auth')->group(function () {
   
   Route::get('users/all/except', [App\Http\Controllers\UserController::class, 'listAllUsersExceptToAdmin'])->name('users.listAllExceptToAdmin');
   
-  Route::get('users/all/profile/{user}/listEdit', [App\Http\Controllers\UserController::class,'editListAll'])->name('users.editAll');
-  
-  Route::put('users/all/profile/{user}', [App\Http\Controllers\UserController::class,'updateAll'])->name('users.updateAll');
+  Route::put('users/all/profile/{user}', [App\Http\Controllers\UserController::class,'updateInfo'])->name('users.updateInfo');
 
   //MODULO PERMISOS
   Route::resource('permissions', App\Http\Controllers\PermissionController::class)->except('show');

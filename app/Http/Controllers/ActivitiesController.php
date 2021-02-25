@@ -37,7 +37,8 @@ class ActivitiesController extends Controller
       'miembro'=>'required',
       'horario'=>'max:100',
       'modalidad'=>'max:150',
-      'observacion'=>'max:255'
+      'observacion'=>'max:255',
+      'fecha'=>'required'
     ]);      
     $actividade->fecha = $request->fecha;
     $actividade->horario = $request->horario;
@@ -66,7 +67,8 @@ class ActivitiesController extends Controller
       'miembro'=>'required',
       'horario'=>'max:100',
       'modalidad'=>'max:150',
-      'observacion'=>'max:255'
+      'observacion'=>'max:255',
+      'fecha'=>'required'
     ]);  
     $actividade->fecha = $request->fecha;
     $actividade->horario = $request->horario;

@@ -18,8 +18,7 @@ class CreateEmprendimientosTable extends Migration
             $table->string('nombre_emp',150);
             $table->integer('opc_dir');
             $table->string('dir_emp',200);
-            $table->string('servicio',200);
-            $table->string('descripcion_emp',255);
+            $table->string('desc_emp',255);
             $table->unsignedBigInteger('tiempoemprendimento_id')->nullable();
             $table->unsignedBigInteger('razonemprender_id')->nullable();
             $table->unsignedBigInteger('tipoemprendimiento_id')->nullable();//--
@@ -38,8 +37,8 @@ class CreateEmprendimientosTable extends Migration
             $table->integer('ruc_rise');
             $table->unsignedBigInteger('movimientoemprendimiento_id')->nullable();
             $table->unsignedBigInteger('buscasayuda_id')->nullable();
-            $table->integer('tipo_credito');
-            $table->integer('ent_financiera');
+            $table->integer('tipo_credito');//
+            $table->string('ent_financiera',150);//
             $table->unsignedBigInteger('tipoinconveniente_id')->nullable();//--
             $table->string('inconveniente',150);//--
             $table->integer('bus_inversion');

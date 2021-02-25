@@ -33,23 +33,23 @@
         @method('PUT')
         <div>
           <div class="title-input-pass">
-          <label for="contraseña Actual" class="@if (session('status_error')) text-danger @endif">Contraseña actual *</label> <i class="fas fa-eye ico-eyes"></i>
+            <label for="contraseñaActual" class="@if (session('status_error')) text-danger @endif">Contraseña actual *</label> <i class="fas fa-eye ico-eyes"></i>
           </div>
-        <input type="password" name="contraseñaActual"  id="contraseña Actual" autocomplete="off" maxLength="15" @if (session('password')) value="{{old('contraseñaActual',session('password'))}}" @else value="{{old('contraseñaActual')}}" @endif class="@if (session('status_error')) border-danger @endif inputpass required" placeholder="min 8 | max 15 caracteres">
+          <input type="password" name="contraseñaActual"  id="contraseñaActual" autocomplete="off" maxLength="15" @if (session('password')) value="{{old('contraseñaActual',session('password'))}}" @else value="{{old('contraseñaActual')}}" @endif class="@if (session('status_error')) border-danger @endif inputpass required" placeholder="min 8 | max 15 caracteres" data-name="contraseña actual">
           <small class="@if (session('status_error')) text-danger @endif">@if (session('status_error')) {{session('status_error')}} @endif</small>
         </div>
         <div>
           <div class="title-input-pass">
-            <label for="contraseña nueva" class="@error('contraseñaNueva') text-danger @enderror">Contraseña nueva *</label><i class="fas fa-eye ico-eyes"></i>
+            <label for="contraseñaNueva" class="@error('contraseñaNueva') text-danger @enderror">Contraseña nueva *</label><i class="fas fa-eye ico-eyes"></i>
           </div>
-          <input type="password" name="contraseñaNueva" class="@error('contraseñaNueva') border-danger @enderror inputpass required" id="contraseña nueva"autocomplete="off" maxLength="15" value="{{old('contraseñaNueva')}}" placeholder="min 8 | max 15 caracteres">
+          <input type="password" name="contraseñaNueva" class="@error('contraseñaNueva') border-danger @enderror inputpass required" id="contraseñaNueva"autocomplete="off" maxLength="15" value="{{old('contraseñaNueva')}}" placeholder="min 8 | max 15 caracteres" data-name="contraseña nueva">
           <small class="@error('contraseñaNueva') text-danger @enderror">@error('contraseñaNueva') {{$message}} @enderror</small>
         </div>
         <div>
           <div class="title-input-pass">
-            <label for="contraseña de confirmacion" class="@error('contraseñaConfirmacion') text-danger @enderror">Confirmar nueva contraseña *</label><i class="fas fa-eye ico-eyes"></i>
+            <label for="contraseñaConfirmacion" class="@error('contraseñaConfirmacion') text-danger @enderror">Confirmar nueva contraseña *</label><i class="fas fa-eye ico-eyes"></i>
           </div>
-          <input type="password" name="contraseñaConfirmacion" class="@error('contraseñaConfirmacion') border-danger @enderror inputpass required" id="contraseña de confirmacion" autocomplete="off" maxLength="15" value="{{old('contraseñaConfirmacion')}}" placeholder="min 8 | max 15 caracteres">
+          <input type="password" name="contraseñaConfirmacion" class="@error('contraseñaConfirmacion') border-danger @enderror inputpass required" id="contraseñaConfirmacion" autocomplete="off" maxLength="15" value="{{old('contraseñaConfirmacion')}}" placeholder="min 8 | max 15 caracteres" data-name="contraseña de confirmacion">
         <small class="@error('contraseñaConfirmacion') text-danger @enderror">@error('contraseñaConfirmacion') {{$message}} @enderror</small>
         </div>
         <main>

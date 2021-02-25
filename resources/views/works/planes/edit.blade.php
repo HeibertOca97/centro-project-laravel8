@@ -38,33 +38,33 @@
         @csrf
         @method('PUT')
 
+        <div class="mb-4 mt-4">
+          <label for="fecha" class="form-label label-description @if ($errors->has('fecha')) text-danger @else text-secondary @endif">Fecha *</label>
+          <input type="date" class="form-control @if ($errors->has('fecha')) border-danger @endif required" id="fecha" value="{{old('fecha',$plane->fecha)}}" autocomplete="off" name="fecha" data-name="fecha">
+          <small class="form-text @error('fecha')text-danger @enderror">@error('fecha') {{$message}} @enderror</small>
+        </div>
+        
         <div class="mb-4">
           <label for="eventos" class="form-label label-description @if ($errors->has('evento')) text-danger @else text-secondary @endif">Evento</label>
-          <textarea class="form-control @error('evento') border-danger @enderror" id="eventos" rows="3" name="evento" maxlength="255" style="max-height: 150px;min-height:80px;">{{old('evento',$plane->evento)}}</textarea>
+          <textarea class="form-control @error('evento') border-danger @enderror" id="eventos" rows="3" name="evento" maxlength="255" style="max-height: 150px;min-height:80px;" data-name="evento">{{old('evento',$plane->evento)}}</textarea>
           <small class="form-text @error('evento') text-danger @enderror">@error('evento') {{$message}} @enderror</small>
         </div>
 
         <div class="mb-4 mt-4">
           <label for="lugar" class="form-label label-description @if ($errors->has('lugar')) text-danger @else text-secondary @endif">Lugar</label>
-          <input type="text" class="form-control @if ($errors->has('lugar')) border-danger @endif" id="lugar" value="{{old('lugar',$plane->lugar)}}" maxlength="100" autocomplete="off" name="lugar">
+          <input type="text" class="form-control @if ($errors->has('lugar')) border-danger @endif text" id="lugar" value="{{old('lugar',$plane->lugar)}}" maxlength="100" autocomplete="off" name="lugar" data-name="lugar">
           <small class="form-text @error('lugar')text-danger @enderror">@error('lugar') {{$message}} @enderror</small>
         </div>
 
         <div class="mb-4 mt-4">
           <label for="responsables" class="form-label label-description @if ($errors->has('responsables')) text-danger @else text-secondary @endif">Responsables</label>
-          <textarea class="form-control @error('responsables') border-danger @enderror text" id="responsables" rows="3" name="responsables" maxlength="200" style="max-height: 150px;min-height:80px;">{{old('responsables',$plane->responsables)}}</textarea>
+          <textarea class="form-control @error('responsables') border-danger @enderror text" id="responsables" rows="3" name="responsables" maxlength="200" style="max-height: 150px;min-height:80px;" data-name="responsables">{{old('responsables',$plane->responsables)}}</textarea>
           <small class="form-text @error('responsables')text-danger @enderror">@error('responsables') {{$message}} @enderror</small>
         </div>
 
         <div class="mb-4 mt-4">
-          <label for="fecha" class="form-label label-description @if ($errors->has('fecha')) text-danger @else text-secondary @endif">Fecha</label>
-          <input type="date" class="form-control @if ($errors->has('fecha')) border-danger @endif" id="fecha" value="{{old('fecha',$plane->fecha)}}" autocomplete="off" name="fecha">
-          <small class="form-text @error('fecha')text-danger @enderror">@error('fecha') {{$message}} @enderror</small>
-        </div>
-
-        <div class="mb-4 mt-4">
           <label for="hora" class="form-label label-description @if ($errors->has('hora')) text-danger @else text-secondary @endif">Hora</label>
-          <input type="text" class="form-control @if ($errors->has('hora')) border-danger @endif" id="hora" value="{{old('hora',$plane->hora)}}" maxlength="50" autocomplete="off" name="hora">
+          <input type="text" class="form-control @if ($errors->has('hora')) border-danger @endif" id="hora" value="{{old('hora',$plane->hora)}}" maxlength="50" autocomplete="off" name="hora" data-name="hora">
           <small class="form-text @error('hora')text-danger @enderror">@error('hora') {{$message}} @enderror</small>
         </div>
 

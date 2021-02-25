@@ -15,7 +15,7 @@ class CreateEquipotrabajosTable extends Migration
     {
         Schema::create('equipotrabajos', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
+            $table->string('opciones',50);
             $table->timestamps();
         });
     }

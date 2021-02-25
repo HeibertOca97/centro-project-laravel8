@@ -67,12 +67,6 @@ class UserController extends Controller
       return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.edit',compact('roles','user'));  
     }
 
-    public function editListAll(User $user)
-    {      
-      $roles = Role::all()->pluck('name','id')->toArray();
-      return $this->checkStatusUser() ? redirect()->route('login')->with('status',$this->msg) : view('user.editList',compact('roles','user'));  
-    }
-
     public function update(UserEditRequest $request, User $user)
     {
       $user->username = $request->username;
@@ -90,19 +84,16 @@ class UserController extends Controller
       $user->syncRoles($request->rol);
 
       if($user->save()){
-        return redirect()->route('users.edit',$user)->with("status_success","Datos del usuario actualizado");
+        return redirect()->route('users.edit',$user)->with("status_success","Datos de la cuenta del usuario actualizada");
       }
     }
 
-    public function updateAll(UserEditAllRequest $request, User $user)
+    public function updateInfo(UserEditAllRequest $request, User $user)
     {
       $user->cedula = $request->cedula;
       $user->nombres = $request->nombres;
       $user->apellidos = $request->apellidos;
       $user->cargo = $request->cargo;
-      $user->username = $request->username;
-      $user->email = $request->email;
-      $user->status = $request->estado;
       if(!$user->nombres && !$user->apellidos){
         $slug = "{$request->username}";
         $user->slug = Str::slug("{$slug}",'-');
@@ -110,16 +101,9 @@ class UserController extends Controller
         $slug = "{$request->nombres} {$request->apellidos}";
         $user->slug = Str::slug("{$slug}",'-');
       }
-      
-      if($request->password){
-        $request->validate(['password'=>'min:8|max:15']);
-        $user->password = Hash::make($request->password);
-      }
-      
-      $user->syncRoles($request->rol);
 
       if($user->save()){
-        return redirect()->route('users.editAll',$user)->with("status_success","Datos del usuario actualizado");
+        return redirect()->route('users.edit',$user)->with("status_success","Datos personales del usuario actualizada");
       }
     }
 

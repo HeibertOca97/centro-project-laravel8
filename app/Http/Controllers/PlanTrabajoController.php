@@ -36,7 +36,7 @@ class PlanTrabajoController extends Controller
       'responsables'=>'max:200',
       'lugar'=>'max:100',
       'hora'=>'max:50',
-      'fecha'=>'unique:plan_trabajos,fecha'
+      'fecha'=>'required|unique:plan_trabajos,fecha'
     ]);
 
     $plane->evento = $request->evento;
@@ -62,7 +62,7 @@ class PlanTrabajoController extends Controller
       'responsables'=>'max:200',
       'lugar'=>'max:100',
       'hora'=>'max:50',
-      'fecha'=>'unique:plan_trabajos,fecha,'.$plane->id
+      'fecha'=>'required|unique:plan_trabajos,fecha,'.$plane->id
     ]);
     $plane->evento = $request->evento;
     $plane->lugar = $request->lugar;

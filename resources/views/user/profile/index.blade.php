@@ -41,38 +41,38 @@
     </article>
 
     <article class="box-info-datos">
-      <h3>Tu informaci&oacute;n</h3>
+      <h3>Tu informaci&oacute;n personal</h3>
     <form action="{{route('user.profiles.update',$user)}}" method="post" id="form-perfil">
       @csrf
       @method('PUT')
         <div>
-          <label for="nombres" class="@error('nombres') text-danger @enderror">Nombres</label>
-        <input type="text" name="nombres" id="nombres" class="@error('nombres') border-danger @enderror text" autocomplete="off" maxlength="50" value="{{old('nombres',$user->nombres)}}">
+          <label for="nombres" class="@error('nombres') text-danger @enderror">Nombres *</label>
+          <input type="text" name="nombres" id="nombres" class="@error('nombres') border-danger @enderror required text" autocomplete="off" maxlength="50" value="{{old('nombres',$user->nombres)}}" data-name="nombres">
           <small class="@error('nombres') text-danger @enderror">@error('nombres') {{$message}} @enderror</small>
         </div>
         <div>
-          <label for="apellidos" class="@error('apellidos') text-danger @enderror">Apellidos</label>
-          <input type="text" name="apellidos" id="apellidos" class="@error('apellidos') border-danger @enderror text" autocomplete="off" maxlength="50" value="{{old('apellidos',$user->apellidos)}}">
+          <label for="apellidos" class="@error('apellidos') text-danger @enderror">Apellidos *</label>
+          <input type="text" name="apellidos" id="apellidos" class="@error('apellidos') border-danger @enderror required text" autocomplete="off" maxlength="50" value="{{old('apellidos',$user->apellidos)}}" data-name="apellidos">
           <small class="@error('apellidos') text-danger @enderror">@error('apellidos') {{$message}} @enderror</small>
         </div>
         <div>
-          <label for="nombre de usuario" class="@error('username') text-danger @enderror">Nombre de usuario *</label>
-          <input type="text" name="username" id="nombre de usuario" class="@error('username') border-danger @enderror required unique" autocomplete="off" maxlength="25" required value="{{old('username',$user->username)}}" placeholder="max 15 caracteres">
+          <label for="username" class="@error('username') text-danger @enderror">Nombre de usuario *</label>
+          <input type="text" name="username" id="username" class="@error('username') border-danger @enderror required unique" autocomplete="off" maxlength="25" required value="{{old('username',$user->username)}}" placeholder="max 15 caracteres" data-name="nombre de usuario">
           <small class="@error('username') text-danger @enderror">@error('username') {{$message}} @enderror</small>
         </div>
         <div>
           <label for="email" class="@error('email') text-danger @enderror">Correo *</label>
-        <input type="email" name="email" id="email" class="@error('email') border-danger @enderror required unique" autocomplete="off" maxlength="100" required value="{{old('email',$user->email)}}">
+          <input type="email" name="email" id="email" class="@error('email') border-danger @enderror required unique" autocomplete="off" maxlength="100" required value="{{old('email',$user->email)}}" data-name="correo">
           <small class="@error('email') text-danger @enderror">@error('email') {{$message}} @enderror</small>
         </div>
         <div>
-          <label for="cedula" class="@error('cedula') text-danger @enderror">Cedula</label>
-          <input type="number" name="cedula" id="cedula" class="@error('cedula') border-danger @enderror num unique" autocomplete="off" maxlength="10" minlength="10" value="{{old('cedula',$user->cedula)}}">
+          <label for="cedula" class="@error('cedula') text-danger @enderror">Cedula de identidad</label>
+          <input type="number" name="cedula" id="cedula" class="@error('cedula') border-danger @enderror num unique" autocomplete="off" maxlength="10" minlength="10" value="{{old('cedula',$user->cedula)}}" data-name="cedula">
           <small class="@error('cedula') text-danger @enderror cedula">@error('cedula') {{$message}} @enderror</small>
         </div>
         <div>
-          <label for="cargo" class="@error('cargo') text-danger @enderror">Cargo</label>
-          <input type="text" name="cargo" id="cargo" class="@error('cargo') border-danger @enderror" autocomplete="off" maxlength="100" value="{{old('cargo',$user->cargo)}}">
+          <label for="cargo" class="@error('cargo') text-danger @enderror">Cargo *</label>
+          <input type="text" name="cargo" id="cargo" class="@error('cargo') border-danger @enderror text required" autocomplete="off" maxlength="100" value="{{old('cargo',$user->cargo)}}" data-name="cargo">
           <small class="@error('cargo') text-danger @enderror">@error('cargo') {{$message}} @enderror</small>
         </div>
         <div>

@@ -15,7 +15,7 @@ class CreateEstadoeducativosTable extends Migration
     {
         Schema::create('estadoeducativos', function (Blueprint $table) {
             $table->id();
-            $table->string('estado_edu',25);
+            $table->string('opciones',25);
             $table->timestamps();
         });
     }

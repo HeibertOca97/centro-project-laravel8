@@ -14,6 +14,8 @@ class Emprendedor extends Model
     protected $guarded = [];
     protected $table = "emprendedores";
 
+    public $sexo = [['_id'=>1,'opt'=>'Masculino'],['_id'=>2,'opt'=>'Femenino']];
+
     public $options = [['_id'=>1,'opt'=>'Si'],['_id'=>0,'opt'=>'No']];
 
     public $option_pn = [['_id'=>1,'opt'=>'Si'],['_id'=>2,'opt'=>'Incompleto'],['_id'=>0,'opt'=>'No']];
@@ -36,6 +38,19 @@ class Emprendedor extends Model
       $this->slug = Str::slug("{$request->nombres} {$request->apellidos}");
       $this->save();
       return $this->id;
+    }
+
+    public function editUpdate($request){
+      $this->cedula=$request->cedula;
+      $this->nombres=$request->nombres;
+      $this->apellidos=$request->apellidos;
+      $this->email=$request->email;
+      $this->fec_nac=$request->fec_nac;
+      $this->celular=$request->celular;
+      $this->telefono=$request->telefono;
+      $this->red_wa=$request->red_wa;
+      $this->slug = Str::slug("{$request->nombres} {$request->apellidos}");
+      $this->save();
     }
 
     //RELACIONES

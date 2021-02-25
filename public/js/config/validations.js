@@ -6,7 +6,7 @@ let validacion = true;
   for (let i = 0; i < inputString.length; i++) {
     //VALIDAR CAMPOS SOLO TIPO STRING
     if (expNum.test(inputString[i].value)) {
-      let inputName = inputString[i].getAttribute('id');
+      let inputName = inputString[i].getAttribute('data-name');
       toastr["info"](`El formato de caracteres del campo ${inputName} no es valido`, 'Solo texto');
       
       validacion = false;
@@ -16,7 +16,7 @@ let validacion = true;
   for (let i = 0; i < areaString.length; i++) {
     //VALIDAR CAMPOS SOLO TIPO STRING
     if (expNum.test(areaString[i].value)) {
-      let inputName = areaString[i].getAttribute('id');
+      let inputName = areaString[i].getAttribute('data-name');
       toastr["info"](`El formato de caracteres del campo ${inputName} no es valido`, 'Solo texto');
       
       validacion = false;
@@ -30,13 +30,15 @@ let validacion = true;
 }
 
 function validatedInputRequired(){
- let inputRequired = document.querySelectorAll("input.required");
- let areaRequired = document.querySelectorAll("textarea.required");
+ let inputRequired = document.querySelectorAll("input.required"),
+ areaRequired = document.querySelectorAll("textarea.required"),
+ selectRequired = document.querySelectorAll("select.required");
  let validacion = true;
   for (let i = 0; i < inputRequired.length; i++) {
     //VALIDAR CAMPOS OBLIGATORIOS
     if (!inputRequired[i].value) {
-      toastr["warning"](`El campo ${inputRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
+      let inputName = inputRequired[i].getAttribute('data-name');
+      toastr["warning"](`El campo ${inputName} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
       validacion = false;
       return validacion;
     }
@@ -45,7 +47,18 @@ function validatedInputRequired(){
   for (let i = 0; i < areaRequired.length; i++) {
     //VALIDAR CAMPOS OBLIGATORIOS
     if (!areaRequired[i].value) {
-      toastr["warning"](`El campo ${areaRequired[i].getAttribute('id')} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
+      let inputName = areaRequired[i].getAttribute('data-name');
+      toastr["warning"](`El campo ${inputName} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
+      validacion = false;
+      return validacion;
+    }
+  }
+
+  for (let i = 0; i < selectRequired.length; i++) {
+    //VALIDAR CAMPOS OBLIGATORIOS
+    if (!selectRequired[i].value) {
+      let inputName = selectRequired[i].getAttribute('data-name');
+      toastr["warning"](`El campo ${inputName} es obligatorio, por favor verifique todos aquellos que esten señalados con un (*)`, 'Verificar');
       validacion = false;
       return validacion;
     }
@@ -84,7 +97,8 @@ function validatedInputTypeNumber(){
   for (let i = 0; i < inputNumber.length; i++) {
     //VALIDAR CAMPOS SOLO TIPO NUMBER
     if (isNaN(inputNumber[i].value) == true) {
-      toastr["info"](`El formato de caracteres del campo ${inputNumber[i].getAttribute('id')} no es valido`, 'Solo numeros');
+      let inputName = inputNumber[i].getAttribute('data-name');
+      toastr["info"](`El formato de caracteres del campo ${inputName} no es valido`, 'Solo numeros');
       
       validacion = false;
       return validacion;
@@ -109,17 +123,24 @@ function removeStyleErrorFormatOne(typeElement) {
   let el = document.querySelectorAll(typeElement);
   for (let i = 0; i < el.length; i++) {
     if(!el[i].classList.contains('ignore')){
-      el[i].onfocus = ()=>{
-        el[i].classList.remove('border-danger');
-        el[i].parentElement.children[0].classList.remove('text-danger');
-        el[i].parentElement.children[0].classList.add('text-secondary');
-        el[i].parentElement.children[2].classList.remove('text-danger');
-        el[i].parentElement.children[2].textContent = "";
-      }
+      el[i].onfocus = ()=>elementApplyStyle(el[i]);
     }
   }
 }
-
+function elementApplyStyle(el){
+  if (el) {
+    el.classList.remove('border-danger');
+  }
+  if(el.parentElement.children[0]){
+    el.parentElement.children[0].classList.remove('text-danger');
+    el.parentElement.children[0].classList.add('text-secondary');
+  }
+  if(el.parentElement.children[2]){
+    el.parentElement.children[2].classList.remove('text-danger');
+    el.parentElement.children[2].textContent = "";
+  }
+}
+//agregar estilos de error
 function addStyleErrorInput(typeElement,sms) {
   let el = document.querySelectorAll(typeElement);
   for (let i = 0; i < el.length; i++) {
@@ -141,6 +162,21 @@ function removeStyleErrorInput(typeElement) {
       el[i].parentElement.children[0].classList.add('text-secondary');
       el[i].parentElement.children[2].classList.remove('text-danger');
       el[i].parentElement.children[2].textContent = "";
+    }
+  }
+}
+//ESTA EN PRUEBA
+//remover estilos de error en las preguntas con opciones multiples Ejm:(input type radio)
+function removeStyleErrorInputs(typeElement) {
+  let el = document.querySelectorAll(typeElement);
+  for (let i = 0; i < el.length; i++) {
+    if(el[i].classList.contains('ignore')){
+      el[i].onchange = ()=>{
+        el[i].parentElement.parentElement.parentElement.children[0].classList.remove('text-danger');
+        el[i].parentElement.parentElement.parentElement.children[0].classList.add('text-secondary');
+        el[i].parentElement.parentElement.parentElement.children[2].classList.remove('text-danger');
+        el[i].parentElement.parentElement.parentElement.children[2].textContent = "";
+      }
     }
   }
 }

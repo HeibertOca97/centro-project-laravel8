@@ -37,7 +37,7 @@
 
         <div class="m-auto" style="max-width: 650px;">
           <label for="nombre" class="form-label label-description @if($errors->has('nombre')) text-danger @else text-secondary @endif">Nombre *</label>
-          <input type="text" class="form-control text @if ($errors->has('nombre')) border-danger @endif" id="nombre" value="{{old('nombre')}}" maxlength="191" autocomplete="off" name="nombre" required>
+          <input type="text" class="form-control text required @if ($errors->has('nombre')) border-danger @endif" id="nombre" value="{{old('nombre')}}" maxlength="191" autocomplete="off" name="nombre" data-name="nombre">
           <small class="form-text @error('nombre')text-danger @enderror">@error('nombre') {{$message}} @enderror</small>
         </div>
 

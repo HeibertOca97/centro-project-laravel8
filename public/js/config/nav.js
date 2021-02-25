@@ -127,7 +127,7 @@ function toggleListMenuDefault(i) {
   if ($opt_list[i].children[0].getAttribute("state") === "true") {
     let alto_el = ($opt_list[i].children[1].children[0].clientHeight / 2) - 1,
       num_el = $opt_list[i].children[1].children.length;
-      console.log(alto_el, num_el, alto_el/2)
+  
     $opt_list[i].children[0].setAttribute("state", "true");
     $opt_list[i].children[1].style.height = alto_el * num_el + "px";
     $opt_list[i].children[0].children[2].setAttribute(

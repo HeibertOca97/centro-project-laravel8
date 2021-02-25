@@ -24,4 +24,16 @@ class IdeaNegocio extends Model
       $this->emprendedor_id=$emp_id; 
       $this->save();
     }
+
+    public function editUpdate($column,$request){
+      $column->nom_idea=$request->nom_idea; 
+      $column->t_plan=$request->t_plan; 
+      $column->sector_act=$request->sector_act; 
+      $column->consumidores=$request->consumidor; 
+      $column->competidores=$request->competidor; 
+      $column->habilidades=$request->habilidades; 
+      $column->debilidades=$request->debilidades; 
+      $column->t_apoyo=$request->t_apoyo; 
+      $column->save();
+    }
 }
